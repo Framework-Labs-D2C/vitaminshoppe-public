@@ -1,12 +1,12 @@
 {
-  "baseUrl": "https://felixtellmann.github.io/vitaminshoppe-screenshots",
+  "baseUrl": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots",
   "scale": 2,
   "sections": {
     "slim-hero-banner-a": {
-      "desktop": "https://felixtellmann.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/desktop-1512.png",
-      "mobile": "https://felixtellmann.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/mobile-375.png",
-      "tablet": "https://felixtellmann.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/tablet-768.png",
-      "wide": "https://felixtellmann.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/wide-1920.png"
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/wide-1920.png"
     }
   }
 }
