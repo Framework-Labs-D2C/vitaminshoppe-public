@@ -1,21 +1,21 @@
 {
-  "baseUrl": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots",
+  "baseUrl": "https://framework-labs-d2c.github.io/vitaminshoppe-public",
   "scale": 2,
   "sections": {
     "slim-hero-banner-a": {
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/tablet-768.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/slim-hero-banner-a/wide-1920.png"
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/wide-1920.png"
     }
   },
   "assets": {
-    "BTPeptides_desktop_backdrop.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/BTPeptides_desktop_backdrop.jpg",
-    "BTPeptides_mobile_2_backdrop.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/BTPeptides_mobile_2_backdrop.jpg",
-    "hero-a-desktop-1440.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/hero-a-desktop-1440.jpg",
-    "hero-a-desktop-2160.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/hero-a-desktop-2160.jpg",
-    "hero-a-desktop-768.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/hero-a-desktop-768.jpg",
-    "hero-a-mobile-375.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/hero-a-mobile-375.jpg",
-    "hero-a-mobile-750.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-screenshots/assets/hero-a-mobile-750.jpg"
+    "BTPeptides_desktop_backdrop.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/BTPeptides_desktop_backdrop.jpg",
+    "BTPeptides_mobile_2_backdrop.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/BTPeptides_mobile_2_backdrop.jpg",
+    "hero-a-desktop-1440.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-desktop-1440.jpg",
+    "hero-a-desktop-2160.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-desktop-2160.jpg",
+    "hero-a-desktop-768.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-desktop-768.jpg",
+    "hero-a-mobile-375.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-mobile-375.jpg",
+    "hero-a-mobile-750.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-mobile-750.jpg"
   }
 }
