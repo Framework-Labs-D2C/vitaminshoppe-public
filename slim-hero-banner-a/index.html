@@ -131,11 +131,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 24</td>
-<td>A short label above the headline, for a campaign or category name. Displays in uppercase automatically. Keep it to two or three words — it is capped at 24 characters and does not wrap. Formatting: <strong>bold</strong>, _italic_, and ~12~ for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting. Leave empty to hide it.</td></tr><tr><td><code>heading</code><br /><strong>Heading</strong></td>
+<td>A short label above the headline, for a campaign or category name. Displays in uppercase automatically. Keep it to two or three words — it is capped at 24 characters and does not wrap. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting. Leave empty to hide it.</td></tr><tr><td><code>heading</code><br /><strong>Heading</strong></td>
 <td>string</td>
 <td class="req">required</td>
 <td>max 90<br />min 1</td>
-<td>The main headline. Displays in uppercase automatically, so type it in normal sentence case. Wrap words in _underscores_ for italic — the headline is already bold, so <strong>bold</strong> changes nothing you can see. Write ~12~ for subscript, and a registered mark (®) is raised automatically; a plain asterisk is never formatting. Around 4 words per line reads best; long headings wrap to 3+ lines on mobile and push the button down.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>The main headline. Displays in uppercase automatically, so type it in normal sentence case. Wrap words in <code>_underscores_</code> for italic — the headline is already bold, so <code>**bold**</code> changes nothing you can see. Write <code>~12~</code> for subscript, and a registered mark (®) is raised automatically; a plain asterisk is never formatting. Around 4 words per line reads best; long headings wrap to 3+ lines on mobile and push the button down.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
@@ -155,11 +155,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 220</td>
-<td>One or two sentences supporting the headline. Wraps rather than truncating. Formatting: <strong>bold</strong>, _italic_, and ~12~ for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting, so a footnote marker like 20%* is safe. Leave empty to hide it.</td></tr><tr><td><code>ctaLabel</code><br /><strong>Button label</strong></td>
+<td>One or two sentences supporting the headline. Wraps rather than truncating. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting, so a footnote marker like <code>20%*</code> is safe. Leave empty to hide it.</td></tr><tr><td><code>ctaLabel</code><br /><strong>Button label</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 30</td>
-<td>The call to action. The button only renders when both a label and a link are set. Formatting: <strong>bold</strong>, _italic_, and ~12~ for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td></td>
@@ -195,14 +195,14 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
 <p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
 <pre>{
-  &quot;eyebrow&quot;: &quot;New at Vitamin Shoppe®&quot;,
-  &quot;heading&quot;: &quot;The _sports_ peptides spot&quot;,
+  &quot;eyebrow&quot;: &quot;&quot;,
+  &quot;heading&quot;: &quot;The sports peptides spot&quot;,
   &quot;headingLevel&quot;: &quot;h1&quot;,
   &quot;headingSize&quot;: &quot;48px / 30px&quot;,
   &quot;headingFont&quot;: &quot;Lato&quot;,
   &quot;showDivider&quot;: true,
-  &quot;body&quot;: &quot;Build **muscle** with B~12~. Save 20%* today. *while supplies last&quot;,
-  &quot;ctaLabel&quot;: &quot;Shop _Peptides_&quot;,
+  &quot;body&quot;: &quot;Build muscle, lose fat—safely. No needles, all quality ingredients.&quot;,
+  &quot;ctaLabel&quot;: &quot;Shop Peptides&quot;,
   &quot;ctaUrl&quot;: &quot;/shop/peptides&quot;,
   &quot;ctaStyle&quot;: &quot;dark&quot;,
   &quot;image&quot;: &quot;../assets/hero-a-desktop-2160.jpg&quot;,

@@ -147,15 +147,15 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req">required</td>
 <td>max 200<br />min 1</td>
-<td>What the expert said, in their words. Do not type quotation marks — the module adds them. Capped at 200 characters; the card grows taller to fit rather than cutting the quote off, which on Circle also pushes the photo column taller.</td></tr><tr><td><code>expertName</code><br /><strong>Expert name</strong></td>
+<td>What the expert said, in their words. Do not type quotation marks — the module adds them. Capped at 200 characters; the card grows taller to fit rather than cutting the quote off, which on Circle also pushes the photo column taller. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting.</td></tr><tr><td><code>expertName</code><br /><strong>Expert name</strong></td>
 <td>string</td>
 <td class="req">required</td>
 <td>max 40<br />min 1</td>
-<td>The person being quoted, e.g. &quot;Jordan Rode&quot;. This also names the section for screen readers, so it is required even though the design shows it small.</td></tr><tr><td><code>expertCredential</code><br /><strong>Credential</strong></td>
+<td>The person being quoted, e.g. &quot;Jordan Rode&quot;. This also names the section for screen readers, so it is required even though the design shows it small. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting. The screen-reader name uses the plain text, so a mark never reaches it.</td></tr><tr><td><code>expertCredential</code><br /><strong>Credential</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 60</td>
-<td>Their title or qualification, e.g. &quot;Performance Nutrition Specialist&quot;. Leave empty to hide it. On Circle this sits in a narrow centred column under the photo, so anything past about 40 characters wraps to three lines — keep it short.</td></tr><tr><td><code>backgroundStyle</code><br /><strong>Card background</strong></td>
+<td>Their title or qualification, e.g. &quot;Performance Nutrition Specialist&quot;. Leave empty to hide it. On Circle this sits in a narrow centred column under the photo, so anything past about 40 characters wraps to three lines — keep it short. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting.</td></tr><tr><td><code>backgroundStyle</code><br /><strong>Card background</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td><code>gradient-blue</code> · <code>light-blue</code> · <code>pale-blue</code> · <code>white</code><br />default <code>&quot;gradient-blue&quot;</code></td>
@@ -171,7 +171,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 30</td>
-<td>The call to action. The button only renders when both a label and a link are set. Formatting: <strong>bold</strong>, _italic_, and ~12~ for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td></td>

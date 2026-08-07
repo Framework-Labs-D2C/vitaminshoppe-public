@@ -131,7 +131,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req">required</td>
 <td>max 90<br />min 1</td>
-<td>The headline above the reviews, e.g. &quot;Why Customers Love BodyTech Peptides&quot;. It is centred on desktop and left-aligned on phones, and wraps to a second line rather than shrinking. For emphasis, wrap words in <em>single asterisks</em> for italic; any other formatting mark appears literally.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>The headline above the reviews, e.g. &quot;Why Customers Love BodyTech Peptides&quot;. It is centred on desktop and left-aligned on phones, and wraps to a second line rather than shrinking. Wrap words in <code>_underscores_</code> for italic and <code>**double asterisks**</code> for bold. Write <code>~12~</code> for subscript; a registered mark (®) is raised automatically, and a plain asterisk is never formatting.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
@@ -191,7 +191,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
 <p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
 <pre>{
-  &quot;heading&quot;: &quot;Why Customers Love *BodyTech* Peptides&quot;,
+  &quot;heading&quot;: &quot;Why Customers Love _BodyTech_ Peptides&quot;,
   &quot;headingLevel&quot;: &quot;h2&quot;,
   &quot;headingSize&quot;: &quot;48px / 30px&quot;,
   &quot;headingFont&quot;: &quot;Fields&quot;,
