@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Benefits Highlight — Platter × TVS</title>
+<meta name="description" content="Reference page for the Benefits Highlight section: spec, screenshots, fields and sample content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --page: #f1f1f1;
+  --page-deep: #e7e7e7;
+  --surface: #ffffff;
+  --surface-sub: #f7f7f7;
+  --ink: #303030;
+  --ink-soft: #616161;
+  --ink-faint: #8a8a8a;
+  --rule: #e3e3e3;
+  --rule-strong: #d1d1d1;
+  --brand: #0458AD;
+  --brand-deep: #012169;
+  --brand-tint: #e8f1fa;
+  --brand-line: #c3ddf3;
+  --success: #1A9E48;
+  --success-deep: #0E7A36;
+  --success-tint: #eafbf1;
+  --critical: #EE2737;
+  --critical-tint: #fdeaec;
+  --display: "Lato", sans-serif;
+  --body: "Lato", sans-serif;
+  --mono: "Geist Mono", Consolas, ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--page); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.shell { display: flex; min-height: 100vh; }
+.sidenav { width: 244px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 0 28px 26px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; background: linear-gradient(180deg, var(--page) 0%, var(--page-deep) 100%); }
+.sidenav .brand { font-family: var(--display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.sidenav .brand em { font-style: italic; color: var(--brand); }
+.sidenav .brand-sub { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 4px 0 24px; }
+.sidenav a { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-decoration: none; padding: 7px 14px 7px 10px; border-radius: 6px 0 0 6px; border-right: 2px solid transparent; }
+.sidenav a .n { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); width: 16px; flex-shrink: 0; }
+.sidenav a:hover { color: var(--ink); background: rgba(4,88,173,0.08); }
+.sidenav .foot { margin-top: auto; padding-top: 24px; padding-right: 20px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); line-height: 1.8; }
+
+main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
+section { padding-top: 68px; }
+@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin: 34px 0 10px; }
+p { color: var(--ink-soft); max-width: 74ch; }
+p + p { margin-top: 12px; }
+p strong { color: var(--ink); font-weight: 700; }
+ul, ol { color: var(--ink-soft); max-width: 74ch; padding-left: 22px; margin-top: 10px; }
+li + li { margin-top: 6px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-sub); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
+a { color: var(--brand); }
+blockquote { border-left: 3px solid var(--brand-line); background: var(--surface); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+.lede { font-size: 17px; line-height: 1.62; color: var(--ink-soft); max-width: 68ch; margin-top: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 18px 20px; margin-top: 14px; }
+.card h3 { margin-top: 0; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; font-weight: 600; }
+.badge.built { background: var(--success-tint); color: var(--success-deep); }
+.badge.missing { background: var(--critical-tint); color: var(--critical); }
+.badge.corrected { background: var(--brand-tint); color: var(--brand-deep); }
+.badge.open { background: var(--critical-tint); color: var(--critical); }
+.badge.closed { background: var(--success-tint); color: var(--success-deep); }
+
+.scroll { overflow-x: auto; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
+td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
+.shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.shots img { display: block; width: 100%; height: auto; }
+
+.pending { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="brand">Platter <em>×</em> TVS</div>
+  <div class="brand-sub">benefits-highlights</div>
+  <a href="#screenshots"><span class="n">01</span>Screenshots</a>
+  <a href="#fields"><span class="n">02</span>Fields</a>
+  <a href="#sample"><span class="n">03</span>Sample content</a>
+  <a href="#design-reference"><span class="n">04</span>Design reference</a>
+  <a href="#user-requirement"><span class="n">05</span>User requirement</a>
+  <a href="#admin-requirement"><span class="n">06</span>Admin requirement</a>
+  <a href="#other-requirements"><span class="n">07</span>Other requirements</a>
+  <a href="#open-comments"><span class="n">08</span>Open comments</a>
+  <a href="#deviations"><span class="n">09</span>Deviations</a>
+  <div class="foot">generated by pnpm build<br />spec transcribed 2026-08-07</div>
+</nav>
+<main>
+<header class="hero" style="padding-top:60px">
+  <p class="eyebrow">Platter component</p>
+  <h1>Benefits Highlight</h1>
+  <p class="lede">Transcribed from Confluence, authored by Sarah Lee, page last updated 2026-08-04. It is the client's spec, reproduced verbatim in substance. Where our implementation deviates it is recorded under Deviations, not by editing the spec.</p>
+  <p class="lede">Spec: <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/897286145/FSD+Benefits+Highlight" target="_blank" rel="noopener">https://getplatter.atlassian.net/wiki/spaces/TVS/pages/897286145/FSD+Benefits+Highlight</a></p>
+  <p class="lede">Figma: <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback" target="_blank" rel="noopener">The Vitamin Shoppe External Consolidated Feedback</a></p>
+</header>
+
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
+<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
+<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
+<img src="./desktop-1512.png" alt="benefits-highlights rendered at 1512px" loading="lazy" /></figure>
+<figure><figcaption>mobile — 375px</figcaption>
+<img src="./mobile-375.png" alt="benefits-highlights rendered at 375px" loading="lazy" /></figure>
+<figure><figcaption>tablet — 768px</figcaption>
+<img src="./tablet-768.png" alt="benefits-highlights rendered at 768px" loading="lazy" /></figure>
+<figure><figcaption>wide — 1920px</figcaption>
+<img src="./wide-1920.png" alt="benefits-highlights rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
+<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
+<tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>max 90<br />min 1</td>
+<td>The main headline, e.g. &quot;Support Every Stage of Your Training&quot;. For emphasis, wrap words in <em>single asterisks</em> for italic; any other formatting mark appears literally. It wraps to a second line on desktop rather than shrinking, and the card grows to fit.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
+<td>Choose h1 only if this module is the first thing on the page and no other h1 exists. Otherwise leave it as h2 — two h1s on one page hurts SEO. Choose h3 when the module sits underneath a section that already has an h2, so the page's heading order stays unbroken. This changes nothing you can see: the size is set separately below.</td></tr><tr><td><code>headingSize</code><br /><strong>Heading size (desktop / mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>64px / 38px</code> · <code>56px / 34px</code> · <code>48px / 30px</code> · <code>36px / 24px</code> · <code>28px / 20px</code> · <code>20px / 16px</code><br />default <code>&quot;48px / 30px&quot;</code></td>
+<td>A fixed pair from the TVS type scale — the first size applies from tablet up, the second on phones.</td></tr><tr><td><code>headingFont</code><br /><strong>Heading font</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>Lato</code> · <code>corisanderegular</code> · <code>Fields</code><br />default <code>&quot;Fields&quot;</code></td>
+<td>Fields is the serif this module is designed in and is the default. It is not yet installed on vitaminshoppe.com, so until it is, the heading falls back to Georgia — still a serif, but not the exact drawn face. Pick Lato if you would rather the heading match the rest of the site exactly than approximate the design.</td></tr><tr><td><code>body</code><br /><strong>Description</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 220</td>
+<td>One or two sentences under the headline. Wraps rather than truncating. Leave it empty and the card shrinks around what is left, keeping the content vertically centred.</td></tr><tr><td><code>benefits</code><br /><strong>Benefit tiles</strong></td>
+<td>array</td>
+<td class="req">required</td>
+<td></td>
+<td>Between two and six benefits, shown in the order you list them here — two across on desktop, stacked on phones. Drag a row to reorder it. Each tile is a button: tapping it opens a panel with that benefit's full description, so every tile needs both a name and a description.</td></tr><tr><td><code>image</code><br /><strong>Photo</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td></td>
+<td>Full URL of the photo beside the tiles. Crop it square before upload — it is shown 1:1 at every screen size and the module will cut the sides off anything wider. jpg, jpeg or png.</td></tr><tr><td><code>imageAlt</code><br /><strong>Photo alt text</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>min 1</td>
+<td>Describe what the photo shows, e.g. &quot;A woman drinking from a shaker bottle after training&quot;. Required for accessibility.</td></tr><tr><td><code>backgroundImage</code><br /><strong>Decorative background</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td></td>
+<td>Full URL of the patterned artwork behind the card and photo. The design uses a repeating chevron tile in light blue on navy; whatever you upload is tiled the same way, so supply one tile rather than a full-width image. It sits behind the content and is treated as decoration, so it needs no alt text — do not put anything readable in it. Leave empty to show the plain navy background.</td></tr><tr><td><code>backgroundImageMobile</code><br /><strong>Decorative background (mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td></td>
+<td>Full URL of the phone version of the pattern. Falls back to the desktop artwork when empty, which is usually right — supply one only if the tile is too dense to read at phone width.</td></tr><tr><td><code>ctaLabel</code><br /><strong>Button label</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 30</td>
+<td>The call to action under the tiles, e.g. &quot;Shop MuscleTech Peptides&quot;. The button only renders when both a label and a link are set. On phones it stretches the full width of the card.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td></td>
+<td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>dark</code> · <code>light</code><br />default <code>&quot;dark&quot;</code></td>
+<td>Dark is #0458AD with white text and is the design. Light is white with #0458AD text and a thin outline — the button sits on the white card, so Light needs its outline to be visible at all and reads as a weaker second choice rather than the main action.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
+<td>boolean</td>
+<td class="req"></td>
+<td>default <code>false</code></td>
+<td>Switch on when this module is the first thing on the page, so the photo loads immediately instead of lazily.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
+<td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #peptide-benefits. Page-level CSS can also target this one module rather than every benefits highlight. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div></section>
+<section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
+<p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
+<pre>{
+  &quot;heading&quot;: &quot;Support Every Stage of Your Training&quot;,
+  &quot;headingLevel&quot;: &quot;h2&quot;,
+  &quot;headingSize&quot;: &quot;48px / 30px&quot;,
+  &quot;headingFont&quot;: &quot;Fields&quot;,
+  &quot;body&quot;: &quot;Whether your goal is to recover faster, build strength, or maintain consistent performance, peptides offer targeted support for every stage of your routine.&quot;,
+  &quot;benefits&quot;: [
+    {
+      &quot;heading&quot;: &quot;Recovery Support&quot;,
+      &quot;body&quot;: &quot;Recovery is an essential part of any training routine. Peptide formulations designed for recovery may help support the body's natural repair processes, allowing you to stay consistent with your workouts and perform at your best. Explore products formulated to complement your recovery goals and active lifestyle.&quot;
+    },
+    {
+      &quot;heading&quot;: &quot;Muscle Growth&quot;,
+      &quot;body&quot;: &quot;Building lean mass takes consistent training and the right nutritional support. Peptide formulations aimed at growth are designed to complement a protein-forward diet and a progressive training programme, rather than replace either.&quot;
+    },
+    {
+      &quot;heading&quot;: &quot;Endurance&quot;,
+      &quot;body&quot;: &quot;Longer sessions ask more of your energy systems. Endurance-focused formulations are designed to support sustained output, so the last mile feels closer to the first one.&quot;
+    },
+    {
+      &quot;heading&quot;: &quot;Joint Support&quot;,
+      &quot;body&quot;: &quot;Training loads pass through your joints before they reach your muscles. These formulations are designed to support joint comfort and mobility, so you can keep training the way you want to.&quot;
+    },
+    {
+      &quot;heading&quot;: &quot;Healthy Aging&quot;,
+      &quot;body&quot;: &quot;Staying strong and mobile matters more with every year. Formulations in this group are designed to support the everyday markers of healthy aging, from lean mass to recovery.&quot;
+    },
+    {
+      &quot;heading&quot;: &quot;Daily Wellness&quot;,
+      &quot;body&quot;: &quot;Not every goal is a personal best. These formulations support the baseline that everything else is built on, so consistency is easier to hold on to.&quot;
+    }
+  ],
+  &quot;image&quot;: &quot;../assets/benefits-demo-square-736.jpg&quot;,
+  &quot;imageAlt&quot;: &quot;A woman in workout clothing sitting cross-legged and drinking from a shaker bottle, against a pale blue backdrop&quot;,
+  &quot;backgroundImage&quot;: &quot;../assets/benefits-chevron-tile-756.svg&quot;,
+  &quot;backgroundImageMobile&quot;: &quot;&quot;,
+  &quot;ctaLabel&quot;: &quot;Shop MuscleTech Peptides&quot;,
+  &quot;ctaUrl&quot;: &quot;/shop/peptides&quot;,
+  &quot;ctaStyle&quot;: &quot;dark&quot;,
+  &quot;priority&quot;: false,
+  &quot;sectionId&quot;: &quot;peptide-benefits&quot;
+}</pre></section>
+<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><div class="scroll"><table><thead><tr><th>View</th><th>Frame</th><th>Size</th></tr></thead><tbody><tr><td>Section — desktop</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-403166" target="_blank" rel="noopener"><code>18227:403166</code></a></td><td>1512 × 864</td></tr><tr><td>Section — mobile</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-407782" target="_blank" rel="noopener"><code>18227:407782</code></a></td><td>375 × 1050</td></tr><tr><td>Modal — desktop</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-132635" target="_blank" rel="noopener"><code>18099:132635</code></a></td><td>1512 × 982</td></tr><tr><td>Modal — mobile</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-137351" target="_blank" rel="noopener"><code>18099:137351</code></a></td><td>375 × 812</td></tr></tbody></table></div>
+<p>The Confluence page attaches its own exports of these four frames; the modal pair is labelled &quot;Quickview Benefit Desktop&quot; and &quot;Quickview Benefit Mobile&quot; there.</p>
+<p>Measured off the frames. Desktop values are the <code>1200px and above</code> mode of Figma's &quot;Browser Size Tokens&quot; collection, mobile the <code>768px and below</code> mode; the 768–1200 band is undrawn, as in every design we have been given.</p>
+<div class="scroll"><table><thead><tr><th></th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>Section padding</td><td>64 top / 64 bottom, 0 left / right — both columns bleed off the frame edges</td><td>16 left / right / top, 0 bottom — the image is flush to the bottom</td></tr><tr><td>Columns</td><td>card 736 and image 736, 40 gap</td><td>stacked, 16 gap</td></tr><tr><td>Card</td><td>736 × 736 fixed, radius 24 on the RIGHT corners only, padding 48, content vertically centred</td><td>343 wide × hug, radius 24 all corners, padding 16 horizontal / 24 vertical</td></tr><tr><td>Card block gap</td><td>32 (header → tiles → actions), heading → body 12</td><td>24 (header → tiles → actions), heading → body 12</td></tr><tr><td>Benefit tile</td><td>312 × 52, radius 16, <code>#41b6e6</code>, padding l16 r12 t12 b12, column gap 16, row gap 24</td><td>311 × 48, radius 16, <code>#41b6e6</code>, same padding, row gap 16</td></tr><tr><td>Tile <code>+</code> control</td><td>24 circle, <code>#012169</code>, white plus glyph 10.67 filled (not stroked), label ↔ icon gap 12</td><td>identical</td></tr><tr><td>CTA</td><td>268 × 50 hug, radius 8, <code>#0458ad</code>, padding 32 / 16</td><td>full width of the card, 43 tall, radius 6, <code>#0458ad</code></td></tr><tr><td>Image</td><td>736 × 736, 1:1, radius 24 on the LEFT corners only</td><td>343 × 343, 1:1, radius 24 on the TOP corners only</td></tr><tr><td>Background</td><td><code>#012169</code> with <code>#41b6e6</code> chevrons, a 756 × 676 vector tile repeated 2 × 2</td><td>same tile, cropped rather than re-tiled at this width</td></tr><tr><td>Heading</td><td>Fields Bold 48 / 1.2, <code>#012169</code></td><td>Fields Bold 30 / 1.2</td></tr><tr><td>Body</td><td>Lato 16 / 1.5, <code>#012169</code></td><td>Lato 14 / 1.5</td></tr><tr><td>Tile label</td><td>Lato Bold 20 / 1.4, <code>#012169</code></td><td>Lato Bold 16 / 1.4</td></tr><tr><td>CTA label</td><td>Lato Bold 16 / 1.1, 0.04em, white</td><td>Lato Bold 14 / 1.1, 0.04em</td></tr></tbody></table></div>
+<p>Modal, from the two Quickview frames. Neither is a component or an instance — they are two hand-built frames sharing text styles and the close-button instance, so there is no Figma variant plumbing to read a breakpoint off.</p>
+<div class="scroll"><table><thead><tr><th></th><th>Desktop <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-132635" target="_blank" rel="noopener"><code>18099:132635</code></a></th><th>Mobile <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-137351" target="_blank" rel="noopener"><code>18099:137351</code></a></th></tr></thead><tbody><tr><td>Scrim</td><td><code>#000000</code> at 0.6, background blur 16</td><td><code>#000000</code> at 0.48, background blur 12</td></tr><tr><td>Panel</td><td>545 wide, full height, anchored right</td><td>full width, hug height, anchored bottom</td></tr><tr><td>Radius</td><td>24 top-left and bottom-left</td><td>24 top-left and top-right</td></tr><tr><td>Padding</td><td>32</td><td>24</td></tr><tr><td>Gaps</td><td>eyebrow → heading 16, heading → body 16</td><td>8 and 8</td></tr><tr><td>Close</td><td>24 × 24 at top 24 / right 24, no fill, no border, 12 × 12 glyph, stroke 2 round, <code>#012169</code></td><td>identical</td></tr><tr><td>Eyebrow</td><td>Lato Bold 16 / 1.5, <code>#012169</code>, typed in caps (no CSS transform)</td><td>Lato Bold 14 / 1.5</td></tr><tr><td>Heading</td><td>Fields Bold 36 / 1.2, −0.01em</td><td>Fields Bold 24 / 1.2, −0.01em</td></tr><tr><td>Body</td><td>Lato 16 / 1.5</td><td>Lato 14 / 1.5</td></tr></tbody></table></div>
+<p>No prototype reactions exist anywhere in either modal chain, so the slide-in is not specified in the file. Neither panel caps its height or declares a scroll container.</p></section>
+<section id="user-requirement"><p class="eyebrow">06 — User requirement</p><h2>User requirement</h2><ol><li>User can click/tap the &quot;+&quot; icon on a benefit tile to open the modal with expanded detail.</li><li>User can close the modal via the X icon or by clicking grey area.</li><li>User can click the CTA button to navigate to the linked destination (e.g., &quot;Shop MuscleTech Peptides&quot;).</li></ol></section>
+<section id="admin-requirement"><p class="eyebrow">07 — Admin requirement</p><h2>Admin requirement</h2><div class="scroll"><table><thead><tr><th>Content type</th><th>Functional requirement</th><th>Asset / copy requirement</th><th>Responsive &amp; content behavior</th></tr></thead><tbody><tr><td><strong>Heading</strong> (Required)</td><td>Admin can edit the section heading.</td><td></td><td>Wraps to 2 lines on desktop; card expands vertically.</td></tr><tr><td><strong>Description</strong> (Optional)</td><td>Admin can edit the supporting description below the heading.</td><td></td><td>Wraps rather than truncates. When there is no description, the card shrinks with content center-aligned.</td></tr><tr><td><strong>Benefit Tile</strong> (Required)</td><td>Admin can add minimum of 2, and maximum of 6 benefits.</td><td>Each benefit includes: Title, Description</td><td>Tiles render as a 3-column grid on desktop; stack to a single column on mobile. When there is 4 benefits, it will appear as 3 tiles in first row, and 1 tile in second row. Pill shape and &quot;+&quot; icon position are fixed, not admin-adjustable. When there is less rows than design, the card shrinks vertically with content center-aligned.</td></tr><tr><td><strong>Modal</strong> (Required, per tile)</td><td>Opens automatically when a tile's &quot;+&quot; icon is clicked. Admin can edit the modal title (mirrors the tile label) and the expanded body copy per tile.</td><td></td><td>Desktop &amp; Tablet: renders as a large slide-in panel from the right, roughly half the viewport width, full height. Mobile: renders as a smaller drawer/card anchored bottom-right rather than full-screen.</td></tr><tr><td><strong>Image</strong> (Required)</td><td>Admin can upload an image.</td><td>Aspect ratio: 1:1</td><td>Below the tablet breakpoint, the image moves below the content card, full-width, rather than sitting side-by-side.</td></tr><tr><td><strong>Decorative Background</strong> (Required)</td><td>Admin can upload an image for desktop and mobile separately.</td><td></td><td></td></tr><tr><td><strong>Button</strong> (Optional)</td><td>Admin can input a CTA label and destination URL. Admin can change the button color (Dark vs. Light), consistent with the Slim Hero Banner's button field.</td><td></td><td></td></tr></tbody></table></div></section>
+<section id="other-requirements"><p class="eyebrow">08 — Other requirements</p><h2>Other requirements</h2><ol><li><strong>Analytics:</strong> component supports automated impression tracking (viewport entry) and click tracking via the standard <code>raiseEvent</code> handler.</li></ol></section>
+<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><div class="card"><h3 id="grid-column-count-unanswered-2026-08-07">Grid column count — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The Admin requirement says tiles &quot;render as a 3-column grid on desktop&quot; and that four benefits appear &quot;as 3 tiles in first row, and 1 tile in second row&quot;. Both Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-403166" target="_blank" rel="noopener"><code>18227:403166</code></a> and the page's own attached desktop export show a <strong>2-column</strong> grid, six tiles over three rows, inside a card occupying roughly the left half of the section. Three columns do not fit that card at the drawn pill width. Please confirm which is the contract: the prose (3-up, which means widening the card or narrowing the pills) or the design (2-up).</p></div>
+<div class="card"><h3 id="modal-panel-width-unanswered-2026-08-07">Modal panel width — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The Admin requirement describes the desktop modal as &quot;roughly half the viewport width&quot;. Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-132635" target="_blank" rel="noopener"><code>18099:132635</code></a> draws it materially narrower than half. Built to the Figma measurement; confirm if half-width is intended.</p></div>
+<div class="card"><h3 id="mobile-modal-anchoring-unanswered-2026-08-07">Mobile modal anchoring — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The Admin requirement says the mobile modal is &quot;a smaller drawer/card anchored bottom-right rather than full-screen&quot;. Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-137351" target="_blank" rel="noopener"><code>18099:137351</code></a> draws a full-width sheet anchored to the bottom edge with rounded top corners — bottom, not bottom-right, and full-bleed horizontally. Built to the Figma frame; confirm.</p></div>
+<div class="card"><h3 id="heading-typeface-fields-is-not-hosted-by-tvs-unanswered-2026-08-07">Heading typeface &quot;Fields&quot; is not hosted by TVS — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>Every heading in this design — the section heading at 48/30 and the modal title at 36/24 — is set in <strong>Fields</strong>, a serif, via Figma's <code>typography/family/primary</code>. Fields is not among the faces vitaminshoppe.com declares. Checked against the live site on 2026-08-07: <code>customFonts.css</code> and <code>tvs-header.css</code> self-host Lato, the Corisande family, <code>louisiana</code> and <code>thehistoriasolid</code>, and nothing named Fields appears in any <code>@font-face</code> rule. A <code>Lora</code> face is present but only from inline stylesheets injected by a third-party widget, so it is not a face we can depend on. Without the webfont this heading falls back to a system serif and will differ per device. Either TVS hosts Fields the way it hosts Corisande, or the heading ships in a face the site already serves.</p></div>
+<div class="card"><h3 id="modal-eyebrow-copy-unanswered-2026-08-07">Modal eyebrow copy — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>Both modal frames carry the eyebrow &quot;ADDITIONAL INFO&quot; above the title. It is not in the Admin requirement's field list, so it is not clear whether it is fixed chrome or merchandiser copy. Built as fixed chrome for now.</p></div></section>
+<section id="deviations"><p class="eyebrow">10 — Deviations</p><h2>Deviations</h2><p>Recorded so the gaps are visible rather than forgotten.</p>
+<div class="card"><h3 id="tile-grid-is-2-columns-not-the-3-the-admin-requirement-states">Tile grid is 2 columns, not the 3 the Admin requirement states</h3><p><span class="badge built">Built</span> 2 columns from 1280 up, 1 below</p><p>Decided 2026-08-07: built to the design rather than the prose. Both Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-403166" target="_blank" rel="noopener"><code>18227:403166</code></a> and the page's own attached desktop export draw six tiles two across, and the arithmetic agrees — the card's content track is 640px at 1512, so three tiles plus two 16px gaps would leave 202px each against a drawn 312. The &quot;4 benefits shows as 3 then 1&quot; rule in the same row therefore does not apply; four benefits render 2 + 2. See the matching Open comment.</p></div>
+<div class="card"><h3 id="breakpoint-is-lg-1024-not-the-md-768-the-rest-of-the-repo-uses">Breakpoint is lg (1024), not the md (768) the rest of the repo uses</h3><p><span class="badge built">Built</span> stacked below 1024, two columns above, tiles two-up from 1280</p><p>The section is drawn only at 1512 and 375, and halving the 1512 composition at 768 does not work: each column becomes ~364px, the card's content track ~268px, which pushes a 20px tile label out past the <code>+</code> icon and runs the 48px heading to five lines. Verified in a capture before the change. Flipping at <code>lg</code> and stepping the two-column tile grid in at <code>xl</code> is the remedy <code>sections/CLAUDE.md</code> § Breakpoint prescribes, and it satisfies the FSD's own &quot;below the tablet breakpoint, the image moves below the content card, full-width&quot;. The drawer still switches at 768, because the FSD gives the right-hand panel to &quot;Desktop &amp; Tablet&quot; — the difference is deliberate and is recorded in <code>components/drawer.css</code>.</p></div>
+<div class="card"><h3 id="card-content-aligns-to-a-1416px-container-not-a-fixed-48px-inset">Card content aligns to a 1416px container, not a fixed 48px inset</h3><p><span class="badge built">Built</span> <code>padding-left: max(48px, calc((100vw - 1416px) / 2))</code></p><p>Requested 2026-08-07. The card still bleeds to the viewport's left edge, but its content starts where a centred 1416px container would, instead of 48px from the edge at every width. The arithmetic falls out exactly: the card is <code>(100vw - 40) / 2</code> wide, so this padding holds the content track at <strong>640px</strong> — the width drawn at 1512 — for every viewport above 1512, and collapses to the drawn 48px at and below it. The 1512 rendering is unchanged. Above it the tiles stay 312px rather than stretching, which is what kept the two-column grid looking like the design on a wide monitor. Same mechanism as the Expert Module's <code>lg:pl-[max(48px,calc((100vw-1416px)/2))]</code>.</p></div>
+<div class="card"><h3 id="heading-typeface">Heading typeface</h3><p><span class="badge built">Built</span> <code>Fields</code>, falling back to Georgia</p><p><code>Fields</code> was added to the shared <code>headingFont</code> vocabulary and is this section's default, on Felix's decision of 2026-08-07: build to the design and ask TVS to host the face. Until they do, the stack is <code>Fields, Georgia, serif</code>, so the heading stays a serif everywhere rather than silently becoming Lato. Adding the value widens the dropdown for Slim Hero Banner A too, which is the point of a shared vocabulary; adding an enum value does not invalidate published content. See the matching Open comment.</p></div>
+<div class="card"><h3 id="decorative-background-is-optional-the-fsd-marks-it-required">Decorative Background is optional, the FSD marks it Required</h3><p><span class="badge built">Built</span> optional, falling back to flat <code>#012169</code></p><p>Decided 2026-08-07. The pattern is pure decoration and the section reads correctly without it, so a required field would block saving a content item over something cosmetic. It carries no alt text for the same reason. The mobile upload is optional and falls back to the desktop tile, following the <code>imageMobile</code> convention rather than the FSD's &quot;desktop and mobile separately&quot;, which grants two fields rather than demanding both be filled.</p></div>
+<div class="card"><h3 id="the-whole-tile-opens-the-panel-not-only-the-icon">The whole tile opens the panel, not only the <code>+</code> icon</h3><p><span class="badge built">Built</span> the tile is the <code>&lt;button&gt;</code>, the <code>+</code> is its affordance</p><p>The User requirement says &quot;click/tap the '+' icon&quot;. A 24px target is below the 24x24 minimum for WCAG 2.5.8 once its visual padding is discounted, and a pill that looks like a button but only responds in one corner is a bug shoppers report. Same reasoning as the Expert Module's video card. <code>aria-haspopup=&quot;dialog&quot;</code> is on the tile so the behaviour is announced.</p></div>
+<div class="card"><h3 id="modal-title-and-tile-label-are-one-field">Modal title and tile label are ONE field</h3><p><span class="badge built">Built</span> <code>benefits[].heading</code> is both</p><p>The Admin requirement says the admin &quot;can edit the modal title (mirrors the tile label)&quot;, while the asset column lists only Title and Description per benefit. Built as one field: two fields that are supposed to mirror each other drift the moment someone edits one, and nothing in the design shows them differing.</p></div>
+<div class="card"><h3 id="modal-geometry-follows-figma-not-the-prose">Modal geometry follows Figma, not the prose</h3><p><span class="badge built">Built</span> 545px right panel, full-width bottom sheet</p><p>The Admin requirement says &quot;roughly half the viewport width&quot; and a mobile drawer &quot;anchored bottom-right&quot;. The frames draw 545px (36% at 1512) and a full-width sheet on the bottom edge. Built to the frames; both have Open comments. The slide-in the prose asks for is implemented from each panel's anchored edge, since neither frame carries a prototype reaction, and it is guarded by <code>prefers-reduced-motion</code>.</p></div>
+<div class="card"><h3 id="section-id-jump-link-css-target">Section ID (jump-link + CSS target)</h3><p><span class="badge built">Built</span> optional field, not in the spec</p><p>The same addition every section in this phase carries: a merchant-chosen <code>id</code> on the section root, so a link ending <code>#peptide-benefits</code> jumps to this module and page-level CSS can target this one placement.</p></div>
+<div class="card"><h3 id="analytics-click">Analytics — click</h3><p><span class="badge built">Built</span> <code>raiseEvent('ItemClick', item, 'Benefits Highlight')</code></p><p>Two events, both guarded by <code>typeof</code> so a page without the handler cannot swallow the interaction. The CTA sends <code>{ ctaLabel, destinationUrl, moduleTitle }</code>, the shared shape. A tile sends <code>{ action: 'benefit-open', benefitName, moduleTitle }</code>, following the Expert Module's video-play event for an interaction that does not navigate. <code>moduleTitle</code> is the section heading in both. <strong>Unverified against a real LP</strong> — the payload keys are still our guess at what TVS's handler reads.</p></div>
+<div class="card"><h3 id="analytics-impression-viewport-entry">Analytics — impression (viewport entry)</h3><p><span class="badge missing">Not built</span></p><p>Same position as every other section in this phase. No impression event name appears anywhere in the ten downloaded TVS templates — only <code>ItemClick</code> and the ATC event. Building one means inventing an event name TVS's handler would ignore. Needs the name and payload from TVS.</p></div></section>
+</main>
+</div>
+</body>
+</html>

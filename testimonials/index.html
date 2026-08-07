@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Testimonials — Platter × TVS</title>
+<meta name="description" content="Reference page for the Testimonials section: spec, screenshots, fields and sample content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --page: #f1f1f1;
+  --page-deep: #e7e7e7;
+  --surface: #ffffff;
+  --surface-sub: #f7f7f7;
+  --ink: #303030;
+  --ink-soft: #616161;
+  --ink-faint: #8a8a8a;
+  --rule: #e3e3e3;
+  --rule-strong: #d1d1d1;
+  --brand: #0458AD;
+  --brand-deep: #012169;
+  --brand-tint: #e8f1fa;
+  --brand-line: #c3ddf3;
+  --success: #1A9E48;
+  --success-deep: #0E7A36;
+  --success-tint: #eafbf1;
+  --critical: #EE2737;
+  --critical-tint: #fdeaec;
+  --display: "Lato", sans-serif;
+  --body: "Lato", sans-serif;
+  --mono: "Geist Mono", Consolas, ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--page); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.shell { display: flex; min-height: 100vh; }
+.sidenav { width: 244px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 0 28px 26px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; background: linear-gradient(180deg, var(--page) 0%, var(--page-deep) 100%); }
+.sidenav .brand { font-family: var(--display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.sidenav .brand em { font-style: italic; color: var(--brand); }
+.sidenav .brand-sub { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 4px 0 24px; }
+.sidenav a { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-decoration: none; padding: 7px 14px 7px 10px; border-radius: 6px 0 0 6px; border-right: 2px solid transparent; }
+.sidenav a .n { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); width: 16px; flex-shrink: 0; }
+.sidenav a:hover { color: var(--ink); background: rgba(4,88,173,0.08); }
+.sidenav .foot { margin-top: auto; padding-top: 24px; padding-right: 20px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); line-height: 1.8; }
+
+main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
+section { padding-top: 68px; }
+@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin: 34px 0 10px; }
+p { color: var(--ink-soft); max-width: 74ch; }
+p + p { margin-top: 12px; }
+p strong { color: var(--ink); font-weight: 700; }
+ul, ol { color: var(--ink-soft); max-width: 74ch; padding-left: 22px; margin-top: 10px; }
+li + li { margin-top: 6px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-sub); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
+a { color: var(--brand); }
+blockquote { border-left: 3px solid var(--brand-line); background: var(--surface); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+.lede { font-size: 17px; line-height: 1.62; color: var(--ink-soft); max-width: 68ch; margin-top: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 18px 20px; margin-top: 14px; }
+.card h3 { margin-top: 0; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; font-weight: 600; }
+.badge.built { background: var(--success-tint); color: var(--success-deep); }
+.badge.missing { background: var(--critical-tint); color: var(--critical); }
+.badge.corrected { background: var(--brand-tint); color: var(--brand-deep); }
+.badge.open { background: var(--critical-tint); color: var(--critical); }
+.badge.closed { background: var(--success-tint); color: var(--success-deep); }
+
+.scroll { overflow-x: auto; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
+td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
+.shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.shots img { display: block; width: 100%; height: auto; }
+
+.pending { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="brand">Platter <em>×</em> TVS</div>
+  <div class="brand-sub">testimonials</div>
+  <a href="#screenshots"><span class="n">01</span>Screenshots</a>
+  <a href="#fields"><span class="n">02</span>Fields</a>
+  <a href="#sample"><span class="n">03</span>Sample content</a>
+  <a href="#design-reference"><span class="n">04</span>Design reference</a>
+  <a href="#user-requirement"><span class="n">05</span>User requirement</a>
+  <a href="#admin-requirement"><span class="n">06</span>Admin requirement</a>
+  <a href="#other-requirements"><span class="n">07</span>Other requirements</a>
+  <a href="#open-comments"><span class="n">08</span>Open comments</a>
+  <a href="#deviations"><span class="n">09</span>Deviations</a>
+  <div class="foot">generated by pnpm build<br />spec transcribed 2026-08-07</div>
+</nav>
+<main>
+<header class="hero" style="padding-top:60px">
+  <p class="eyebrow">Platter component</p>
+  <h1>Testimonials</h1>
+  <p class="lede">The client's spec, reproduced verbatim in substance from Confluence page 897286180, authored by Sarah Lee. Where our implementation deviates it is recorded under Deviations, not by editing the spec. Status on the source page at transcription time was INTERNAL REVIEW.</p>
+  <p class="lede">Spec: <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/897286180/FSD+Testimonials" target="_blank" rel="noopener">https://getplatter.atlassian.net/wiki/spaces/TVS/pages/897286180/FSD+Testimonials</a></p>
+  <p class="lede">Figma: <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback" target="_blank" rel="noopener">The Vitamin Shoppe External Consolidated Feedback</a></p>
+</header>
+
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
+<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
+<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
+<img src="./desktop-1512.png" alt="testimonials rendered at 1512px" loading="lazy" /></figure>
+<figure><figcaption>mobile — 375px</figcaption>
+<img src="./mobile-375.png" alt="testimonials rendered at 375px" loading="lazy" /></figure>
+<figure><figcaption>tablet — 768px</figcaption>
+<img src="./tablet-768.png" alt="testimonials rendered at 768px" loading="lazy" /></figure>
+<figure><figcaption>wide — 1920px</figcaption>
+<img src="./wide-1920.png" alt="testimonials rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
+<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
+<tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>max 90<br />min 1</td>
+<td>The headline above the reviews, e.g. &quot;Why Customers Love BodyTech Peptides&quot;. It is centred on desktop and left-aligned on phones, and wraps to a second line rather than shrinking. For emphasis, wrap words in <em>single asterisks</em> for italic; any other formatting mark appears literally.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
+<td>Choose h1 only if this module is the first thing on the page and no other h1 exists. Otherwise leave it as h2 — two h1s on one page hurts SEO. Choose h3 when the module sits underneath a section that already has an h2, so the page's heading order stays unbroken. This changes nothing you can see: the size is set separately below.</td></tr><tr><td><code>headingSize</code><br /><strong>Heading size (desktop / mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>64px / 38px</code> · <code>56px / 34px</code> · <code>48px / 30px</code> · <code>36px / 24px</code> · <code>28px / 20px</code> · <code>20px / 16px</code><br />default <code>&quot;48px / 30px&quot;</code></td>
+<td>A fixed pair from the TVS type scale — the first size applies from tablet up, the second on phones.</td></tr><tr><td><code>headingFont</code><br /><strong>Heading font</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>Lato</code> · <code>corisanderegular</code> · <code>Fields</code><br />default <code>&quot;Fields&quot;</code></td>
+<td>Fields is the serif this module is designed in and is the default. It is not yet installed on vitaminshoppe.com, so until it is, the heading falls back to Georgia — still a serif, but not the exact drawn face. Pick Lato if you would rather the heading match the rest of the site exactly than approximate the design.</td></tr><tr><td><code>ratingValue</code><br /><strong>Overall rating</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 3<br /><code>^[0-5](\.[0-9])?$</code></td>
+<td>The aggregate score shown in the badge above the heading, out of 5, e.g. &quot;4.9&quot;. Type the number only — the module adds the &quot;/5&quot; and draws the stars from it. This is typed by hand and is not read from the review platform, so check it against the live figure before publishing. The badge only appears when both this and the review count are filled in; leave either empty to hide it.</td></tr><tr><td><code>reviewCount</code><br /><strong>Review count</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 12</td>
+<td>How many reviews the score is based on, written exactly as you want it to read, e.g. &quot;5,400+&quot;. The module adds the word &quot;Reviews&quot; after it, so do not type that. Like the rating, this is manual and not read from the review platform. The badge only appears when both this and the overall rating are filled in.</td></tr><tr><td><code>reviews</code><br /><strong>Review cards</strong></td>
+<td>array</td>
+<td class="req">required</td>
+<td></td>
+<td>Between three and five reviews, shown in the order you list them here. Drag a row to reorder it. Three or four sit as a static row on desktop; a fifth turns the row into a slider with a progress indicator underneath. Phones always show one card at a time with the same indicator.</td></tr><tr><td><code>backgroundImage</code><br /><strong>Background image</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>min 1</td>
+<td>Full URL of the photograph behind the whole module. It is treated as decoration and needs no alt text, so do not put anything readable in it. The cards sit on top at 92% white, so a busy or dark centre makes the reviews hard to read — the design keeps the middle of the frame clear and puts the product at the corners. jpg, jpeg or png.</td></tr><tr><td><code>backgroundImageMobile</code><br /><strong>Background image (mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td></td>
+<td>Full URL of the phone crop, which the design supplies as a separate portrait image rather than the desktop one re-cropped. Falls back to the desktop image when empty, which will centre-crop it and can push the product out of frame — supply one wherever you can.</td></tr><tr><td><code>body</code><br /><strong>Description</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 220</td>
+<td>An optional sentence between the heading and the cards. The design does not draw one, so leaving it empty is the design; fill it in only when the heading needs support.</td></tr><tr><td><code>ctaLabel</code><br /><strong>Button label</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 30</td>
+<td>The call to action under the reviews, e.g. &quot;Shop Peptides&quot;. The button only renders when both a label and a link are set. It hugs its text on desktop and stretches the full width on phones.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td></td>
+<td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>dark</code> · <code>light</code><br />default <code>&quot;dark&quot;</code></td>
+<td>Dark is #0458AD with white text and is the design. Light is white with #0458AD text and a thin outline — the button sits directly on the background photograph, so Light only reads on a dark photo and disappears on a pale one.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
+<td>boolean</td>
+<td class="req"></td>
+<td>default <code>false</code></td>
+<td>Switch on when this module is the first thing on the page, so the background photograph loads immediately instead of lazily.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
+<td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #customer-reviews. Page-level CSS can also target this one module rather than every testimonials module. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div></section>
+<section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
+<p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
+<pre>{
+  &quot;heading&quot;: &quot;Why Customers Love *BodyTech* Peptides&quot;,
+  &quot;headingLevel&quot;: &quot;h2&quot;,
+  &quot;headingSize&quot;: &quot;48px / 30px&quot;,
+  &quot;headingFont&quot;: &quot;Fields&quot;,
+  &quot;ratingValue&quot;: &quot;4.9&quot;,
+  &quot;reviewCount&quot;: &quot;5,400+&quot;,
+  &quot;reviews&quot;: [
+    {
+      &quot;name&quot;: &quot;Joby T.&quot;,
+      &quot;rating&quot;: 5,
+      &quot;review&quot;: &quot;Three weeks in and my recovery between sessions is noticeably faster. Mixes clean with no aftertaste at all.&quot;,
+      &quot;verifiedPurchase&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Leah C.&quot;,
+      &quot;rating&quot;: 5,
+      &quot;review&quot;: &quot;I was sceptical about peptides but the difference in my sleep quality alone made this worth every penny.&quot;,
+      &quot;verifiedPurchase&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Michael G.&quot;,
+      &quot;rating&quot;: 4,
+      &quot;review&quot;: &quot;Good value compared to what I was buying before, and it actually dissolves properly in cold water.&quot;,
+      &quot;verifiedPurchase&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Priya N.&quot;,
+      &quot;rating&quot;: 5,
+      &quot;review&quot;: &quot;My joints stopped aching after long runs. I have already reordered twice and told two friends.&quot;,
+      &quot;verifiedPurchase&quot;: false
+    }
+  ],
+  &quot;backgroundImage&quot;: &quot;../assets/testimonials-desktop-1717.jpg&quot;,
+  &quot;backgroundImageMobile&quot;: &quot;../assets/testimonials-mobile-853.jpg&quot;,
+  &quot;ctaLabel&quot;: &quot;Shop Peptides&quot;,
+  &quot;ctaUrl&quot;: &quot;/c/sports-nutrition/peptides&quot;,
+  &quot;ctaStyle&quot;: &quot;dark&quot;,
+  &quot;priority&quot;: false,
+  &quot;sectionId&quot;: &quot;customer-reviews&quot;
+}</pre></section>
+<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>The section frames are <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18228-428020" target="_blank" rel="noopener"><code>18228:428020</code></a> (desktop, 1512 by 705) and <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18228-432675" target="_blank" rel="noopener"><code>18228:432675</code></a> (mobile, 375 by 577), both inside the <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18228-432757" target="_blank" rel="noopener"><code>18228:432757</code></a> &quot;Highlighted Reviews&quot; section. There is no Mode=Dark/Light pair and no carousel-versus-grid variant — the two breakpoints are the only variants drawn.</p>
+<div class="scroll"><table><thead><tr><th>Concern</th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>Section padding</td><td>128 inline, 80 block</td><td>16 inline, 40 block</td></tr><tr><td>Background</td><td>one image fill, <code>object-fit: cover</code>, inset 0 — no scrim, no gradient, no colour</td><td>one image fill, a separate portrait asset at 853 by 1844, custom crop rather than centred</td></tr><tr><td>Alignment</td><td>centred</td><td>left-aligned throughout</td></tr><tr><td>Rating badge</td><td>hug, padding 8 and 16, radius 100, 2px <code>#012169</code> border, no fill</td><td>identical box</td></tr><tr><td>Badge stars</td><td>five 16px stars, gap 4, <code>#012169</code>, then 8 gap to the text</td><td>five 12px stars, same gaps</td></tr><tr><td>Badge text</td><td>16px, 700, line-height 1.5, <code>#012169</code>, nowrap</td><td>14px, otherwise identical</td></tr><tr><td>Heading</td><td>Fields 700, 48px, line-height 1.2, <code>#012169</code>, 858 max width</td><td>Fields 700, 30px, line-height 1.2, full width</td></tr><tr><td>Badge to heading</td><td>16</td><td>16</td></tr><tr><td>Heading to cards</td><td>32</td><td>32</td></tr><tr><td>Cards in view</td><td>4 at 296 wide, gap 24, equal heights</td><td>1 at 343, no peek and nothing overflowing</td></tr><tr><td>Progress indicator</td><td>none drawn</td><td>three 8px dots, 8 gap, active <code>#012169</code>, inactive black at 40%, left-aligned</td></tr><tr><td>Cards to indicator</td><td>n/a</td><td>32</td></tr><tr><td>Indicator to button</td><td>n/a</td><td>40</td></tr><tr><td>Cards to button</td><td>32</td><td>n/a</td></tr><tr><td>Button</td><td>hug, max-height 55, padding 16 and 32, radius 8, <code>#0458ad</code>, 16px 700 white, tracking 0.64px, title case</td><td>full width, padding 14 and 18, radius 6, 14px 700 white, tracking 0.56px</td></tr><tr><td>Arrows</td><td>none</td><td>none</td></tr></tbody></table></div>
+<p>Card interior. The card's own box is identical at both breakpoints; only the type sizes change.</p>
+<div class="scroll"><table><thead><tr><th>Element</th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>Card</td><td>padding 24, radius 16, fill <code>#ffffff</code> at 92% fill opacity, no border, no shadow</td><td>identical</td></tr><tr><td>Card layout</td><td>column; a name-and-stars header row, the review body, then a Verified Purchase footer</td><td>identical</td></tr><tr><td>Name</td><td>Lato 700, 18px, line-height 1.5, <code>#012169</code>, nowrap</td><td>16px</td></tr><tr><td>Card stars</td><td>five 16px stars, gap 4, <code>#012169</code>, right-aligned by <code>justify-between</code></td><td>identical</td></tr><tr><td>Header to body</td><td>16</td><td>16</td></tr><tr><td>Review body</td><td>Lato 400, 16px, line-height 1.5, <code>#012169</code>, fills the width</td><td>14px</td></tr><tr><td>Body to footer</td><td>24 minimum; the footer sits at the card's bottom edge where the card is taller</td><td>24</td></tr><tr><td>Verified Purchase</td><td>20px <code>shield-tick</code> glyph, gap 8, Lato 700 16px, line-height 1.5, <code>#012169</code>, nowrap</td><td>14px text, same glyph</td></tr></tbody></table></div>
+<p>Two readings from an earlier pass were wrong and are corrected here: the card carries <strong>no border</strong> at either breakpoint — the only 2px <code>#012169</code> outline in the design belongs to the rating badge — and <code>review_highlighted</code> is the card frame's own layer name, not a highlighted-state annotation. There is no active-card treatment to build.</p>
+<p>The mobile rating badge carries a designer annotation, <em>&quot;Make optional if reviews are not great&quot;</em>, which agrees with the Admin requirement marking the badge Optional.</p>
+<p>The card's 92% white fill is the &quot;fixed opacity&quot; the Admin requirement refers to. It is a fill opacity, not a layer opacity, so the text on the card stays fully opaque.</p>
+<p>The desktop CTA is the shared <code>button-primary</code> component at Size=Desktop, Hierarchy=Primary, Mode=Light. Figma's Mode names the surface behind the button, so Figma Mode=Light is our <code>ctaStyle: dark</code> — see sections/CLAUDE.md.</p></section>
+<section id="user-requirement"><p class="eyebrow">06 — User requirement</p><h2>User requirement</h2><ol><li>User can swipe/arrow through cards.</li><li>User can click the CTA to navigate to the linked destination (e.g., &quot;Shop Peptides&quot;)</li></ol></section>
+<section id="admin-requirement"><p class="eyebrow">07 — Admin requirement</p><h2>Admin requirement</h2><div class="scroll"><table><thead><tr><th>Content Type</th><th>Functional Requirement</th><th>Asset/Copy Requirement</th><th>Responsive &amp; Content Behavior</th></tr></thead><tbody><tr><td>Rating Summary Badge (Optional)</td><td>Admin can input the aggregate rating value and review count. (Manual input, not automatic)</td><td></td><td></td></tr><tr><td>Heading (Required)</td><td>Admin can edit the section heading.</td><td></td><td></td></tr><tr><td>Review Card (Required)</td><td>Admin can add 3-5 testimonial cards. (Manual input, not automatic) Each card includes: Name · Rating · Review · Verified Buyer? (checkbox, checked as default. If not checked, this badge does not appear). There is fixed opacity added to card and it's not configurable within admin.</td><td>Copy: 15-20 words per review</td><td>With 3-4 testimonials: no carousel, cards display statically, center-aligned. With 5 testimonials: displays 3 cards at a time and becomes a carousel with a progress-dot indicator, consistent with the mobile pattern.</td></tr><tr><td>Background (Required)</td><td>Admin can upload an image for desktop and mobile separately.</td><td></td><td></td></tr><tr><td>Button (Optional)</td><td>Admin can input a single primary CTA label and destination URL. Admin can change the button color (Dark vs Light). Dark: #0458AD with white text. Light: white with #0458AD text.</td><td></td><td></td></tr></tbody></table></div>
+<p>The Asset/Copy and Responsive cells are genuinely blank in the source for every row except Review Card. They are left blank rather than filled with a dash, which would assert &quot;not applicable&quot; where the source asserts nothing.</p></section>
+<section id="other-requirements"><p class="eyebrow">08 — Other requirements</p><h2>Other requirements</h2><ol><li>Follows FSD: Global SEO Rule, Confluence page 889683969.</li><li>Analytics: Component supports automated impression tracking (viewport entry) and click tracking via the standard <code>raiseEvent</code> handler.</li></ol></section>
+<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><div class="card"><h3 id="sarah-lee-unanswered-2026-07-29">Sarah Lee — unanswered 2026-07-29</h3><p><span class="badge open">unanswered 2026-07-29</span></p><blockquote><p>@Felix Tellmann ready for review</p></blockquote></div>
+<div class="card"><h3 id="felix-tellmann-unanswered-2026-08-07">Felix Tellmann — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>Raised at transcription, against the source page and the two Figma frames. Numbered so they can be answered individually.</p>
+<ol><li><strong>The User requirement and the Admin requirement disagree about whether there is a carousel.</strong> &quot;User can swipe/arrow through cards&quot; is stated unconditionally, while the Admin requirement says that with 3-4 testimonials there is &quot;no carousel, cards display statically&quot;. Both cannot be true at three cards. Which governs?</li><li><strong>The desktop design shows four cards; the carousel rule describes three.</strong> The Admin requirement says five testimonials &quot;displays 3 cards at a time&quot;, but the desktop frame draws a static row of four. Is the intended desktop row four wide, with the carousel appearing only past four?</li><li><strong>The mobile pattern is referenced but never defined.</strong> The carousel rule ends &quot;consistent with the mobile pattern&quot;, and that pattern appears nowhere in the table — only in the frame, which shows one card at a time with three dots. The whole Responsive column reads as desktop-only, so what a 3-card and a 4-card set do on a phone is unstated.</li><li><strong>The mobile frame draws three dots against a minimum of three and a maximum of five cards.</strong> Is three dots the drawn example rather than a fixed count?</li><li><strong>&quot;Verified Buyer?&quot; and &quot;Verified Purchase&quot; are two different strings.</strong> The admin field is named &quot;Verified Buyer?&quot;; both frames render the badge as &quot;Verified Purchase&quot;. Which string does a shopper see, and is it fixed copy or admin-editable?</li><li><strong>Arrows are asked for in the User requirement and drawn in neither frame.</strong> The Responsive column specifies a progress-dot indicator only. Do arrow controls render, and at which breakpoints?</li><li><strong>Per-card &quot;Rating&quot; has no defined scale or format.</strong> Every card in both frames shows five filled stars. Is the field whole stars 1-5, does it allow half stars, and is a numeric value shown anywhere?</li><li><strong>The Rating Summary Badge does not say how its parts compose.</strong> The design reads &quot;4.9/5 • 5,400+ Reviews&quot; preceded by five filled stars. Are the stars derived from the rating value or a third input, and are &quot;/5&quot;, the bullet and the &quot;+&quot; author-supplied or template-supplied?</li><li><strong>The background image has no alt-text field and no fallback.</strong> Every other module gives each uploaded image its own alt field. Nothing is specified for when the image is slow, fails, or is left empty on one breakpoint.</li><li><strong>Nothing constrains the background, and three elements sit on it unprotected.</strong> The review cards are readable whatever is behind them, because they carry their own 92% white fill. The heading, the rating badge and the progress dots do not: they are navy <code>#012169</code> and 40%-black straight on the photograph. The design works because its photograph is pale grey with a clear centre, but the field accepts any image. Observed while building, not hypothetical — against the design's own mobile artwork, centre-cropped rather than in Figma's exact crop, the three inactive dots landed on a dark navy product and became invisible while the active one stayed legible. Options are a scrim behind the content, a contrast-safe treatment for the dots, or written guidance that the artwork must be pale where the content sits. Left as drawn pending an answer rather than inventing a treatment.</li><li><strong>&quot;15-20 words per review&quot; is a word count, and a CMS enforces characters.</strong> It is also the only limit stated anywhere in the module: the heading, the reviewer name, the rating value and the review count all have none.</li><li><strong>The section is named Testimonials in the FSD and Highlighted Reviews in Figma.</strong> We have built it as <code>testimonials</code>, following the FSD, because the client reads that spec. Confirm the merchandiser-facing name.</li><li><strong>Impression tracking has nothing to call.</strong> The same gap as Slim Hero Banner A, Expert Module and Product Carousel: no impression event name appears in any downloaded TVS template, so &quot;automated impression tracking (viewport entry)&quot; cannot be built until TVS supply the event name and payload.</li></ol></div></section>
+<section id="deviations"><p class="eyebrow">10 — Deviations</p><h2>Deviations</h2><div class="card"><h3 id="slider-geometry-follows-product-carousel-not-this-section-s-own-frame">Slider geometry follows Product Carousel, not this section's own frame</h3><p><span class="badge built">Built</span></p><p>The desktop frame draws 128 inline padding, a 1256 content box and four 296-wide cards, with no arrow controls anywhere — 4 by 296 plus 3 by 24 is exactly 1256, so the drawn layout has no room for an arrow.</p>
+<p>We are building the Product Carousel geometry instead: 48 inline padding, a 1416 outer box, 32px arrows in 24px gutters, a 1304 track and four 308-wide cards. Decided by Felix 2026-08-07, so that the two sliders on a page are the same object at the same size rather than two near-misses, and so the arrows the FSD's User requirement asks for have somewhere to live that does not shrink the cards.</p>
+<p>The cards get <em>larger</em> than drawn (308 against 296), and the section sits 80px wider. Everything above the track — badge, heading — keeps its drawn treatment.</p></div>
+<div class="card"><h3 id="arrows-and-the-progress-indicator-render-only-when-the-row-overflows">Arrows and the progress indicator render only when the row overflows</h3><p><span class="badge built">Built</span></p><p>The FSD states both that a user &quot;can swipe/arrow through cards&quot; and that 3-4 cards show &quot;no carousel, cards display statically&quot;. Rather than branch on the card count, the track is a scroll container at every count and the controls test <code>reviews.length &gt; perView</code>. Three or four cards therefore fill the row, do not overflow, and render no arrows and no dots — matching the static desktop design; five overflow and the controls appear. One code path, and the FSD's two statements stop contradicting each other.</p></div>
+<div class="card"><h3 id="the-scroll-snap-track-and-the-star-strip-are-extracted-to-shared-components">The scroll-snap track and the star strip are extracted to shared components</h3><p><span class="badge built">Built</span></p><p><code>components/carousel.css</code> and <code>components/stars.css</code> are new files carrying mechanics that already existed in <code>components/product-carousel.css</code> and <code>blocks/product-card/product-card.css</code>. Testimonials is built on the shared files; the two existing sections are <strong>not</strong> migrated in this change. Their owning session asked to do that migration itself once its work is committed and the repo build is green, which is the right call — migrating working sections onto freshly extracted classes while the build is red is where a silent regression lands. Until then the old classes and the new ones coexist.</p></div>
+<div class="card"><h3 id="the-four-card-row-starts-at-1280-not-at-the-768-breakpoint">The four-card row starts at 1280, not at the 768 breakpoint</h3><p><span class="badge built">Built</span></p><p>The frames draw one card at 375 and four at 1512, and the band between them is undrawn — the general trap in sections/CLAUDE.md § Breakpoint. Applying the desktop four-up at 768 does not shrink the row, it starves it: 768 less 96 of section padding less 112 of arrow gutter leaves a 560 track, and four cards in 560 is 122 each. The star strip alone is 96 wide and the reviewer name sits beside it on the same row, so the card's own header cannot fit, never mind the review.</p>
+<p>The row is therefore one card to 767, <strong>two</strong> from 768, and four from 1280, which gives 268-wide cards at 768, 250 at 1280 and the drawn 308 at 1512. The count is set per breakpoint from this section's own markup rather than inside <code>components/carousel.css</code>, because how many cards fit is a property of what is in them: Product Carousel hits its own floor at 1024 for a different reason (a card narrower than its add-to-cart button), and one breakpoint baked into the shared component would be wrong for whichever section did not choose it.</p></div>
+<div class="card"><h3 id="the-arrow-gutter-is-reserved-even-when-the-arrow-is-hidden">The arrow gutter is reserved even when the arrow is hidden</h3><p><span class="badge built">Built</span></p><p>The arrows render only when the row overflows, but their 32px column and 24px gap stay in the layout at every card count. Without that, four cards means no arrows, which means no gutters, which means the track widens from 1304 to the full 1416 and every card resizes from 308 to 336 — so removing a fifth review would silently resize the other four. The gutter is structural; only its contents are conditional.</p></div>
+<div class="card"><h3 id="the-arrow-glyph-is-drawn-from-product-carousel-s-reference-not-this-one">The arrow glyph is drawn from Product Carousel's reference, not this one</h3><p><span class="badge built">Built</span></p><p>This section's frames draw no arrows at all, so the prev/next glyph has no reference here. It is drawn from <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402840" target="_blank" rel="noopener"><code>18227:402840</code></a> / <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402845" target="_blank" rel="noopener"><code>18227:402845</code></a>, measured for Product Carousel: circle 32, icon frame 24 inset 4, glyph 18 by 14 in white.</p>
+<p>The path inherited from <code>components/product-carousel.css</code> rendered its shaft 2px short. The cause is worth recording because it is invisible in review: Figma exports the glyph as a <strong>filled</strong> path, ours is <strong>stroked</strong>, and a round-capped 2px stroke extends one unit past the geometry on every side. Geometry and ink are therefore not the same measurement, and comparing one against the other reads as a much larger error than it is. Correct geometry for 18 by 14 of ink is 16 by 12, i.e. x 4-20 and y 6-18. Both sliders now carry the corrected path from the shared component.</p></div>
+<div class="card"><h3 id="desktop-cards-have-no-rating-in-the-drawn-design-but-the-schema-requires-one">Desktop cards have no rating in the drawn design, but the schema requires one</h3><p><span class="badge built">Built</span></p><p>Every card in both frames shows five filled stars, so the design does not demonstrate a partial rating. The schema takes a whole number 1-5 per card and draws it accurately rather than rounding to five. See Open comment 7.</p></div></section>
+</main>
+</div>
+</body>
+</html>

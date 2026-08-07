@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Product Carousel — Platter × TVS</title>
+<meta name="description" content="Reference page for the Product Carousel section: spec, screenshots, fields and sample content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --page: #f1f1f1;
+  --page-deep: #e7e7e7;
+  --surface: #ffffff;
+  --surface-sub: #f7f7f7;
+  --ink: #303030;
+  --ink-soft: #616161;
+  --ink-faint: #8a8a8a;
+  --rule: #e3e3e3;
+  --rule-strong: #d1d1d1;
+  --brand: #0458AD;
+  --brand-deep: #012169;
+  --brand-tint: #e8f1fa;
+  --brand-line: #c3ddf3;
+  --success: #1A9E48;
+  --success-deep: #0E7A36;
+  --success-tint: #eafbf1;
+  --critical: #EE2737;
+  --critical-tint: #fdeaec;
+  --display: "Lato", sans-serif;
+  --body: "Lato", sans-serif;
+  --mono: "Geist Mono", Consolas, ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--page); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.shell { display: flex; min-height: 100vh; }
+.sidenav { width: 244px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 0 28px 26px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; background: linear-gradient(180deg, var(--page) 0%, var(--page-deep) 100%); }
+.sidenav .brand { font-family: var(--display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.sidenav .brand em { font-style: italic; color: var(--brand); }
+.sidenav .brand-sub { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 4px 0 24px; }
+.sidenav a { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-decoration: none; padding: 7px 14px 7px 10px; border-radius: 6px 0 0 6px; border-right: 2px solid transparent; }
+.sidenav a .n { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); width: 16px; flex-shrink: 0; }
+.sidenav a:hover { color: var(--ink); background: rgba(4,88,173,0.08); }
+.sidenav .foot { margin-top: auto; padding-top: 24px; padding-right: 20px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); line-height: 1.8; }
+
+main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
+section { padding-top: 68px; }
+@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin: 34px 0 10px; }
+p { color: var(--ink-soft); max-width: 74ch; }
+p + p { margin-top: 12px; }
+p strong { color: var(--ink); font-weight: 700; }
+ul, ol { color: var(--ink-soft); max-width: 74ch; padding-left: 22px; margin-top: 10px; }
+li + li { margin-top: 6px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-sub); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
+a { color: var(--brand); }
+blockquote { border-left: 3px solid var(--brand-line); background: var(--surface); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+.lede { font-size: 17px; line-height: 1.62; color: var(--ink-soft); max-width: 68ch; margin-top: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 18px 20px; margin-top: 14px; }
+.card h3 { margin-top: 0; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; font-weight: 600; }
+.badge.built { background: var(--success-tint); color: var(--success-deep); }
+.badge.missing { background: var(--critical-tint); color: var(--critical); }
+.badge.corrected { background: var(--brand-tint); color: var(--brand-deep); }
+.badge.open { background: var(--critical-tint); color: var(--critical); }
+.badge.closed { background: var(--success-tint); color: var(--success-deep); }
+
+.scroll { overflow-x: auto; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
+td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
+.shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.shots img { display: block; width: 100%; height: auto; }
+
+.pending { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="brand">Platter <em>×</em> TVS</div>
+  <div class="brand-sub">product-carousel</div>
+  <a href="#screenshots"><span class="n">01</span>Screenshots</a>
+  <a href="#fields"><span class="n">02</span>Fields</a>
+  <a href="#sample"><span class="n">03</span>Sample content</a>
+  <a href="#design-reference"><span class="n">04</span>Design reference</a>
+  <a href="#user-requirement"><span class="n">05</span>User requirement</a>
+  <a href="#admin-requirement"><span class="n">06</span>Admin requirement</a>
+  <a href="#other-requirements"><span class="n">07</span>Other requirements</a>
+  <a href="#open-comments"><span class="n">08</span>Open comments</a>
+  <a href="#deviations"><span class="n">09</span>Deviations</a>
+  <div class="foot">generated by pnpm build<br />spec transcribed 2026-08-07</div>
+</nav>
+<main>
+<header class="hero" style="padding-top:60px">
+  <p class="eyebrow">Platter component</p>
+  <h1>Product Carousel</h1>
+  <p class="lede">The client's spec, reproduced verbatim in substance from the Phase-1 archive of Confluence page 896532492. Where our implementation deviates it is recorded under Deviations, not by editing the spec. Status on the source page at transcription time was INTERNAL REVIEW.</p>
+  <p class="lede">Spec: <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/896532492/FSD+Product+Carousel" target="_blank" rel="noopener">https://getplatter.atlassian.net/wiki/spaces/TVS/pages/896532492/FSD+Product+Carousel</a></p>
+  <p class="lede">Figma: <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback" target="_blank" rel="noopener">The Vitamin Shoppe External Consolidated Feedback</a></p>
+</header>
+
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
+<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
+<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
+<img src="./desktop-1512.png" alt="product-carousel rendered at 1512px" loading="lazy" /></figure>
+<figure><figcaption>mobile — 375px</figcaption>
+<img src="./mobile-375.png" alt="product-carousel rendered at 375px" loading="lazy" /></figure>
+<figure><figcaption>tablet — 768px</figcaption>
+<img src="./tablet-768.png" alt="product-carousel rendered at 768px" loading="lazy" /></figure>
+<figure><figcaption>wide — 1920px</figcaption>
+<img src="./wide-1920.png" alt="product-carousel rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
+<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
+<tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>max 90<br />min 1</td>
+<td>The headline above the row, usually the brand or category the products share. It sits on one centred line at 48px in a 640px column, so anything past about 20 characters wraps to a second line and pushes the cards down — that is a layout choice, not an error. For emphasis, wrap words in <em>single asterisks</em> for italic.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
+<td>Choose h1 only if this module is the first thing on the page and no other h1 exists. Otherwise leave it as h2 — two h1s on one page hurts SEO. Choose h3 when the module sits underneath a section that already has an h2, so the page's heading order stays unbroken. This changes nothing you can see: the size is set separately below.</td></tr><tr><td><code>headingSize</code><br /><strong>Heading size (desktop / mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>64px / 38px</code> · <code>56px / 34px</code> · <code>48px / 30px</code> · <code>36px / 24px</code> · <code>28px / 20px</code> · <code>20px / 16px</code><br />default <code>&quot;48px / 30px&quot;</code></td>
+<td>A fixed pair from the TVS type scale — the first size applies from tablet up, the second on phones.</td></tr><tr><td><code>headingFont</code><br /><strong>Heading font</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>Lato</code> · <code>corisanderegular</code> · <code>Fields</code><br />default <code>&quot;Lato&quot;</code></td>
+<td>Lato is the site's heading typeface and the safe choice. Corisande is its body typeface — pick it when the module needs to sit closer to surrounding editorial copy. Fields is the serif used in the newer designs; it is not yet installed on vitaminshoppe.com, so until it is, headings set in Fields fall back to Georgia and will not look identical on every device.</td></tr><tr><td><code>body</code><br /><strong>Description</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 220</td>
+<td>One or two sentences under the headline, centred. Wraps rather than truncating, which pushes the cards down — keep it to a line or two. Leave empty to hide it.</td></tr><tr><td><code>skus</code><br /><strong>Products (SKU ids)</strong></td>
+<td>array</td>
+<td class="req">required</td>
+<td></td>
+<td>The products this module shows, in the order you list them. Enter TVS SKU ids exactly as they appear on the product page, e.g. VS-4612. Everything on each card — image, brand, name, price, rating — is pulled live from the product record, so there is nothing else to fill in here. A SKU that no longer exists is skipped without a message, so open the page after saving if you see fewer cards than you added.</td></tr><tr><td><code>showRating</code><br /><strong>Show star ratings</strong></td>
+<td>boolean</td>
+<td class="req"></td>
+<td>default <code>true</code></td>
+<td>Shows the star rating and review count on every card in this module. Switch off for a range where reviews are thin or missing — a card with no rating leaves a gap the others do not have, so it reads better with ratings off for the whole module than on for some of it.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
+<td>A name for this specific module, used for two things. The Sticky Anchor Navigation links to a module by this name, so a carousel that should appear in that bar needs one. A link anywhere on the site can also jump straight here by ending the URL with # and this name, e.g. #bodytech-elite. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break both the jump link and the nav bar.</td></tr></tbody></table></div></section>
+<section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
+<p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
+<pre>{
+  &quot;heading&quot;: &quot;BodyTech Elite&quot;,
+  &quot;headingLevel&quot;: &quot;h2&quot;,
+  &quot;headingSize&quot;: &quot;48px / 30px&quot;,
+  &quot;headingFont&quot;: &quot;Lato&quot;,
+  &quot;body&quot;: &quot;Clinically dosed formulas built for people who train hard and recover harder.&quot;,
+  &quot;skus&quot;: [
+    &quot;VS-4612&quot;,
+    &quot;VS-8531&quot;,
+    &quot;VS-7742&quot;,
+    &quot;VS-9110&quot;,
+    &quot;VS-2255&quot;,
+    &quot;VS-6098&quot;,
+    &quot;VS-3388&quot;
+  ],
+  &quot;showRating&quot;: true,
+  &quot;sectionId&quot;: &quot;bodytech-elite&quot;
+}</pre></section>
+<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>The section frames are <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402823" target="_blank" rel="noopener"><code>18227:402823</code></a> (desktop, 1512) and <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-412530" target="_blank" rel="noopener"><code>18227:412530</code></a> (mobile, 375). The card is <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402841" target="_blank" rel="noopener"><code>18227:402841</code></a>; its master lives in an external library, so no variant axes are readable in this file.</p>
+<div class="scroll"><table><thead><tr><th>Concern</th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>Section padding</td><td>48 inline, 64 block</td><td>16 inline, 40 block</td></tr><tr><td>Background</td><td><code>#ffffff</code>, flat</td><td><code>#ffffff</code></td></tr><tr><td>Header block</td><td>centred, 640 fixed</td><td>centred, 343</td></tr><tr><td>Heading</td><td>48px, 700, line-height 1.2, <code>#012169</code></td><td>30px</td></tr><tr><td>Description</td><td>18px, 400, line-height 1.5, <code>#012169</code></td><td>16px</td></tr><tr><td>Heading to description</td><td>6</td><td>4</td></tr><tr><td>Header to track</td><td>32</td><td>24</td></tr><tr><td>Cards in view</td><td>4 at 308 wide, gap 24</td><td>2 at 163.5, gap 16</td></tr><tr><td>Arrows</td><td>32 circle, <code>#012169</code>, 24 white glyph, 56 gutters</td><td>none</td></tr><tr><td>Track to indicator</td><td>32</td><td>16</td></tr><tr><td>Indicator</td><td>1302 by 5, three equal segments, active <code>#012169</code></td><td>343 by 3, rounded, thumb 70.3, rail <code>rgba(1,33,105,.24)</code></td></tr></tbody></table></div>
+<p>Card interior, measured on the desktop frame. Vertical gap 24 throughout.</p>
+<div class="scroll"><table><thead><tr><th>Element</th><th>Value</th></tr></thead><tbody><tr><td>Media</td><td>308 square, radius 16, plate <code>#f2f2f2</code>, image contained</td></tr><tr><td>Badge</td><td>overlaid 16 from the top, flush left, square corners, padding 4 and 12, <code>#41b6e6</code> on <code>#012169</code>, 14px 700, optional 16px info glyph</td></tr><tr><td>Brand</td><td>14px, 700, line-height 1.4, <code>#545454</code></td></tr><tr><td>Name</td><td>16px, 700, line-height 1.5, <code>#012169</code>, three lines at 72</td></tr><tr><td>Rating</td><td>five 12px stars, gap 2, then review count at 14px 400 <code>#012169</code></td></tr><tr><td>Price</td><td>20px, 700, <code>#545454</code></td></tr><tr><td>Compare price</td><td>20px, 400, <code>#ee2737</code>, struck through</td></tr><tr><td>Add to Cart</td><td>138 by 50, radius 8, padding 16 and 24, <code>#0458ad</code>, 16px 700 white, tracking 0.64px</td></tr></tbody></table></div>
+<p>Observed badge values are BOGO, Exclusive and Sale. The info glyph appears only alongside BOGO. The master also carries a variant line, two swatch pickers, a select and a toggle, all hidden in every instance and therefore unspecified.</p></section>
+<section id="user-requirement"><p class="eyebrow">06 — User requirement</p><h2>User requirement</h2><ol><li>User can swipe/arrow through cards.</li><li>User can click Add to Cart from product card, which triggers add to cart action and open a success message 'added to cart' (current live site behavior)</li></ol></section>
+<section id="admin-requirement"><p class="eyebrow">07 — Admin requirement</p><h2>Admin requirement</h2><div class="scroll"><table><thead><tr><th>Content Type</th><th>Functional Requirement</th><th>Asset/Copy Requirement</th><th>Responsive &amp; Content Behavior</th></tr></thead><tbody><tr><td>Carousel Display</td><td>Desktop: When there is more than 4 SKUs added, it becomes carousel. Mobile: When there is more than 2 SKUs added, it becomes carousel</td><td>-</td><td>Number of visible cards per view stays the same as per design at narrower breakpoints, but the size of card decreases in certain viewpoint.</td></tr><tr><td>Carousel Navigation Arrows (Desktop Only)</td><td>Clicking the arrow moves 4 products at a time. Arrow is disabled when there are no more products to display in that direction -- this is not an infinite/looping scroll.</td><td></td><td></td></tr><tr><td>Heading (Required)</td><td>Admin can edit the heading</td><td>Copy: &lt;20 character</td><td></td></tr><tr><td>Description (Optional)</td><td>Admin can add/edit the description</td><td></td><td>Wraps into multiple lines when the copy is longer than 1 line.</td></tr><tr><td>Product Assignment (Required)</td><td>Admin can assign products by selecting multiple SKU. Minimum 2, maximum 10.</td><td>-</td><td>-</td></tr><tr><td>Product Card</td><td>All product data is pulled dynamically from selected SKU. Image: featured main image. Brand name. Product title (including variant info). Price (compare at + sale price). Rating — admin can decide to display the rating or not for each section.</td><td></td><td></td></tr><tr><td>Anchor Target (Required)</td><td>Each carousel instance registers as an anchor target for the Sticky Anchor Navigation.</td><td>-</td><td>-</td></tr></tbody></table></div></section>
+<section id="other-requirements"><p class="eyebrow">08 — Other requirements</p><h2>Other requirements</h2><ol><li>Follows FSD: Global SEO Rule, https://getplatter.atlassian.net/wiki/spaces/TVS/pages/889683969</li><li><strong>Analytics:</strong> Component supports automated impression tracking (viewport entry) and click tracking via the standard <code>raiseEvent</code> handler</li></ol></section>
+<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><div class="card"><h3 id="star-and-info-glyph-colour-unanswered-2026-08-07">Star and info-glyph colour — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>Both render as exported SVG assets in Figma, so their fills are not readable in the file. We use light blue <code>#41b6e6</code> for a filled star and <code>#b4b4b4</code> for an empty one, because <code>#41b6e6</code> is the one token in the card's set with no other consumer and it matches how the artwork looks. Please confirm, and confirm the empty-star treatment, which the design never shows because all four sample cards are five-star.</p></div>
+<div class="card"><h3 id="heading-typeface-unanswered-2026-08-07">Heading typeface — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The design sets the heading in Fields Bold. Fields is not one of the typefaces loaded on vitaminshoppe.com today, so a heading set in it falls back to a system serif. The field offers Fields as an option and defaults to Lato. Is Fields being added to the site's font stack, and on what timeline?</p></div>
+<div class="card"><h3 id="mobile-card-interior-resolved-2026-08-07">Mobile card interior — resolved 2026-08-07</h3><p><span class="badge closed">resolved 2026-08-07</span></p><p>Raised because the hidden alternate rows on the desktop frame carry no measurements, so the mobile card looked unspecified. It is not: the mobile frame <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-412530" target="_blank" rel="noopener"><code>18227:412530</code></a> holds the real values, and comparing our captures against it gave title 14px, price 16px, review count 12px, badge label 12px with 8px of horizontal padding, media radius 8px, badge inset 8px and 14px of block padding on the button. The card now steps down to all of them. Only two things there are still ours — the stacked buy row and the brand line, both recorded under Deviations.</p></div>
+<div class="card"><h3 id="brand-line-on-mobile-unanswered-2026-08-07">Brand line on mobile — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The mobile design has no brand line: its card goes image, title, reviews, price, button. The Admin requirement above lists brand name among the data every product card pulls, and it does not scope that to desktop. We kept the brand line at 12px rather than drop merchandising data the spec asks for. Should it come off on phones?</p></div>
+<div class="card"><h3 id="which-rating-field-to-render-unanswered-2026-08-07">Which rating field to render — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p><code>docs/tvs-api-reference.md</code> records that <code>avgOverallRating</code> and <code>avgDecimalRating</code> are labelled &quot;actual&quot; and &quot;rounded&quot; but that the sample data contradicts the labels in both directions. We render <code>avgDecimalRating</code>. This needs checking against live data before launch.</p></div>
+<div class="card"><h3 id="add-to-cart-confirmation-unanswered-2026-08-07">Add-to-cart confirmation — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>The spec asks for the current live-site 'added to cart' message. We call the documented promise API, <code>cart.addToCart</code>, and show confirmation on the button itself. Whether TVS's global mini-cart also opens on that path, or only on the legacy <code>raiseEvent</code> path, is unconfirmed.</p></div>
+<div class="card"><h3 id="review-count-as-a-link-unanswered-2026-08-07">Review count as a link — unanswered 2026-08-07</h3><p><span class="badge open">unanswered 2026-08-07</span></p><p>Figma names the review-count node &quot;link&quot; but the product API exposes no reviews URL distinct from the PDP. It currently renders as plain text. Should it link to the PDP, or to an anchor within it?</p></div></section>
+<section id="deviations"><p class="eyebrow">10 — Deviations</p><h2>Deviations</h2><div class="card"><h3 id="products-are-fetched-with-getproductdetailsbulk-not-getproductlist">Products are fetched with getProductDetailsBulk, not getProductList</h3><p><span class="badge built">Built</span></p><p><code>getProductList</code> is documented as the lightest endpoint and the one intended for cards and tiles, but it returns no compare-at price, no badge fields and no <code>skuId</code> — its add-to-cart identifier is <code>jdaSkId</code>, a name that means the JDA id on a different endpoint. The spec requires a compare-at price and the design requires a badge, so the section calls <code>getProductDetailsBulk</code>. It is still one request for the whole carousel.</p></div>
+<div class="card"><h3 id="the-heading-defaults-to-lato-although-the-design-draws-fields">The heading defaults to Lato although the design draws Fields</h3><p><span class="badge built">Built</span></p><p>See the open comment above. Defaulting to a typeface that is not installed would ship a system-serif fallback as the design's own look; Lato is what actually renders. A merchandiser can select Fields today and it will start rendering correctly the moment the font ships.</p></div>
+<div class="card"><h3 id="heading-level-size-and-typeface-are-merchandiser-settings">Heading level, size and typeface are merchandiser settings</h3><p><span class="badge built">Built</span></p><p>The spec lists only &quot;Admin can edit the heading&quot;. These three fields exist on every other Platter section, and heading level in particular is what keeps the page's heading order intact when a carousel sits under another module. Adding them keeps one vocabulary across the CMS rather than making this form the exception.</p></div>
+<div class="card"><h3 id="section-id-is-optional-not-required">Section ID is optional, not required</h3><p><span class="badge built">Built</span></p><p>The spec marks Anchor Target as required. <code>sectionId</code> is optional in every other section, and the same field being required in one form and optional in another is the inconsistency the shared vocabulary exists to prevent. We read &quot;Required&quot; as labelling the capability rather than the merchandiser input. The field's own description tells a merchandiser that the Sticky Anchor Navigation needs it.</p></div>
+<div class="card"><h3 id="the-desktop-indicator-is-paged-the-mobile-one-is-proportional">The desktop indicator is paged, the mobile one is proportional</h3><p><span class="badge built">Built</span></p><p>The design draws three equal segments on desktop and a proportional thumb on mobile. These are not the same control: three segments is a page count, which is correct because desktop advances four cards at a time, while the mobile thumb is sized by the visible fraction because mobile scrolls freely. Both are rendered, one per breakpoint, from the same scroll state. The desktop segment count follows the number of pages rather than being fixed at three.</p></div>
+<div class="card"><h3 id="the-compare-price-is-gated-on-the-sale-flag">The compare price is gated on the sale flag</h3><p><span class="badge built">Built</span></p><p>The API returns products whose before and after prices are identical with <code>onSale</code> false. Rendering the strikethrough on a value comparison alone would show a fake discount, so it requires both <code>onSale</code> and a genuinely higher list price.</p></div>
+<div class="card"><h3 id="four-cards-start-at-1024-not-768">Four cards start at 1024, not 768</h3><p><span class="badge built">Built</span></p><p>The Responsive column asks for the visible card count to hold at narrower breakpoints while the card shrinks. Taken literally at 768 that leaves 122px per card — narrower than the add-to-cart button alone — so the row rendered 3.03 cards instead of 4, with the button wrapped onto three lines and the prices stacked. It stayed wrong up to 1280, where a 250px card still wrapped its prices; the drawn layout only fits from about 1500.</p>
+<p>Two cards therefore hold to 1023, which gives a 272px card there, and four start at 1024. <code>sections/CLAUDE.md</code> § Breakpoint prescribes exactly this: Figma tokenises its desktop frames at 1200 and above and its mobile frames at 768 and below, so the band between is undrawn in every design we have, and where the arithmetic does not survive it the flip belongs at lg.</p>
+<p>Separately, the card now sizes itself from its OWN width rather than the viewport, so it renders in the wide form whenever it is at least 280px — two-up at 700, four-up at 1512 — and in the narrow form otherwise. That is what makes the same block reusable at a width its consumer chooses.</p></div>
+<div class="card"><h3 id="the-brand-line-is-kept-on-mobile-and-the-buy-row-stacks">The brand line is kept on mobile, and the buy row stacks</h3><p><span class="badge built">Built</span></p><p>Two departures from the mobile frame, both in the card. The design drops the brand line on phones; we keep it, sized at 12px, because the Admin requirement lists brand name as card data without scoping it to a breakpoint — see the open comment. And the design's price row and button share a line, which cannot hold at 163.5px wide: a 138px button beside two prices overflows, so below md the prices sit above a full-width button.</p></div>
+<div class="card"><h3 id="states-absent-from-the-design">States absent from the design</h3><p><span class="badge built">Built</span></p><p>Figma draws no hover, focus, disabled, out-of-stock, loading or error state anywhere in this section. Accessibility is a delivery requirement, so the implementation adds a visible focus ring on every control, a disabled arrow at the ends of the track, a skeleton card while the request is in flight, a disabled Add to Cart labelled &quot;Out of Stock&quot; when <code>isTemporaryOutOfStock</code> is set, and a polite live region announcing the result of an add.</p></div>
+<div class="card"><h3 id="a-carousel-with-no-resolvable-products-hides-itself">A carousel with no resolvable products hides itself</h3><p><span class="badge built">Built</span></p><p>A SKU that no longer exists is dropped, which the spec implies but does not state. If every SKU fails, or the product API is unreachable, the section removes itself rather than leaving a heading over an empty row. The failure is logged to the console.</p></div>
+<div class="card"><h3 id="impression-tracking-is-not-implemented">Impression tracking is not implemented</h3><p><span class="badge missing">Not built</span></p><p>&quot;Other requirements&quot; asks for automated impression tracking on viewport entry. Click tracking ships, using the shared <code>raiseEvent('ItemClick', …)</code> payload with <code>moduleTitle</code>. Impression tracking has no agreed event name or payload for any Platter module yet — it is still open on the slim hero's FSD — so it is deliberately left out rather than invented here.</p></div></section>
+</main>
+</div>
+</body>
+</html>
