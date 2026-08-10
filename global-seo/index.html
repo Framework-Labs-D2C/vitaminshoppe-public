@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>&quot;FSD: Global SEO Rule&quot; — Platter × TVS</title>
+<meta name="description" content="Reference page for the &quot;FSD: Global SEO Rule&quot; section: spec, screenshots, fields and sample content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --page: #f1f1f1;
+  --page-deep: #e7e7e7;
+  --surface: #ffffff;
+  --surface-sub: #f7f7f7;
+  --ink: #303030;
+  --ink-soft: #616161;
+  --ink-faint: #8a8a8a;
+  --rule: #e3e3e3;
+  --rule-strong: #d1d1d1;
+  --brand: #0458AD;
+  --brand-deep: #012169;
+  --brand-tint: #e8f1fa;
+  --brand-line: #c3ddf3;
+  --success: #1A9E48;
+  --success-deep: #0E7A36;
+  --success-tint: #eafbf1;
+  --critical: #EE2737;
+  --critical-tint: #fdeaec;
+  --display: "Lato", sans-serif;
+  --body: "Lato", sans-serif;
+  --mono: "Geist Mono", Consolas, ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--page); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.shell { display: flex; min-height: 100vh; }
+.sidenav { width: 244px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 0 28px 26px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; background: linear-gradient(180deg, var(--page) 0%, var(--page-deep) 100%); }
+.sidenav .brand { font-family: var(--display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.sidenav .brand em { font-style: italic; color: var(--brand); }
+.sidenav .brand-sub { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 4px 0 24px; }
+.sidenav a { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-decoration: none; padding: 7px 14px 7px 10px; border-radius: 6px 0 0 6px; border-right: 2px solid transparent; }
+.sidenav a .n { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); width: 16px; flex-shrink: 0; }
+.sidenav a:hover { color: var(--ink); background: rgba(4,88,173,0.08); }
+.sidenav .foot { margin-top: auto; padding-top: 24px; padding-right: 20px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); line-height: 1.8; }
+
+main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
+section { padding-top: 68px; }
+@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin: 34px 0 10px; }
+p { color: var(--ink-soft); max-width: 74ch; }
+p + p { margin-top: 12px; }
+p strong { color: var(--ink); font-weight: 700; }
+ul, ol { color: var(--ink-soft); max-width: 74ch; padding-left: 22px; margin-top: 10px; }
+li + li { margin-top: 6px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-sub); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
+a { color: var(--brand); }
+blockquote { border-left: 3px solid var(--brand-line); background: var(--surface); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+.lede { font-size: 17px; line-height: 1.62; color: var(--ink-soft); max-width: 68ch; margin-top: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 18px 20px; margin-top: 14px; }
+.card h3 { margin-top: 0; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; font-weight: 600; }
+.badge.built { background: var(--success-tint); color: var(--success-deep); }
+.badge.missing { background: var(--critical-tint); color: var(--critical); }
+.badge.corrected { background: var(--brand-tint); color: var(--brand-deep); }
+.badge.open { background: var(--critical-tint); color: var(--critical); }
+.badge.closed { background: var(--success-tint); color: var(--success-deep); }
+
+.scroll { overflow-x: auto; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
+td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
+.shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.shots img { display: block; width: 100%; height: auto; }
+
+.pending { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="brand">Platter <em>×</em> TVS</div>
+  <div class="brand-sub">global-seo</div>
+  <a href="#screenshots"><span class="n">01</span>Screenshots</a>
+  <a href="#fields"><span class="n">02</span>Fields</a>
+  <a href="#sample"><span class="n">03</span>Sample content</a>
+  <a href="#user-requirement"><span class="n">04</span>User requirement</a>
+  <a href="#admin-requirement"><span class="n">05</span>Admin requirement</a>
+  <a href="#other-requirements"><span class="n">06</span>Other requirements</a>
+  <a href="#deviations"><span class="n">07</span>Deviations</a>
+  <div class="foot">generated by pnpm build<br />spec transcribed 2026-08-10</div>
+</nav>
+<main>
+<header class="hero" style="padding-top:60px">
+  <p class="eyebrow">Platter component</p>
+  <h1>&quot;FSD: Global SEO Rule&quot;</h1>
+  
+  <p class="lede">Spec: <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/889683969" target="_blank" rel="noopener">https://getplatter.atlassian.net/wiki/spaces/TVS/pages/889683969</a></p>
+  
+</header>
+
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
+<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
+<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
+<img src="./desktop-1512.png" alt="global-seo rendered at 1512px" loading="lazy" /></figure>
+<figure><figcaption>mobile — 375px</figcaption>
+<img src="./mobile-375.png" alt="global-seo rendered at 375px" loading="lazy" /></figure>
+<figure><figcaption>tablet — 768px</figcaption>
+<img src="./tablet-768.png" alt="global-seo rendered at 768px" loading="lazy" /></figure>
+<figure><figcaption>wide — 1920px</figcaption>
+<img src="./wide-1920.png" alt="global-seo rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
+<div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
+<tbody><tr><td><code>breadcrumbs</code><br /><strong>Breadcrumb trail</strong></td>
+<td>array</td>
+<td class="req"></td>
+<td></td>
+<td>The page's position in the site, from the homepage down, shown under the page title in Google results. List every step in order and leave the last step's link empty — the last step is this page itself. Leave the whole list empty to emit no breadcrumb.</td></tr><tr><td><code>skus</code><br /><strong>Products (SKU ids)</strong></td>
+<td>array</td>
+<td class="req"></td>
+<td></td>
+<td>The products this page features, in the order you list them. Enter TVS SKU ids exactly as they appear on the product page, e.g. VS-4612. This list is invisible on the page: it tells search engines which product pages this page features, which helps them connect the page to those products. Leave empty to emit nothing.</td></tr><tr><td><code>videoName</code><br /><strong>Video title</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 120</td>
+<td>Only fill the video fields when a video actually plays on this page. The title shoppers would know the video by. All three of title, thumbnail and video file link are needed before anything is emitted.</td></tr><tr><td><code>videoDescription</code><br /><strong>Video description</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 300</td>
+<td>One or two sentences on what the video shows. Optional.</td></tr><tr><td><code>videoThumbnailUrl</code><br /><strong>Video thumbnail</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 500</td>
+<td>Full URL of the video's poster image. jpg, jpeg or png.</td></tr><tr><td><code>videoContentUrl</code><br /><strong>Video file link</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 500</td>
+<td>Full URL of the video file itself (the .mp4), not the page it plays on.</td></tr><tr><td><code>videoUploadDate</code><br /><strong>Video upload date</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>^\d{4}-\d{2}-\d{2}$</code></td>
+<td>The date the video was first published, as YYYY-MM-DD. Optional.</td></tr><tr><td><code>ogTitle</code><br /><strong>Share title</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 90</td>
+<td>The title shown when this page is shared on social media or in chat apps. Leave empty to let the platform pick.</td></tr><tr><td><code>ogDescription</code><br /><strong>Share description</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 200</td>
+<td>The one-to-two sentence preview text under the share title.</td></tr><tr><td><code>ogImage</code><br /><strong>Share image</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 500</td>
+<td>Full URL of the preview image, at least 1200×630 for a large card. jpg, jpeg or png.</td></tr></tbody></table></div></section>
+<section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
+<p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
+<pre>{
+  &quot;breadcrumbs&quot;: [
+    {
+      &quot;label&quot;: &quot;Home&quot;,
+      &quot;url&quot;: &quot;/&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Sports Nutrition&quot;,
+      &quot;url&quot;: &quot;/c/sports-nutrition&quot;
+    },
+    {
+      &quot;label&quot;: &quot;German Creatine&quot;
+    }
+  ],
+  &quot;skus&quot;: [
+    &quot;VS-4612&quot;,
+    &quot;VS-8531&quot;
+  ],
+  &quot;ogTitle&quot;: &quot;German Creatine | The Vitamin Shoppe&quot;,
+  &quot;ogDescription&quot;: &quot;Pure Creapure creatine monohydrate, plus everything else your training stack needs.&quot;,
+  &quot;ogImage&quot;: &quot;https://s7media.vitaminshoppe.com/is/image/VitaminShoppe/creatine-share.jpg&quot;
+}</pre></section>
+<section id="user-requirement"><p class="eyebrow">05 — User requirement</p><h2>User requirement</h2><p>No shopper-visible behavior. The module exists for search engines, AI crawlers and link previews.</p></section>
+<section id="admin-requirement"><p class="eyebrow">06 — Admin requirement</p><h2>Admin requirement</h2><ul><li>All pages must include dedicated, editable fields for SEO Title and Meta Description tags.</li><li>Every landing page requires primary, page-level structured data (Schema markup) to define the page content.</li><li>Modular structured data (hybrid approach): high-value modules (Product, Review, FAQ, Video) must emit their own structured data; implement a clear hierarchy so it integrates with the primary page schema without conflicts; provide a switch per module to enable or disable its output.</li></ul></section>
+<section id="other-requirements"><p class="eyebrow">07 — Other requirements</p><h2>Other requirements</h2><ul><li>Content crawlability: modules must not be hidden; they must render as real HTML text and be exposed to crawlers.</li><li>The solution must leverage the existing Prerender setup.</li></ul></section>
+<section id="deviations"><p class="eyebrow">08 — Deviations</p><h2>Deviations</h2><div class="card"><h3 id="per-module-structured-data-and-its-toggles-replaced-by-one-page-level-emitter">Per-module structured data and its toggles replaced by one page-level emitter</h3><p><span class="badge built">Built</span></p><p>This section is the single page-level emission point (BreadcrumbList, summary ItemList of featured products, VideoObject). Google retired FAQ and HowTo rich results in 2023, requires single-product pages for Product rich results, and treats markup for content not visible on the page as a manual-action trigger — so per-module emission with merchandiser toggles multiplies invalid states while earning nothing. Full evidence: docs/specs/2026-08-10-global-seo-design.md and docs/global-seo-client-note.md.</p></div>
+<div class="card"><h3 id="seo-title-and-meta-description-fields-not-duplicated-here">SEO title and meta description fields not duplicated here</h3><p><span class="badge missing">Not built</span></p><p><code>cs-landing-page.seoTags</code> already owns both fields and we already push them per page. A second source of truth in this section would drift from the first.</p></div>
+<div class="card"><h3 id="prerender-leverage-extended-to-readiness-signaling">Prerender leverage extended to readiness signaling</h3><p><span class="badge built">Built</span></p><p>The FSD predates the observed blank-snapshot captures. This section sets <code>prerenderReady</code> false at injection and true once its payload is emitted, turning the snapshot moment from a network-idle guess into a signal.</p></div>
+<div class="card"><h3 id="the-module-itself-is-invisible">The module itself is invisible</h3><p><span class="badge built">Built</span></p><p>The crawlability clause (&quot;modules must not be hidden&quot;) governs content modules: copy must be real HTML text. This module renders no content at all — its output is head metadata, which is real markup in the served document. Nothing readable is hidden from anyone.</p></div></section>
+</main>
+</div>
+</body>
+</html>

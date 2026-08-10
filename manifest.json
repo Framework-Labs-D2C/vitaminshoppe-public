@@ -1,7 +1,103 @@
 {
+  "baseUrl": "https://framework-labs-d2c.github.io/vitaminshoppe-public",
+  "scale": 2,
+  "sections": {
+    "benefits-highlights": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/card.html"
+    },
+    "bundle-module": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/card.html"
+    },
+    "expert-module": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/card.html"
+    },
+    "faq": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/card.html"
+    },
+    "product-carousel": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/card.html"
+    },
+    "product-grid": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/card.html"
+    },
+    "shop-by-goal": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/card.html"
+    },
+    "slim-hero-banner-a": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/card.html"
+    },
+    "sticky-nav-bar": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/card.html"
+    },
+    "testimonials": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/card.html"
+    },
+    "ugc-video-slider": {
+      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/desktop-1512.png",
+      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/mobile-375.png",
+      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/tablet-768.png",
+      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/wide-1920.png",
+      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/thumbnail-140.png",
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/card.html"
+    },
+    "global-seo": {
+      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/global-seo/card.html"
+    }
+  },
   "assets": {
     "benefits-chevron-tile-756.svg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/benefits-chevron-tile-756.svg",
     "benefits-demo-square-736.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/benefits-demo-square-736.jpg",
+    "bundle-demo-759.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/bundle-demo-759.jpg",
     "expert-demo-portrait-810.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/expert-demo-portrait-810.jpg",
     "goal-healthy-aging-656.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/goal-healthy-aging-656.jpg",
     "goal-muscle-growth-656.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/goal-muscle-growth-656.jpg",
@@ -10,77 +106,8 @@
     "hero-a-desktop-2160.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-desktop-2160.jpg",
     "hero-a-mobile-750.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/hero-a-mobile-750.jpg",
     "testimonials-desktop-1717.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/testimonials-desktop-1717.jpg",
-    "testimonials-mobile-853.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/testimonials-mobile-853.jpg"
-  },
-  "baseUrl": "https://framework-labs-d2c.github.io/vitaminshoppe-public",
-  "global-seo": {
-    "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/global-seo/card.html"
-  },
-  "scale": 2,
-  "sections": {
-    "benefits-highlights": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/wide-1920.png"
-    },
-    "expert-module": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/wide-1920.png"
-    },
-    "faq": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/wide-1920.png"
-    },
-    "product-carousel": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/wide-1920.png"
-    },
-    "shop-by-goal": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/wide-1920.png"
-    },
-    "slim-hero-banner-a": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/wide-1920.png"
-    },
-    "sticky-nav-bar": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/wide-1920.png"
-    },
-    "testimonials": {
-      "card": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/card.html",
-      "desktop": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/desktop-1512.png",
-      "mobile": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/mobile-375.png",
-      "tablet": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/tablet-768.png",
-      "thumbnail": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/thumbnail-140.png",
-      "wide": "https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/wide-1920.png"
-    }
+    "testimonials-mobile-853.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/testimonials-mobile-853.jpg",
+    "ugc-demo-gym-620.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/ugc-demo-gym-620.jpg",
+    "ugc-demo-shelf-620.jpg": "https://framework-labs-d2c.github.io/vitaminshoppe-public/assets/ugc-demo-shelf-620.jpg"
   }
 }
