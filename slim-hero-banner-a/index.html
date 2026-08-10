@@ -125,7 +125,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="slim-hero-banner-a rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>eyebrow</code><br /><strong>Eyebrow heading</strong></td>
 <td>string</td>
@@ -147,7 +147,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td><code>Lato</code> · <code>corisanderegular</code> · <code>Fields</code><br />default <code>&quot;Lato&quot;</code></td>
-<td>The two typefaces already loaded on vitaminshoppe.com. Lato is the default and matches the design. Corisande is the site's body typeface — pick it when the banner needs to sit closer to surrounding editorial copy. This affects the eyebrow and headline only; the description and button always stay Lato.</td></tr><tr><td><code>showDivider</code><br /><strong>Show divider</strong></td>
+<td>Lato is the default and matches the design. Corisande is the site's body typeface — pick it when the banner needs to sit closer to surrounding editorial copy. Fields is the serif used in the newer designs; it is not yet installed on vitaminshoppe.com, so headings set in Fields fall back to Georgia. This affects the eyebrow and headline only; the description and button always stay Lato.</td></tr><tr><td><code>showDivider</code><br /><strong>Show divider</strong></td>
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>true</code></td>
@@ -159,35 +159,35 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 30</td>
-<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td><code>dark</code> · <code>light</code><br />default <code>&quot;dark&quot;</code></td>
-<td>Dark is #0458AD with white text and is the right choice almost every time, because the card behind the button is white. Light is white with #0458AD text and a thin #0458AD outline — pick it only if you have changed the card to a dark colour, otherwise a white button on a white card is very hard to see.</td></tr><tr><td><code>image</code><br /><strong>Background image (desktop)</strong></td>
-<td>string</td>
-<td class="req">required</td>
-<td></td>
-<td>Full URL of the image, cropped to 28:11 before upload. jpg, jpeg or png. Product shots and decorative detail belong here — never text, which must stay real HTML so search and AI crawlers can read it.</td></tr><tr><td><code>imageAlt</code><br /><strong>Image alt text (desktop)</strong></td>
+<td>Dark is #0458AD with white text and is the right choice almost every time, because the button sits on a white card. Light is white with #0458AD text and a thin #0458AD outline — it needs a dark surface behind it to be visible, so on the white card it reads as a weaker second choice rather than the main action.</td></tr><tr><td><code>backgroundImage</code><br /><strong>Background image (desktop)</strong></td>
 <td>string</td>
 <td class="req">required</td>
 <td>min 1</td>
-<td>Describe what the image shows. Required for accessibility. Also used for the mobile crop unless you give that its own alt text below.</td></tr><tr><td><code>imageMobile</code><br /><strong>Background image (mobile)</strong></td>
+<td>Full URL of the image, cropped to 28:11 before upload. jpg, jpeg or png. Product shots and decorative detail belong here — never text, which must stay real HTML so search and AI crawlers can read it.</td></tr><tr><td><code>backgroundImageAlt</code><br /><strong>Image alt text (desktop)</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>min 1</td>
+<td>Describe what the image shows. Required for accessibility. Also used for the mobile crop unless you give that its own alt text below.</td></tr><tr><td><code>backgroundImageMobile</code><br /><strong>Background image (mobile)</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
-<td>Full URL of the taller phone crop, 375:567. Falls back to the desktop image when empty, which will crop badly — supply it.</td></tr><tr><td><code>imageAltMobile</code><br /><strong>Image alt text (mobile)</strong></td>
+<td>max 500</td>
+<td>Full URL of the taller phone crop, 375:567. Falls back to the desktop image when empty, which will crop badly — supply it.</td></tr><tr><td><code>backgroundImageAltMobile</code><br /><strong>Image alt text (mobile)</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 300</td>
 <td>Only needed when the phone crop shows something different — a taller, tighter crop often cuts out products the desktop alt text lists. Leave empty to reuse the desktop alt text, which is also what happens if no mobile image is set.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>false</code></td>
-<td>Switch on when this banner is the first module on the page, so the image loads immediately instead of lazily.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>Switch on when this banner is the first thing on the page, so the image loads immediately instead of lazily.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
@@ -205,10 +205,10 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   &quot;ctaLabel&quot;: &quot;Shop Peptides&quot;,
   &quot;ctaUrl&quot;: &quot;/shop/peptides&quot;,
   &quot;ctaStyle&quot;: &quot;dark&quot;,
-  &quot;image&quot;: &quot;../assets/hero-a-desktop-2160.jpg&quot;,
-  &quot;imageAlt&quot;: &quot;BodyTech Recovery Pep, Muscle Growth Peptide and MuscleTech Muscle Peptide tubs beside a dumbbell, on a yellow to cyan gradient&quot;,
-  &quot;imageMobile&quot;: &quot;../assets/hero-a-mobile-750.jpg&quot;,
-  &quot;imageAltMobile&quot;: &quot;BodyTech Recovery Pep and Muscle Growth Peptide tubs beside a dumbbell, on a yellow to cyan gradient&quot;,
+  &quot;backgroundImage&quot;: &quot;../assets/hero-a-desktop-2160.jpg&quot;,
+  &quot;backgroundImageAlt&quot;: &quot;BodyTech Recovery Pep, Muscle Growth Peptide and MuscleTech Muscle Peptide tubs beside a dumbbell, on a yellow to cyan gradient&quot;,
+  &quot;backgroundImageMobile&quot;: &quot;../assets/hero-a-mobile-750.jpg&quot;,
+  &quot;backgroundImageAltMobile&quot;: &quot;BodyTech Recovery Pep and Muscle Growth Peptide tubs beside a dumbbell, on a yellow to cyan gradient&quot;,
   &quot;priority&quot;: true
 }</pre></section>
 <section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><div class="scroll"><table><thead><tr><th>Type</th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>A</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-198812" target="_blank" rel="noopener"><code>18099:198812</code></a> — 1512 × 594 (28:11)</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18099-193540" target="_blank" rel="noopener"><code>18099:193540</code></a> — 375 × 567</td></tr><tr><td>B</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=15917-130804" target="_blank" rel="noopener"><code>15917:130804</code></a> — 1512 × 425 (32:9)</td><td>375 × 430</td></tr></tbody></table></div></section>
@@ -235,8 +235,8 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <div class="card"><h3 id="font-family-dropdown-gains-a-third-value-and-the-stacks-move-to-base-css">Font-family dropdown gains a third value, and the stacks move to <code>base.css</code></h3><p><span class="badge built">Built</span> 2026-08-07, supersedes the two-value list above</p><p><code>Fields</code> joins <code>Lato</code> and <code>corisanderegular</code> in the shared <code>headingFont</code> enum. It is the serif the newer TVS designs are drawn in — Shop By Goal, Benefits Highlight and Testimonials are all set in it — and it is <strong>not hosted by vitaminshoppe.com</strong>, appearing in no <code>@font-face</code> rule on the live site. Georgia carries it until TVS supplies the file, at which point adding the <code>@font-face</code> is the only change needed and every content item already set to Fields switches over on its own. Open with the client on the sections that default to it.</p>
 <p>Nothing about this banner changes: it is drawn in Lato, <code>default</code> is still <code>Lato</code>, and the rendered stack is byte-identical to what it was.</p>
 <p>What did change here is <em>how</em> the choice is resolved. Each section was restating the mapping in its own template — this one carried <code>headingFont === 'corisanderegular' ? 'corisandebold' : null</code> — which put the non-obvious rule (Corisande ships one weight per family name, so bold is a different family rather than a weight) in as many places as there are sections, about to be six. The three stacks are now declared once on <code>.tvs-platter</code> in <code>base.css</code> and every section reads the same lookup:</p>
-<blockquote><p><code>'--plx-font-family--heading': 'var(--plx-font-family--' + ($data.headingFont || 'Lato').toLowerCase() + ')'</code></p></blockquote>
-<p>The fallback inside the lookup is each section's own designed face, not <code>null</code>: an omitted key would otherwise resolve to the Tailwind config's <code>Lato</code>, which is right here and wrong for a section drawn in Fields.</p></div></section>
+<blockquote><p><code>'--plx-font-family--heading': $data.headingFont ? 'var(--plx-font-family--' + $data.headingFont.toLowerCase() + ')' : null</code></p></blockquote>
+<p>An omitted key resolves to <code>null</code>, so the markup carries no default at all. The designed face belongs to the section rather than to its markup, so a section not drawn in Lato declares <code>--_heading-font</code> on its BEM base in <code>base.css</code> — which is what keeps this one line byte-identical across every section that has a <code>heading</code> field.</p></div></section>
 </main>
 </div>
 </body>

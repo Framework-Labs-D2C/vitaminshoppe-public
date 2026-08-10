@@ -125,7 +125,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="expert-module rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>assetType</code><br /><strong>Media shape</strong></td>
 <td>string</td>
@@ -134,7 +134,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>Portrait is a tall 9:16 card beside the quote, and is the only shape that can hold a video. Circle is a round 1:1 headshot inside the same card as the quote, with a vertical rule between them — it makes a shorter module, so use it when the expert is supporting the page rather than leading it. Changing this changes the whole layout, not just the crop.</td></tr><tr><td><code>image</code><br /><strong>Expert photo</strong></td>
 <td>string</td>
 <td class="req">required</td>
-<td></td>
+<td>min 1</td>
 <td>Full URL of one photo, used at every screen size. Crop it to 9:16 for Portrait or square for Circle before upload — the module fills the shape and will crop the sides off a photo that is the wrong way round. On phones the Portrait card becomes a wide 16:9 band cut from the middle of the same photo, so keep the subject centred and leave room above and below their face. When a video is set this photo is what shows until someone presses play, so pick a frame that represents it.</td></tr><tr><td><code>imageAlt</code><br /><strong>Photo alt text</strong></td>
 <td>string</td>
 <td class="req">required</td>
@@ -171,10 +171,10 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 30</td>
-<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
+<td>The call to action. The button only renders when both a label and a link are set. Formatting: <code>**bold**</code>, <code>_italic_</code>, and <code>~12~</code> for subscript. A registered mark (®) is raised automatically, and a plain asterisk is never formatting.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
 <td>string</td>
 <td class="req"></td>

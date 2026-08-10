@@ -125,7 +125,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="benefits-highlights rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
 <td>string</td>
@@ -154,19 +154,19 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>Between two and six benefits, shown in the order you list them here — two across on desktop, stacked on phones. Drag a row to reorder it. Each tile is a button: tapping it opens a panel with that benefit's full description, so every tile needs both a name and a description.</td></tr><tr><td><code>image</code><br /><strong>Photo</strong></td>
 <td>string</td>
 <td class="req">required</td>
-<td></td>
+<td>min 1</td>
 <td>Full URL of the photo beside the tiles. Crop it square before upload — it is shown 1:1 at every screen size and the module will cut the sides off anything wider. jpg, jpeg or png.</td></tr><tr><td><code>imageAlt</code><br /><strong>Photo alt text</strong></td>
 <td>string</td>
 <td class="req">required</td>
 <td>min 1</td>
-<td>Describe what the photo shows, e.g. &quot;A woman drinking from a shaker bottle after training&quot;. Required for accessibility.</td></tr><tr><td><code>backgroundImage</code><br /><strong>Decorative background</strong></td>
+<td>Describe what the photo shows, e.g. &quot;A woman drinking from a shaker bottle after training&quot;. Required for accessibility.</td></tr><tr><td><code>decorativePattern</code><br /><strong>Decorative background</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
-<td>Full URL of the patterned artwork behind the card and photo. The design uses a repeating chevron tile in light blue on navy; whatever you upload is tiled the same way, so supply one tile rather than a full-width image. It sits behind the content and is treated as decoration, so it needs no alt text — do not put anything readable in it. Leave empty to show the plain navy background.</td></tr><tr><td><code>backgroundImageMobile</code><br /><strong>Decorative background (mobile)</strong></td>
+<td>max 500</td>
+<td>Full URL of the patterned artwork behind the card and photo. The design uses a repeating chevron tile in light blue on navy; whatever you upload is tiled the same way, so supply one tile rather than a full-width image. It sits behind the content and is treated as decoration, so it needs no alt text — do not put anything readable in it. Leave empty to show the plain navy background.</td></tr><tr><td><code>decorativePatternMobile</code><br /><strong>Decorative background (mobile)</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Full URL of the phone version of the pattern. Falls back to the desktop artwork when empty, which is usually right — supply one only if the tile is too dense to read at phone width.</td></tr><tr><td><code>ctaLabel</code><br /><strong>Button label</strong></td>
 <td>string</td>
 <td class="req"></td>
@@ -174,12 +174,12 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>The call to action under the tiles, e.g. &quot;Shop MuscleTech Peptides&quot;. The button only renders when both a label and a link are set. On phones it stretches the full width of the card.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td><code>dark</code> · <code>light</code><br />default <code>&quot;dark&quot;</code></td>
-<td>Dark is #0458AD with white text and is the design. Light is white with #0458AD text and a thin outline — the button sits on the white card, so Light needs its outline to be visible at all and reads as a weaker second choice rather than the main action.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
+<td>Dark is #0458AD with white text and is the right choice almost every time, because the button sits on a white card. Light is white with #0458AD text and a thin #0458AD outline — it needs a dark surface behind it to be visible, so on the white card it reads as a weaker second choice rather than the main action.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>false</code></td>
@@ -198,34 +198,34 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   &quot;body&quot;: &quot;Whether your goal is to recover faster, build strength, or maintain consistent performance, peptides offer targeted support for every stage of your routine.&quot;,
   &quot;benefits&quot;: [
     {
-      &quot;heading&quot;: &quot;Recovery Support&quot;,
-      &quot;body&quot;: &quot;Recovery is an essential part of any training routine. Peptide formulations designed for recovery may help support the body's natural repair processes, allowing you to stay consistent with your workouts and perform at your best. Explore products formulated to complement your recovery goals and active lifestyle.&quot;
+      &quot;name&quot;: &quot;Recovery Support&quot;,
+      &quot;description&quot;: &quot;Recovery is an essential part of any training routine. Peptide formulations designed for recovery may help support the body's natural repair processes, allowing you to stay consistent with your workouts and perform at your best. Explore products formulated to complement your recovery goals and active lifestyle.&quot;
     },
     {
-      &quot;heading&quot;: &quot;Muscle Growth&quot;,
-      &quot;body&quot;: &quot;Building lean mass takes consistent training and the right nutritional support. Peptide formulations aimed at growth are designed to complement a protein-forward diet and a progressive training programme, rather than replace either.&quot;
+      &quot;name&quot;: &quot;Muscle Growth&quot;,
+      &quot;description&quot;: &quot;Building lean mass takes consistent training and the right nutritional support. Peptide formulations aimed at growth are designed to complement a protein-forward diet and a progressive training programme, rather than replace either.&quot;
     },
     {
-      &quot;heading&quot;: &quot;Endurance&quot;,
-      &quot;body&quot;: &quot;Longer sessions ask more of your energy systems. Endurance-focused formulations are designed to support sustained output, so the last mile feels closer to the first one.&quot;
+      &quot;name&quot;: &quot;Endurance&quot;,
+      &quot;description&quot;: &quot;Longer sessions ask more of your energy systems. Endurance-focused formulations are designed to support sustained output, so the last mile feels closer to the first one.&quot;
     },
     {
-      &quot;heading&quot;: &quot;Joint Support&quot;,
-      &quot;body&quot;: &quot;Training loads pass through your joints before they reach your muscles. These formulations are designed to support joint comfort and mobility, so you can keep training the way you want to.&quot;
+      &quot;name&quot;: &quot;Joint Support&quot;,
+      &quot;description&quot;: &quot;Training loads pass through your joints before they reach your muscles. These formulations are designed to support joint comfort and mobility, so you can keep training the way you want to.&quot;
     },
     {
-      &quot;heading&quot;: &quot;Healthy Aging&quot;,
-      &quot;body&quot;: &quot;Staying strong and mobile matters more with every year. Formulations in this group are designed to support the everyday markers of healthy aging, from lean mass to recovery.&quot;
+      &quot;name&quot;: &quot;Healthy Aging&quot;,
+      &quot;description&quot;: &quot;Staying strong and mobile matters more with every year. Formulations in this group are designed to support the everyday markers of healthy aging, from lean mass to recovery.&quot;
     },
     {
-      &quot;heading&quot;: &quot;Daily Wellness&quot;,
-      &quot;body&quot;: &quot;Not every goal is a personal best. These formulations support the baseline that everything else is built on, so consistency is easier to hold on to.&quot;
+      &quot;name&quot;: &quot;Daily Wellness&quot;,
+      &quot;description&quot;: &quot;Not every goal is a personal best. These formulations support the baseline that everything else is built on, so consistency is easier to hold on to.&quot;
     }
   ],
   &quot;image&quot;: &quot;../assets/benefits-demo-square-736.jpg&quot;,
   &quot;imageAlt&quot;: &quot;A woman in workout clothing sitting cross-legged and drinking from a shaker bottle, against a pale blue backdrop&quot;,
-  &quot;backgroundImage&quot;: &quot;../assets/benefits-chevron-tile-756.svg&quot;,
-  &quot;backgroundImageMobile&quot;: &quot;&quot;,
+  &quot;decorativePattern&quot;: &quot;../assets/benefits-chevron-tile-756.svg&quot;,
+  &quot;decorativePatternMobile&quot;: &quot;&quot;,
   &quot;ctaLabel&quot;: &quot;Shop MuscleTech Peptides&quot;,
   &quot;ctaUrl&quot;: &quot;/shop/peptides&quot;,
   &quot;ctaStyle&quot;: &quot;dark&quot;,

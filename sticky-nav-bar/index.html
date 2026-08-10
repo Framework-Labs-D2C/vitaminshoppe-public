@@ -125,13 +125,13 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="sticky-nav-bar rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>links</code><br /><strong>Anchor links</strong></td>
 <td>array</td>
 <td class="req">required</td>
 <td></td>
-<td>Between two and four links, shown left to right in the order you list them here. Drag a row to reorder it — the order in this list is the order on the bar, and it should match the order the sections appear down the page or the underline will appear to jump backwards as a shopper scrolls.</td></tr><tr><td><code>disableGlobalStickyHeader</code><br /><strong>Disable global sticky header</strong></td>
+<td>Between two and four links, shown left to right in the order you list them here. Drag a row to reorder it. The order in this list is the order on the bar, and it should match the order the sections appear down the page or the underline will appear to jump backwards as a shopper scrolls.</td></tr><tr><td><code>disableGlobalStickyHeader</code><br /><strong>Disable global sticky header</strong></td>
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>false</code></td>
@@ -139,22 +139,22 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
-<td>A name for this specific nav bar, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #shop-nav. Page-level CSS can also target this one nav rather than every sticky nav. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page. Leave empty if you need neither. This is a different field from the Section IDs you point the links above at — those belong to the modules further down the page.</td></tr></tbody></table></div></section>
+<td>A name for this specific nav bar, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #shop-nav. Page-level CSS can also target this one nav bar rather than every sticky nav. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither. This is a different field from the Section IDs you point the links above at — those belong to the modules further down the page.</td></tr></tbody></table></div></section>
 <section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
 <p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
 <pre>{
   &quot;links&quot;: [
     {
-      &quot;ctaLabel&quot;: &quot;BodyTech Elite&quot;,
-      &quot;ctaUrl&quot;: &quot;#bodytech-elite&quot;
+      &quot;label&quot;: &quot;BodyTech Elite&quot;,
+      &quot;url&quot;: &quot;#bodytech-elite&quot;
     },
     {
-      &quot;ctaLabel&quot;: &quot;MuscleTech&quot;,
-      &quot;ctaUrl&quot;: &quot;#muscletech&quot;
+      &quot;label&quot;: &quot;MuscleTech&quot;,
+      &quot;url&quot;: &quot;#muscletech&quot;
     },
     {
-      &quot;ctaLabel&quot;: &quot;INFINIS&quot;,
-      &quot;ctaUrl&quot;: &quot;#infinis&quot;
+      &quot;label&quot;: &quot;INFINIS&quot;,
+      &quot;url&quot;: &quot;#infinis&quot;
     }
   ],
   &quot;disableGlobalStickyHeader&quot;: false,
@@ -183,7 +183,8 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <p>The unchecked state needs nothing from TVS and is the one that must be right: our nav sticks below whatever height the global header occupies.</p></div>
 <div class="card"><h3 id="sticky-is-position-fixed-not-position-sticky">Sticky is <code>position: fixed</code>, not <code>position: sticky</code></h3><p><span class="badge built">Built</span> a placeholder holds the vacated height</p><p>A sticky element only sticks within its own containing block, and Amplience wraps every content item in a <code>&lt;tvs-cms-component&gt;</code> whose height is exactly this section's height. <code>position: sticky</code> would therefore unstick on the same frame it started sticking. The bar is switched to <code>position: fixed</code> instead, and an outer element holds its height open so the page below does not jump up by the bar's height at the moment it detaches. Verified in Chrome at 1280×760 and 375×700: the bar detaches at the right scroll position and the content below it does not shift.</p>
 <p>How far below the top of the viewport it parks is one variable, <code>--plx-sticky-nav--offset</code>, read by both the CSS and the scroll maths so they cannot disagree. It defaults to <strong>80px</strong>, the height of the header band TVS pins to the top of the viewport — see <em>Disable global sticky header</em> below for how that was measured.</p></div>
-<div class="card"><h3 id="active-state-uses-two-intersectionobservers-and-a-mutationobserver">Active state uses two IntersectionObservers and a MutationObserver</h3><p><span class="badge built">Built</span> no scroll listener</p><p>The observers are triggers only; which section is current is then computed from the targets' rectangles. Reading the observer entries directly is the obvious implementation and is wrong twice over — a section stops intersecting while it is still the one in view, and in the gap between two modules nothing intersects at all, so the indicator sticks on whichever section left last.</p>
+<div class="card"><h3 id="active-state-uses-two-intersectionobservers-and-a-mutationobserver">Active state uses two IntersectionObservers and a MutationObserver</h3><p><span class="badge built">Built</span> no scroll listener</p><p>The three are <code>watchStick</code>, <code>watchSections</code> and <code>watchIds</code> in the section scope. <code>watchStick</code> asks one question only — has the placeholder top edge passed the parking line — and is what flips <code>stuck</code>; it has nothing to do with the active link. <code>watchSections</code> is the pair of IntersectionObservers described below, and <code>pickActive</code> is the function that answers &quot;which section&quot; from the rectangles. <code>watchIds</code> is the MutationObserver.</p>
+<p>The observers are triggers only; which section is current is then computed from the targets' rectangles. Reading the observer entries directly is the obvious implementation and is wrong twice over — a section stops intersecting while it is still the one in view, and in the gap between two modules nothing intersects at all, so the indicator sticks on whichever section left last.</p>
 <p>Two root shapes are needed because each has a blind spot the other covers. A 1px band directly under the bar fires as a section's top crosses the line, which a half-open root misses because the section is still below it. A half-open root fires when a scroll jump lands with nothing in the band at either end, which is every jump straight back to the top of the page.</p>
 <p><strong>The MutationObserver is not defensive.</strong> Every Platter section sets its own id from <code>:id=&quot;$data.sectionId&quot;</code>, so the elements these links point at are still id-less when this section initialises, and an observer built at that moment would observe nothing at all. It watches for ids appearing and disconnects itself once every anchor has resolved.</p></div>
 <div class="card"><h3 id="indicator-is-a-pseudo-element-and-hover-is-ours">Indicator is a pseudo-element, and hover is ours</h3><p><span class="badge built">Built</span> visually identical to Figma's border, plus a hover Figma lacks</p><p>Figma draws the active indicator as a 4px bottom border on the link (<code>sections/background-accent</code>, <code>#41b6e6</code> — deliberately the lighter blue, not brand blue). We draw it as a pseudo-element instead. A real <code>border-bottom</code> sits inside the box, so on a 52px link with centred text the type would jump 2px upwards on whichever link happened to be active; the pseudo-element is pixel-wise the same line and moves nothing.</p>

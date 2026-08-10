@@ -125,7 +125,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="product-carousel rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
 <td>string</td>
@@ -155,7 +155,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>true</code></td>
-<td>Shows the star rating and review count on every card in this module. Switch off for a range where reviews are thin or missing — a card with no rating leaves a gap the others do not have, so it reads better with ratings off for the whole module than on for some of it.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>Shows the star rating and review count on every card in this module. Switch off for a range where reviews are thin or missing — a card with no rating leaves a gap the others do not have, so it reads better with ratings off for the whole module than on for some of it.</td></tr><tr><td><code>cardOverrides</code><br /><strong>Card overrides</strong></td>
+<td>array</td>
+<td class="req"></td>
+<td></td>
+<td>Optional, per-SKU decoration. Each row names one SKU from the list above and replaces that card's automatic badge. Cards without a row here are untouched, and a row for a SKU that is not in the list does nothing.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
@@ -178,6 +182,12 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
     &quot;VS-3388&quot;
   ],
   &quot;showRating&quot;: true,
+  &quot;cardOverrides&quot;: [
+    {
+      &quot;sku&quot;: &quot;VS-8531&quot;,
+      &quot;badge&quot;: &quot;Best seller&quot;
+    }
+  ],
   &quot;sectionId&quot;: &quot;bodytech-elite&quot;
 }</pre></section>
 <section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>The section frames are <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402823" target="_blank" rel="noopener"><code>18227:402823</code></a> (desktop, 1512) and <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-412530" target="_blank" rel="noopener"><code>18227:412530</code></a> (mobile, 375). The card is <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402841" target="_blank" rel="noopener"><code>18227:402841</code></a>; its master lives in an external library, so no variant axes are readable in this file.</p>

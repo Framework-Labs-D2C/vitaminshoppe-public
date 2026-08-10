@@ -125,7 +125,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>wide — 1920px</figcaption>
 <img src="./wide-1920.png" alt="testimonials rendered at 1920px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
-<p>Generated from <code>_schema.json</code>, in the order Amplience shows them.</p>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
 <tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
 <td>string</td>
@@ -162,7 +162,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>Full URL of the photograph behind the whole module. It is treated as decoration and needs no alt text, so do not put anything readable in it. The cards sit on top at 92% white, so a busy or dark centre makes the reviews hard to read — the design keeps the middle of the frame clear and puts the product at the corners. jpg, jpeg or png.</td></tr><tr><td><code>backgroundImageMobile</code><br /><strong>Background image (mobile)</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Full URL of the phone crop, which the design supplies as a separate portrait image rather than the desktop one re-cropped. Falls back to the desktop image when empty, which will centre-crop it and can push the product out of frame — supply one wherever you can.</td></tr><tr><td><code>body</code><br /><strong>Description</strong></td>
 <td>string</td>
 <td class="req"></td>
@@ -174,7 +174,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>The call to action under the reviews, e.g. &quot;Shop Peptides&quot;. The button only renders when both a label and a link are set. It hugs its text on desktop and stretches the full width on phones.</td></tr><tr><td><code>ctaUrl</code><br /><strong>Button link</strong></td>
 <td>string</td>
 <td class="req"></td>
-<td></td>
+<td>max 500</td>
 <td>Where the button goes. Use a relative path for vitaminshoppe.com destinations.</td></tr><tr><td><code>ctaStyle</code><br /><strong>Button colour</strong></td>
 <td>string</td>
 <td class="req"></td>
@@ -202,25 +202,25 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       &quot;name&quot;: &quot;Joby T.&quot;,
       &quot;rating&quot;: 5,
       &quot;review&quot;: &quot;Three weeks in and my recovery between sessions is noticeably faster. Mixes clean with no aftertaste at all.&quot;,
-      &quot;verifiedPurchase&quot;: true
+      &quot;showVerifiedPurchase&quot;: true
     },
     {
       &quot;name&quot;: &quot;Leah C.&quot;,
       &quot;rating&quot;: 5,
       &quot;review&quot;: &quot;I was sceptical about peptides but the difference in my sleep quality alone made this worth every penny.&quot;,
-      &quot;verifiedPurchase&quot;: true
+      &quot;showVerifiedPurchase&quot;: true
     },
     {
       &quot;name&quot;: &quot;Michael G.&quot;,
       &quot;rating&quot;: 4,
       &quot;review&quot;: &quot;Good value compared to what I was buying before, and it actually dissolves properly in cold water.&quot;,
-      &quot;verifiedPurchase&quot;: true
+      &quot;showVerifiedPurchase&quot;: true
     },
     {
       &quot;name&quot;: &quot;Priya N.&quot;,
       &quot;rating&quot;: 5,
       &quot;review&quot;: &quot;My joints stopped aching after long runs. I have already reordered twice and told two friends.&quot;,
-      &quot;verifiedPurchase&quot;: false
+      &quot;showVerifiedPurchase&quot;: false
     }
   ],
   &quot;backgroundImage&quot;: &quot;../assets/testimonials-desktop-1717.jpg&quot;,
