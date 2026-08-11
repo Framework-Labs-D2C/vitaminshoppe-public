@@ -80,6 +80,30 @@ th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; ver
 th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
 td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 
+.compare { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin-top: 16px; }
+.compare-bar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 10px 12px; border-bottom: 1px solid var(--rule); background: var(--surface-sub); }
+.compare-bar button { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink-soft); cursor: pointer; }
+.compare-bar button:hover:not(:disabled) { background: var(--page); }
+.compare-bar button.on { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.compare-bar button:disabled { opacity: 0.38; cursor: not-allowed; }
+.compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
+.compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
+
+.compare-stage { padding: 0; }
+.compare-stage.actual { overflow-x: auto; }
+.compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.compare-stage.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
+.compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
+.compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
+.compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
+.compare-frame.fade .compare-build { clip-path: none; opacity: calc((100 - var(--p)) / 100); }
+.compare-line { position: absolute; top: 0; bottom: 0; left: calc(var(--p) * 1%); width: 2px; margin-left: -1px; background: var(--ink); pointer-events: none; }
+.compare-grip { position: absolute; top: 50%; left: calc(var(--p) * 1%); transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 13px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); pointer-events: none; }
+.compare-frame.fade .compare-line, .compare-frame.fade .compare-grip { display: none; }
+.compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
+.compare-tag.design { left: 10px; background: var(--brand-deep); }
+.compare-tag.build { right: 10px; background: var(--success-deep); }
+
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
 .shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
 .shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
@@ -115,7 +139,21 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 </header>
 
 <section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
-<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
+<p>Wipe the handle across the design to find where the build drifts from it. The Figma frame and the capture are exported at the same width, so anything that moves under the handle is a real difference. Every width is below as a plain capture.</p>
+<div class="compare" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
+  <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
+    <button type="button" data-fade>Fade</button><button type="button" data-actual>1:1</button>
+    <span class="hint">drag to wipe · arrow keys to nudge</span></div>
+  <div class="compare-stage" data-stage>
+    <div class="compare-frame" data-frame style="--p:50;--compare-width:1512px" role="slider" tabindex="0"
+      aria-label="Figma design against the captured build" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <img data-design src="./figma-desktop.jpg" alt="Figma design, desktop" />
+      <div class="compare-build"><img data-build src="./desktop-1512.png" alt="Captured build, desktop" /></div>
+      <div class="compare-line"></div><div class="compare-grip">&#8646;</div>
+      <span class="compare-tag design">Figma</span><span class="compare-tag build">Build</span>
+    </div>
+  </div>
+</div>
 <div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
 <img src="./desktop-1512.png" alt="testimonials rendered at 1512px" loading="lazy" /></figure>
 <figure><figcaption>mobile — 375px</figcaption>
@@ -259,5 +297,107 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <div class="card"><h3 id="desktop-cards-have-no-rating-in-the-drawn-design-but-the-schema-requires-one">Desktop cards have no rating in the drawn design, but the schema requires one</h3><p><span class="badge built">Built</span></p><p>Every card in both frames shows five filled stars, so the design does not demonstrate a partial rating. The schema takes a whole number 1-5 per card and draws it accurately rather than rounding to five. See Open comment 7.</p></div></section>
 </main>
 </div>
+<script>(() => {
+  const clamp = (value) => Math.max(0, Math.min(100, value));
+
+  document.querySelectorAll("[data-compare]").forEach((compare) => {
+    const sources = JSON.parse(compare.dataset.compare);
+    const stage = compare.querySelector("[data-stage]");
+    const frame = compare.querySelector("[data-frame]");
+    const design = compare.querySelector("[data-design]");
+    const build = compare.querySelector("[data-build]");
+    const viewButtons = compare.querySelectorAll("[data-view]");
+    const fadeButton = compare.querySelector("[data-fade]");
+    const actualButton = compare.querySelector("[data-actual]");
+
+    /**
+     * The design frame is in normal flow and so sets the frame's height, while
+     * the build is absolutely positioned over it. Where the build renders
+     * taller than the design — which is the drift this block exists to show —
+     * it would be clipped, so the frame is padded by the difference in ratio.
+     */
+    const fit = () => {
+      if (!design.naturalWidth || !build.naturalWidth) return;
+      const difference = build.naturalHeight / build.naturalWidth - design.naturalHeight / design.naturalWidth;
+      frame.style.paddingBottom = difference > 0 ? (difference * 100).toFixed(4) + "%" : "";
+    };
+    design.addEventListener("load", fit);
+    build.addEventListener("load", fit);
+    fit();
+
+    const show = (view) => {
+      const source = sources[view];
+      if (!source) return;
+      frame.style.paddingBottom = "";
+      design.src = source.design;
+      build.src = source.build;
+      design.alt = "Figma design, " + view;
+      build.alt = "Captured build, " + view;
+      frame.style.setProperty("--compare-width", source.width + "px");
+      viewButtons.forEach((button) => button.classList.toggle("on", button.dataset.view === view));
+
+      // A mobile frame already fits the column, so it is displayed at actual
+      // size either way and the toggle has nothing to do.
+      actualButton.disabled = source.width <= stage.clientWidth;
+      if (actualButton.disabled) {
+        stage.classList.remove("actual");
+        actualButton.classList.remove("on");
+      }
+      fit();
+    };
+
+    let position = 50;
+    const move = (value) => {
+      position = clamp(value);
+      frame.style.setProperty("--p", position);
+      frame.setAttribute("aria-valuenow", Math.round(position));
+    };
+    const moveTo = (clientX) => {
+      const box = frame.getBoundingClientRect();
+      move(((clientX - box.left) / box.width) * 100);
+    };
+
+    let dragging = false;
+    frame.addEventListener("pointerdown", (event) => {
+      dragging = true;
+      frame.setPointerCapture(event.pointerId);
+      moveTo(event.clientX);
+      event.preventDefault();
+    });
+    frame.addEventListener("pointermove", (event) => {
+      if (dragging) moveTo(event.clientX);
+    });
+    frame.addEventListener("pointerup", () => {
+      dragging = false;
+    });
+    frame.addEventListener("pointercancel", () => {
+      dragging = false;
+    });
+
+    const STEPS = { ArrowLeft: -2, ArrowRight: 2, PageDown: -10, PageUp: 10 };
+    frame.addEventListener("keydown", (event) => {
+      if (event.key === "Home") move(0);
+      else if (event.key === "End") move(100);
+      else if (STEPS[event.key] !== undefined) move(position + STEPS[event.key]);
+      else return;
+      event.preventDefault();
+    });
+
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!button.disabled) show(button.dataset.view);
+      });
+    });
+    fadeButton.addEventListener("click", () => {
+      fadeButton.classList.toggle("on", frame.classList.toggle("fade"));
+    });
+    actualButton.addEventListener("click", () => {
+      if (!actualButton.disabled) actualButton.classList.toggle("on", stage.classList.toggle("actual"));
+    });
+
+    show(sources.desktop ? "desktop" : "mobile");
+    move(50);
+  });
+})();</script>
 </body>
 </html>
