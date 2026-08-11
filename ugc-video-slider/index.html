@@ -216,28 +216,28 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   &quot;cards&quot;: [
     {
       &quot;cardType&quot;: &quot;video&quot;,
-      &quot;sku&quot;: &quot;INF-17511&quot;,
+      &quot;sku&quot;: &quot;X2-16692&quot;,
       &quot;image&quot;: &quot;../assets/ugc-demo-gym-620.jpg&quot;,
       &quot;imageAlt&quot;: &quot;A man performing a seated cable row on a bench in a gym&quot;,
       &quot;video&quot;: &quot;https://cdn.shopify.com/videos/c/o/v/ec8b2d17dd4349c1854087a29e52101a.mp4&quot;
     },
     {
       &quot;cardType&quot;: &quot;text quote&quot;,
-      &quot;sku&quot;: &quot;INF-17511&quot;,
+      &quot;sku&quot;: &quot;X2-16692&quot;,
       &quot;name&quot;: &quot;Alex T&quot;,
       &quot;review&quot;: &quot;Recovery became a lot more manageable after adding peptides to my routine. I feel less worn down between training sessions and can stay consistent throughout the week.&quot;,
       &quot;rating&quot;: 5
     },
     {
       &quot;cardType&quot;: &quot;video&quot;,
-      &quot;sku&quot;: &quot;X2-16065&quot;,
+      &quot;sku&quot;: &quot;X2-16694&quot;,
       &quot;image&quot;: &quot;../assets/ugc-demo-shelf-620.jpg&quot;,
       &quot;imageAlt&quot;: &quot;A shopper flexing beside a shelf of BodyTech tubs, holding a Muscle Growth Peptide container&quot;,
       &quot;video&quot;: &quot;https://cdn.shopify.com/videos/c/o/v/ec8b2d17dd4349c1854087a29e52101a.mp4&quot;
     },
     {
       &quot;cardType&quot;: &quot;text quote&quot;,
-      &quot;sku&quot;: &quot;VS-4612&quot;,
+      &quot;sku&quot;: &quot;X2-16693&quot;,
       &quot;name&quot;: &quot;James G&quot;,
       &quot;review&quot;: &quot;I have been using MuscleTech Peptides daily for over a month. The quality is excellent, recovery feels noticeably better, and they have become part of my everyday stack.&quot;,
       &quot;rating&quot;: 5
@@ -301,7 +301,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <div class="card"><h3 id="the-product-name-under-a-card-is-one-line-and-truncates-on-real-data">The product name under a card is one line and truncates on real data</h3><p><span class="badge built">Built</span></p><p>The strip is drawn as a single non-wrapping line, and the name in the design, &quot;Muscle Growth Peptide&quot;, is 21 characters. Real TVS short names are about twice that: the same product is &quot;Muscle Growth Peptide Powder with DL 185 Peptides (Dileucine) and myHMB, Unflavored, 30 Servings&quot;. The name therefore ends in an ellipsis on most cards at every width, which the design never shows.</p>
 <p>Left as drawn, decided by Felix on 2026-08-10. The card's job is to identify the clip rather than to spell out the variant, and the full long name is one tap away in the viewer's product panel, where it has three clamped lines to itself. Clamping the card's name to two lines instead would grow the strip from 64px to about 88px and retire the one-line width floor that every step of the card ladder is derived from. See Open comment 6, which already asks whether the card strip and the viewer panel are meant to show the same string.</p></div>
 <div class="card"><h3 id="quote-cards-are-the-same-height-as-video-cards-not-two-pixels-taller">Quote cards are the same height as video cards, not two pixels taller</h3><p><span class="badge built">Built</span></p><p>In the desktop frame the two review cards are 626.2 tall against the video cards' 622.2, and sit two pixels above and two below them. That is not a drawn decision: the video card's height is Hug and the review card's is Fixed, so the review frame simply was not re-fitted after its contents changed. Reproducing it would mean four cards in a row that do not share a baseline, for no reason a shopper could name. Both card types take their height from the same media ratio here, so the row is flush.</p></div>
-<div class="card"><h3 id="the-card-body-field-is-keyed-review-while-the-merchandiser-reads-quote">The card body field is keyed <code>review</code> while the merchandiser reads &quot;Quote&quot;</h3><p><span class="badge built">Built</span></p><p>Internal only, recorded so the two names are not read as a mistake. The FSD calls the field Quote and that is its <code>title</code> in the CMS panel. Its key is <code>review</code>, matching <code>sections/testimonials</code>, which already pairs exactly this triple — a customer name, a 1-to-5 star rating and their words — under that name. The shared-vocabulary rule in <code>sections/CLAUDE.md</code> is that a field meaning the same thing in two sections must be named the same in both, and this means the same thing.</p></div></section>
+<div class="card"><h3 id="the-card-body-field-is-keyed-review-while-the-merchandiser-reads-quote">The card body field is keyed <code>review</code> while the merchandiser reads &quot;Quote&quot;</h3><p><span class="badge built">Built</span></p><p>Internal only, recorded so the two names are not read as a mistake. The FSD calls the field Quote and that is its <code>title</code> in the CMS panel. Its key is <code>review</code>, matching <code>sections/testimonials</code>, which already pairs exactly this triple — a customer name, a 1-to-5 star rating and their words — under that name. The shared-vocabulary rule in <code>sections/CLAUDE.md</code> is that a field meaning the same thing in two sections must be named the same in both, and this means the same thing.</p></div>
+<div class="card"><h3 id="a-card-whose-sku-does-not-resolve-hides-its-product-row-rather-than-showing-an-empty-one">A card whose SKU does not resolve hides its product row rather than showing an empty one</h3><p><span class="badge corrected">Corrected</span>  2026-08-11</p><p>Neither the design nor the FSD draws a card without a product, because the SKU field is required and every frame shows one. Live content reaches that state anyway, three different ways: the bulk lookup is still in flight, the storefront does not carry the SKU, or TVS-Common never hydrated and the whole fetch failed. All three used to render the same thing — a 32px grey square and a blank line under every card — and on qa1, where four of the six sample SKUs are absent from the catalogue, that read as a broken module rather than as missing data.</p>
+<p>Three states now. In flight, the row is a pulsing placeholder of its own geometry. Resolved, it is the design. Unresolved, the row is removed and the card is its video or quote alone; the slides stretch to a common height and the media box is a fixed ratio, so nothing moves beside it.</p>
+<p>The pop-up follows the same rule with one exception: on desktop the product panel keeps its 460px column even with nothing in it. The reel scrolls between cards that may not all resolve, and a panel that came and went would shove the clip sideways mid-scroll. On mobile the panel is an overlay on top of the clip, so there is no layout to preserve and it is hidden outright.</p>
+<p>A resolved product is also allowed to be incomplete. Every MuscleTech peptide on qa1 returns a name and an image with a null price and <code>cartableFlags.DTC</code> false, so the price line renders only when there is a price, and the button reads &quot;Unavailable Online&quot; and is disabled rather than offering a purchase the cart will refuse.</p></div></section>
 </main>
 </div>
 <script>(() => {
