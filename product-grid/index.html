@@ -147,15 +147,15 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 
 <section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
 <p>Wipe the handle across the design to find where the build drifts from it. The Figma frame and the capture are exported at the same width, so anything that moves under the handle is a real difference. Every width is below as a plain capture.</p>
-<div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
+<div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.9306},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:4.06}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
     <button type="button" data-fade>Fade</button><button type="button" data-actual>1:1</button>
     <span class="hint">drag to wipe · arrow keys to nudge</span></div>
   <div class="compare-stage" data-stage>
-    <div class="compare-frame" data-frame style="--p:50" role="slider" tabindex="0"
+    <div class="compare-frame" data-frame style="--p:50;aspect-ratio:1/0.9306" role="slider" tabindex="0"
       aria-label="Figma design against the captured build" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-      <img data-design src="./figma-desktop.jpg" alt="Figma design, desktop" />
-      <div class="compare-build"><img data-build src="./desktop-1512.png" alt="Captured build, desktop" /></div>
+      <img data-design loading="lazy" src="./figma-desktop.jpg" alt="Figma design, desktop" />
+      <div class="compare-build"><img data-build loading="lazy" src="./desktop-1512.png" alt="Captured build, desktop" /></div>
       <div class="compare-line"></div><div class="compare-grip">&#8646;</div>
       <span class="compare-tag design">Figma</span><span class="compare-tag build">Build</span>
     </div>
@@ -315,15 +315,15 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
     const actualButton = compare.querySelector("[data-actual]");
 
     /**
-     * The design frame is in normal flow and so sets the frame's height, while
-     * the build is absolutely positioned over it. Where the build renders
-     * taller than the design — which is the drift this block exists to show —
-     * it would be clipped, so the frame is padded by the difference in ratio.
+     * The frame is rendered with the taller of the two ratios already measured
+     * at build time. This re-derives it from what actually loaded, so a capture
+     * that has been recaptured since still gets the room it needs rather than
+     * being clipped exactly where the drift is.
      */
     const fit = () => {
       if (!design.naturalWidth || !build.naturalWidth) return;
-      const difference = build.naturalHeight / build.naturalWidth - design.naturalHeight / design.naturalWidth;
-      frame.style.paddingBottom = difference > 0 ? (difference * 100).toFixed(4) + "%" : "";
+      const ratio = Math.max(design.naturalHeight / design.naturalWidth, build.naturalHeight / build.naturalWidth);
+      frame.style.aspectRatio = "1/" + ratio.toFixed(4);
     };
     design.addEventListener("load", fit);
     build.addEventListener("load", fit);
@@ -332,7 +332,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
     const show = (view) => {
       const source = sources[view];
       if (!source) return;
-      frame.style.paddingBottom = "";
+      frame.style.aspectRatio = "1/" + source.ratio;
       design.src = source.design;
       build.src = source.build;
       design.alt = "Figma design, " + view;
