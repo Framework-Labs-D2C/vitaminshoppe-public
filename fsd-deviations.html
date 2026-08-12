@@ -135,8 +135,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 .tag.finding { background: #fdf3e0; color: #8a5a00; }
 h3.group { display: flex; align-items: baseline; gap: 10px; margin: 40px 0 12px; padding-top: 20px; border-top: 1px solid var(--rule); }
 .count { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; }
-.chips { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.chips-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.13em; color: var(--ink-faint); font-weight: 600; }
 .chip { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; border-radius: 999px; padding: 3px 10px; background: var(--brand-tint); color: var(--brand-deep); }
+a.chip { text-decoration: none; border: 1px solid var(--brand-line); }
+a.chip:hover, a.chip:focus-visible { background: var(--brand); color: #fff; border-color: var(--brand); }
 .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 14px; }
 ul.also { columns: 2; column-gap: 32px; font-size: 14px; }
 ul.also li { break-inside: avoid; }
@@ -171,7 +174,7 @@ ul.also li { break-inside: avoid; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">QA reference</p>
   <h1>Where the build differs from the spec, and why</h1>
-  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 78 differences across 12 sections, plus 22 findings worth knowing before you test.</p>
+  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 79 differences across 12 sections, plus 22 findings worth knowing before you test.</p>
   <p class="lede">Everything listed here is a decision. If you find something that differs from the spec and is <strong>not</strong> on this page, that is worth raising.</p>
 </header>
 
@@ -189,13 +192,13 @@ ul.also li { break-inside: avoid; }
 <h4 id="tablet-widths-are-best-effort-and-are-not-part-of-this-review">Tablet widths are best-effort, and are not part of this review</h4>
 <p>Figma tokenises its desktop frames at 1200 and above and its mobile frames at 768 and below, so <strong>the band between them is not drawn in any design we were given</strong>. Every value a section uses in that band — where it changes column count, how many cards sit in a row, when the drawn type sizes step in — was chosen to fit the screen sensibly rather than measured from a frame. Those choices are not listed per section and are not defects. <strong>The drawn widths, 1512 and 375, are the ones to review</strong>; the captures on each section's reference page are taken at both.</p>
 </div>
-<p class="excluded">Two kinds of note are deliberately left out. Of the 152 deviation notes recorded across the twelve specs, 13 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 11 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 152 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
+<p class="excluded">Two kinds of note are deliberately left out. Of the 153 deviation notes recorded across the twelve specs, 13 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 11 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 153 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
 </section>
 
 <section id="review">
 <p class="eyebrow">02 — Where to review</p>
 <h2>Everything to open</h2>
-<p>The two templates below are the full pages on the QA storefront. Each section also has its own detail page carrying the spec, a design-against-build wipe, the field list and the sample content it renders. Every capture is published at 4 widths; the two most useful are linked per row.</p>
+<p>The two templates below are the full pages on the QA storefront. Each section also has its own detail page carrying the spec, a design-against-build wipe, the field list and the sample content it renders. Every capture is published at 4 widths; the two most useful are linked per row. Each section further down names the templates it renders on, and those link back to these pages.</p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/" target="_blank" rel="noopener">All published files and screenshots</a></p>
 <h3 class="group">Template 1 <span class="count">10 slots</span></h3>
 <p class="links"><a href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener">https://qa1.vitaminshoppe.com/lp/platter-template-1-dev</a></p>
@@ -438,7 +441,7 @@ ul.also li { break-inside: avoid; }
 <section id="global-seo">
 <p class="eyebrow">05 — global-seo</p>
 <h2>global-seo</h2>
-<p class="chips"><span class="chip">Template 1</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/global-seo/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 
 <h3 class="group">Differences <span class="count">3</span></h3>
@@ -472,7 +475,7 @@ ul.also li { break-inside: avoid; }
 <section id="slim-hero-banner-a">
 <p class="eyebrow">06 — slim-hero-banner-a</p>
 <h2>slim-hero-banner-a</h2>
-<p class="chips"><span class="chip">Template 1</span><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./slim-hero-banner-a/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./slim-hero-banner-a/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.3929},&quot;mobile&quot;:{&quot;design&quot;:&quot;./slim-hero-banner-a/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./slim-hero-banner-a/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.512}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -551,7 +554,7 @@ ul.also li { break-inside: avoid; }
 <section id="expert-module">
 <p class="eyebrow">07 — expert-module</p>
 <h2>expert-module</h2>
-<p class="chips"><span class="chip">Template 1</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./expert-module/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./expert-module/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.4067},&quot;mobile&quot;:{&quot;design&quot;:&quot;./expert-module/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./expert-module/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.8027}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -670,7 +673,7 @@ ul.also li { break-inside: avoid; }
 <section id="sticky-nav-bar">
 <p class="eyebrow">08 — sticky-nav-bar</p>
 <h2>sticky-nav-bar</h2>
-<p class="chips"><span class="chip">Template 1</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./sticky-nav-bar/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./sticky-nav-bar/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.0344},&quot;mobile&quot;:{&quot;design&quot;:&quot;./sticky-nav-bar/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./sticky-nav-bar/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:0.1387}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -753,7 +756,7 @@ ul.also li { break-inside: avoid; }
 <section id="product-carousel">
 <p class="eyebrow">09 — product-carousel</p>
 <h2>product-carousel</h2>
-<p class="chips"><span class="chip">Template 1</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./product-carousel/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./product-carousel/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5615},&quot;mobile&quot;:{&quot;design&quot;:&quot;./product-carousel/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./product-carousel/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.6253}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -820,7 +823,7 @@ ul.also li { break-inside: avoid; }
 <section id="benefits-highlights">
 <p class="eyebrow">10 — benefits-highlights</p>
 <h2>benefits-highlights</h2>
-<p class="chips"><span class="chip">Template 1</span><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./benefits-highlights/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./benefits-highlights/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5714},&quot;mobile&quot;:{&quot;design&quot;:&quot;./benefits-highlights/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./benefits-highlights/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:2.8987}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -895,7 +898,7 @@ ul.also li { break-inside: avoid; }
 <section id="ugc-video-slider">
 <p class="eyebrow">11 — ugc-video-slider</p>
 <h2>ugc-video-slider</h2>
-<p class="chips"><span class="chip">Template 1</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./ugc-video-slider/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./ugc-video-slider/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5698},&quot;mobile&quot;:{&quot;design&quot;:&quot;./ugc-video-slider/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./ugc-video-slider/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.8133}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1002,7 +1005,7 @@ ul.also li { break-inside: avoid; }
 <section id="faq">
 <p class="eyebrow">12 — faq</p>
 <h2>faq</h2>
-<p class="chips"><span class="chip">Template 1</span><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./faq/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./faq/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5159},&quot;mobile&quot;:{&quot;design&quot;:&quot;./faq/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./faq/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.6907}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1085,7 +1088,7 @@ ul.also li { break-inside: avoid; }
 <section id="product-grid">
 <p class="eyebrow">13 — product-grid</p>
 <h2>product-grid</h2>
-<p class="chips"><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./product-grid/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./product-grid/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.9306},&quot;mobile&quot;:{&quot;design&quot;:&quot;./product-grid/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./product-grid/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:4.06}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1160,7 +1163,7 @@ ul.also li { break-inside: avoid; }
 <section id="testimonials">
 <p class="eyebrow">14 — testimonials</p>
 <h2>testimonials</h2>
-<p class="chips"><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./testimonials/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./testimonials/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.4663},&quot;mobile&quot;:{&quot;design&quot;:&quot;./testimonials/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./testimonials/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.5387}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1176,7 +1179,7 @@ ul.also li { break-inside: avoid; }
     </div>
   </div>
 </div>
-<h3 class="group">Differences <span class="count">5</span></h3>
+<h3 class="group">Differences <span class="count">6</span></h3>
 <div class="card">
 <h4 id="the-slider-geometry-follows-product-carousel-not-this-section-s-own-frame">The slider geometry follows Product Carousel, not this section's own frame</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -1217,6 +1220,14 @@ ul.also li { break-inside: avoid; }
 <dt>What ships</dt><dd>A whole number 1-5 per card, drawn accurately rather than rounded to five.</dd>
 <dt>Why</dt><dd><strong>QA will see partial star rows, which the sample cards do not demonstrate.</strong> Whether halves are allowed and whether a numeric value appears anywhere is still open.</dd>
 </dl></div>
+<div class="card">
+<h4 id="the-progress-dots-are-controls-not-only-an-indicator">The progress dots are controls, not only an indicator</h4>
+<p class="line"><span class="tag drift">Differs</span></p>
+<dl>
+<dt>Spec &amp; design</dt><dd>The Admin requirement asks for “a progress-dot indicator”, and the frames draw one: 8px dots on an 8px pitch, active navy, inactive black at 40%. Nothing says a dot can be pressed, and no pressed or hover treatment is drawn. Separately, the User requirement says a shopper “can swipe/arrow through cards” — and this section's frames draw no arrows at all.</dd>
+<dt>What ships</dt><dd>Each dot is a button that scrolls to its page. The drawing is untouched — same 8px circle, same 8px gap, same alignment — and the pressable area is grown to 16 × 24 by an invisible box around it, so the dots neither move nor change size.</dd>
+<dt>Why</dt><dd><strong>Below 768 the dots are the only pagination control on screen.</strong> The arrows are drawn desktop-only, so a purely decorative indicator leaves a phone shopper with swiping as the single way to reach the fourth review, and leaves the spec's own “swipe/arrow” requirement with nothing to arrow. A dot is also a control shoppers already expect to press. <strong>QA should see the indicator exactly as drawn, and find that it now responds to a click.</strong></dd>
+</dl></div>
 <h3 class="group">Findings <span class="count">2</span></h3>
 <div class="card finding">
 <h4 id="nothing-constrains-the-background-and-three-elements-sit-on-it-unprotected">Nothing constrains the background, and three elements sit on it unprotected</h4>
@@ -1231,7 +1242,7 @@ ul.also li { break-inside: avoid; }
 <section id="bundle-module">
 <p class="eyebrow">15 — bundle-module</p>
 <h2>bundle-module</h2>
-<p class="chips"><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./bundle-module/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./bundle-module/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5172},&quot;mobile&quot;:{&quot;design&quot;:&quot;./bundle-module/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./bundle-module/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:2.3093}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1346,7 +1357,7 @@ ul.also li { break-inside: avoid; }
 <section id="shop-by-goal">
 <p class="eyebrow">16 — shop-by-goal</p>
 <h2>shop-by-goal</h2>
-<p class="chips"><span class="chip">Template 2</span></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./shop-by-goal/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./shop-by-goal/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.4577},&quot;mobile&quot;:{&quot;design&quot;:&quot;./shop-by-goal/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./shop-by-goal/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.8373}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
