@@ -197,7 +197,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>array</td>
 <td class="req"></td>
 <td></td>
-<td>Optional, per-SKU decoration. Each row names one SKU from the list above and replaces that card's automatic badge. Cards without a row here are untouched, and a row for a SKU that is not in the list does nothing.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>Optional, per-SKU decoration. Each row names one SKU from the list above and replaces that card's automatic badge, the note behind the badge's info glyph, or both. Cards without a row here are untouched, and a row for a SKU that is not in the list does nothing.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
@@ -211,12 +211,12 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   &quot;headingFont&quot;: &quot;Lato&quot;,
   &quot;body&quot;: &quot;Clinically dosed formulas built for people who train hard and recover harder.&quot;,
   &quot;skus&quot;: [
-    &quot;MOM-17666&quot;,
-    &quot;LEG-15353&quot;,
-    &quot;CWN-16465&quot;,
     &quot;VS-0397&quot;,
-    &quot;RHO-17156&quot;,
+    &quot;VS-8532&quot;,
+    &quot;VS-8521&quot;,
     &quot;VS-8531&quot;,
+    &quot;VS-2668&quot;,
+    &quot;VS-2255&quot;,
     &quot;TPL0006&quot;,
     &quot;KGM1011&quot;
   ],
@@ -225,6 +225,15 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
     {
       &quot;sku&quot;: &quot;VS-8531&quot;,
       &quot;badge&quot;: &quot;Best seller&quot;
+    },
+    {
+      &quot;sku&quot;: &quot;VS-2668&quot;,
+      &quot;badge&quot;: &quot;New&quot;
+    },
+    {
+      &quot;sku&quot;: &quot;VS-2255&quot;,
+      &quot;badge&quot;: &quot;Bundle &amp; Save&quot;,
+      &quot;tooltip&quot;: &quot;Save 20% when you buy any two BodyTech mass gainers. Offer valid through 08/23/2026. Discount applies at checkout and cannot be combined with other promotions. Excludes clearance items.&quot;
     }
   ],
   &quot;sectionId&quot;: &quot;bodytech-elite&quot;
@@ -259,9 +268,10 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <p>And the design's price row and button share a line, which cannot hold at 163.5px wide: a 138px button beside two prices overflows, so below 244px of card the prices sit above a full-width button. Between 244 and 299 the row is inline but stepped down — 16px prices at an 8px gap, and a button padded 12 rather than 24 — because the drawn row measures 126 of prices, 12 inside them, 24 to the button and the button's own 138, which is 300px exactly. The prices never wrap: left to wrap they were the flex item that gave way, which read as a stacked card that had forgotten to stack.</p></div>
 <div class="card"><h3 id="the-offer-text-is-hidden-and-its-detail-moved-onto-the-badge-glyph">The offer text is hidden and its detail moved onto the badge glyph</h3><p><span class="badge built">Built</span></p><p>The design and the live tile both put <code>promoMessage</code> as a text line under the review count. It is hidden for now at the client's request, because 36 of the 45 SKUs on the creatine collection carry nothing but <code>Auto-Delivery Save 15%</code> and auto-delivery is not being merchandised in these modules.</p>
 <p>The rest of that copy is not dropped. Anything that is not an auto-delivery message — <code>Buy One, Get One 50% Off</code>, <code>25% Off - See Sale Price In Cart</code>, <code>Ships Free!</code>, <code>Only at the Vitamin Shoppe</code> — is joined to the <code>tooltipMessage</code> legal detail and shown in the panel behind the info glyph, which moves into the badge. That is where the design draws it: § Design reference records the badge and its glyph as one unit with an optional 16px glyph. A SKU with offer copy and no badge renders the glyph alone in that slot, so its position never moves.</p></div>
-<div class="card"><h3 id="the-card-s-column-gap-stays-16-where-the-design-draws-24">The card's column gap stays 16, where the design draws 24</h3><p><span class="badge built">Built</span></p><p>§ Design reference records &quot;vertical gap 24 throughout&quot; from the desktop frame, and the card stepped from 16 to 24 once it was at least 280px wide.</p>
-<p>That 24 was drawn around a promo line the card no longer renders. With that row gone the column read as loose rather than generous: measured at 1512, the name box reserves 72px for a three-line clamp while the longest name in the module uses 48 and the shortest 24, so every card already carries 24 to 48px of unused reserve before any gap is counted. Holding 16 at every width takes about 16px back per card without touching the reserve, which is what keeps the review rows aligned across a module.</p>
-<p>The reserve itself was left alone deliberately: prices and buttons align through <code>margin-top: auto</code> regardless, but the review row lines up only because every name box is the same height.</p></div>
+<div class="card"><h3 id="the-card-s-column-gap-is-the-drawn-24">The card's column gap is the drawn 24</h3><p><span class="badge corrected">Corrected</span>  2026-08-11</p><p>§ Design reference records &quot;vertical gap 24 throughout&quot; from the desktop frame, and the card steps from 16 to 24 once it is at least 280px wide.</p>
+<p>It was held at 16 for a time, on the reasoning that the drawn 24 surrounded a promo line the card no longer renders and that the column read loose without it. That reasoning does not survive being stated plainly: hiding the promo line was the client's request, and re-tightening the spacing around its absence was ours. Restored on Felix's instruction 2026-08-11 — where the design draws a number and nothing asked us to change it, the design wins.</p></div>
+<div class="card"><h3 id="the-product-name-hugs-its-content-rather-than-reserving-three-lines">The product name hugs its content rather than reserving three lines</h3><p><span class="badge built">Built</span></p><p>§ Design reference records the name as &quot;three lines at 72&quot;, and the card reserved that height at every card — 63px narrow, 72px wide — so the rating, price and button rows lined up across cards whose names run to different lengths.</p>
+<p>The reserve is removed, on Felix's instruction 2026-08-11: names run to one or two lines on most real SKUs, so the third line was dead space under every short name. The cost is real and is the reason it was built that way. Prices and buttons still align, because they are pushed down by <code>margin-top: auto</code>; <strong>the rating row now sits wherever each name leaves it</strong>, so a two-line name puts its stars a line lower than its neighbours. The skeleton's name placeholder is therefore nominal rather than exact, and a card shortens slightly when a short name lands.</p></div>
 <div class="card"><h3 id="the-card-is-one-link-and-the-brand-line-is-no-longer-one">The card is one link, and the brand line is no longer one</h3><p><span class="badge built">Built</span></p><p>The design draws no link affordances, so which elements are anchors was ours to decide. It was four per card — image, brand, name, and the add-to-cart button — which put five tab stops on every card and 40 on a full carousel.</p>
 <p>The card is now a single anchor: the product name carries an <code>::after</code> inset over the whole card, so the entire card is one hit area and one tab stop. The image anchor is gone and the brand line is a <code>&lt;span&gt;</code>, which drops the brand page as a destination — a deliberate trade for the tab order. The add-to-cart and info-glyph buttons sit above the overlay on <code>z-index</code> rather than inside the anchor, because a <code>&lt;button&gt;</code> inside an <code>&lt;a&gt;</code> is invalid and announces unreliably; no click handler cancels a navigation. The focus ring is drawn on the card rather than the anchor, since the card is what the anchor covers.</p></div>
 <div class="card"><h3 id="states-absent-from-the-design">States absent from the design</h3><p><span class="badge built">Built</span></p><p>Figma draws no hover, focus, disabled, out-of-stock, loading or error state anywhere in this section. Accessibility is a delivery requirement, so the implementation adds a visible focus ring on every control, a disabled arrow at the ends of the track, a skeleton card while the request is in flight, a disabled Add to Cart labelled &quot;Out of Stock&quot; when <code>isTemporaryOutOfStock</code> is set, and a polite live region announcing the result of an add.</p></div>

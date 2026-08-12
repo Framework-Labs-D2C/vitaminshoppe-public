@@ -117,6 +117,8 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 .card dt { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.13em; color: var(--ink-faint); font-weight: 600; padding-top: 4px; }
 .card dd { margin: 0; color: var(--ink-soft); max-width: 68ch; }
 .card.finding { border-left: 3px solid var(--brand-line); }
+.card.note { border-left: 3px solid var(--brand); background: var(--brand-tint); }
+.card.note p { color: var(--ink); max-width: 74ch; }
 .line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
 .status { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
 .tag { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; padding: 3px 8px; font-weight: 600; }
@@ -162,7 +164,7 @@ ul.also li { break-inside: avoid; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">QA reference</p>
   <h1>Where the build differs from the spec, and why</h1>
-  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 88 differences across 12 sections, plus 23 findings worth knowing before you test.</p>
+  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 77 differences across 12 sections, plus 23 findings worth knowing before you test.</p>
   <p class="lede">Everything listed here is a decision. If you find something that differs from the spec and is <strong>not</strong> on this page, that is worth raising.</p>
 </header>
 
@@ -176,7 +178,11 @@ ul.also li { break-inside: avoid; }
 <tr><td><span class="tag addition">Added</span></td><td>The build does something the spec never asked for, usually because accessibility or the CMS vocabulary required it.</td></tr>
 <tr><td><span class="tag finding">Finding</span></td><td>Not a spec-versus-build difference, but worth knowing: something blocked on TVS, unverified, or a risk the design does not cover.</td></tr>
 </tbody></table></div>
-<p class="excluded">Development history is deliberately excluded. Of 150 deviation notes recorded across the twelve specs, 11 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and are not published here. They remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 150 is either published above or explicitly classified as history, so nothing reaches this page by accident and nothing falls off it either.</p>
+<div class="card note">
+<h4 id="tablet-widths-are-best-effort-and-are-not-part-of-this-review">Tablet widths are best-effort, and are not part of this review</h4>
+<p>Figma tokenises its desktop frames at 1200 and above and its mobile frames at 768 and below, so <strong>the band between them is not drawn in any design we were given</strong>. Every value a section uses in that band — where it changes column count, how many cards sit in a row, when the drawn type sizes step in — was chosen to fit the screen sensibly rather than measured from a frame. Those choices are not listed per section and are not defects. <strong>The drawn widths, 1512 and 375, are the ones to review</strong>; the captures on each section's reference page are taken at both.</p>
+</div>
+<p class="excluded">Two kinds of note are deliberately left out. Of the 152 deviation notes recorded across the twelve specs, 13 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 11 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 152 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
 </section>
 
 <section id="review">
@@ -317,12 +323,12 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>Google retired FAQ and HowTo rich results in 2023, requires single-product pages for Product rich results, and treats markup describing content not visible on the page as a manual-action trigger. Per-module emission with merchandiser toggles multiplies invalid states while earning nothing.</dd>
 </dl></div>
 <div class="card">
-<h4 id="hover-focus-disabled-loading-and-error-states-are-ours">Hover, focus, disabled, loading and error states are ours</h4>
+<h4 id="interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</h4>
 <p class="line"><span class="tag addition">Added</span></p>
 <dl>
-<dt>Spec &amp; design</dt><dd>No Figma frame in any section draws a hover, focus, disabled, out-of-stock, loading or error state. The FSDs do not describe them either.</dd>
-<dt>What ships</dt><dd>A visible focus ring on every control; disabled carousel arrows at the ends of a track; skeleton cards while a product request is in flight; a disabled Add to Cart reading “Out of Stock”; and polite live regions announcing async results.</dd>
-<dt>Why</dt><dd>Accessibility is a delivery requirement rather than a spec line. Every one of these is a state QA will see that has no design to compare against.</dd>
+<dt>Spec &amp; design</dt><dd>The design system specifies states where a component owns them — the button's hover and disabled are drawn at Figma <code>7078:62</code>, and the icon button carries a <code>State</code> property. Section frames place their instances at <code>State=Default</code>, which is the normal way to compose a layout, so per-section hover, focus and pressed treatments are not drawn. Loading, error and out-of-stock are outside what a static frame expresses at all.</dd>
+<dt>What ships</dt><dd>Where the design system specifies a state we follow it exactly. Everything else is built: a visible focus ring on every control, disabled carousel arrows at the ends of a track, skeleton cards while a product request is in flight, a disabled Add to Cart reading “Out of Stock”, and polite live regions announcing async results.</dd>
+<dt>Why</dt><dd>Accessibility is a delivery requirement rather than a spec line, so these are built rather than deferred until they are specified. <strong>They are the states QA will see with no frame to compare against</strong> — anything that looks wrong here is a design pass waiting to happen rather than a defect.</dd>
 </dl></div>
 <div class="card">
 <h4 id="heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</h4>
@@ -347,14 +353,6 @@ ul.also li { break-inside: avoid; }
 <dt>Spec &amp; design</dt><dd>Benefits Highlight, Testimonials, Shop By Goal, Product Grid, Static Bundle, Shoppable UGC and Product Carousel all draw their heading in <strong>Fields</strong>.</dd>
 <dt>What ships</dt><dd>Fields is offered and is the default in every one of those except Product Carousel, which defaults to Lato. Fields is not <code>@font-face</code>-declared on vitaminshoppe.com, so it resolves to Georgia.</dd>
 <dt>Why</dt><dd>Checked against the live site: <code>customFonts.css</code> and <code>tvs-header.css</code> self-host Lato, the Corisande family, <code>louisiana</code> and <code>thehistoriasolid</code>, and nothing named Fields appears in any <code>@font-face</code> rule. Georgia keeps the module reading as a serif rather than silently becoming Lato. Every content item is already correct the moment TVS supply the file. <strong>The two product modules are inconsistent with each other until this is answered.</strong></dd>
-</dl></div>
-<div class="card">
-<h4 id="the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Figma tokenises the desktop frames “1200px and above” and the mobile frames “768px and below”. Nothing is drawn between them, in any design we have been given.</dd>
-<dt>What ships</dt><dd>Sections do not flip from mobile to desktop at 768. Each chooses <code>lg</code> (1024) or <code>xl</code> (1280) where the arithmetic demands it, and steps the drawn Figma values in separately. The per-section widths are listed under each section below.</dd>
-<dt>Why</dt><dd>Where a desktop composition is dimensioned in fixed pixels, applying it at 768 does not shrink it, it starves whatever is left — the Expert Module renders a 36px quote in 158px that way. This is the single biggest source of layout QA will see at widths the design never covered.</dd>
 </dl></div>
 <div class="card finding">
 <h4 id="the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</h4>
@@ -393,12 +391,12 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>Hidden at the client's request: 36 of the 45 SKUs on the creatine collection carry nothing but “Auto-Delivery Save 15%”, and auto-delivery is not being merchandised in these modules. A SKU with offer copy and no badge renders the glyph alone, so its position never moves.</dd>
 </dl></div>
 <div class="card">
-<h4 id="the-card-s-vertical-gap-holds-at-16-where-the-design-draws-24">The card's vertical gap holds at 16 where the design draws 24</h4>
+<h4 id="the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
-<dt>Spec &amp; design</dt><dd>The desktop frame measures a vertical gap of 24 throughout the card.</dd>
-<dt>What ships</dt><dd>16 at every width.</dd>
-<dt>Why</dt><dd>The drawn 24 was spaced around the offer line the card no longer renders. With that row gone the column reads loose rather than generous, and the name box already reserves 72px for a three-line clamp that the longest name in the module fills to 48.</dd>
+<dt>Spec &amp; design</dt><dd>The desktop frame draws the name as a fixed three-line box — “three lines at 72” — and reserving that height is what lines the rating, price and button rows up across a row of cards.</dd>
+<dt>What ships</dt><dd>The name hugs whatever it holds, up to a three-line clamp. <strong>The rating row therefore sits wherever each name leaves it</strong>, so a two-line name puts its stars a line lower than its neighbours. Prices and buttons still line up, because they are pushed to the bottom of the card.</dd>
+<dt>Why</dt><dd>Removed on the client's instruction 2026-08-11: real product names run to one or two lines on most SKUs, so the reserved third line was dead space under every short name. One knock-on worth expecting — the loading skeleton's name placeholder is a nominal three lines rather than an exact box, so a card shortens slightly when a short name lands.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</h4>
@@ -468,7 +466,7 @@ ul.also li { break-inside: avoid; }
 <h2>slim-hero-banner-a</h2>
 <p class="chips"><span class="chip">Template 1</span><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">8</span></h3>
+<h3 class="group">Differences <span class="count">7</span></h3>
 <div class="card">
 <h4 id="the-eyebrow-is-built-to-the-spec-not-to-the-frames">The eyebrow is built to the spec, not to the frames</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -494,14 +492,6 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>Both promo and non-promo versions are executable. Pairs rather than two free selectors, so the breakpoints cannot be set incoherently. Line-height stays 1.2 and letter-spacing 0 at every size.</dd>
 </dl></div>
 <div class="card">
-<h4 id="the-tablet-type-step-is-not-built">The tablet type step is not built</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Figma <code>9905:43543</code> documents the 1200–768 band separately, with the heading at 32px.</dd>
-<dt>What ships</dt><dd>Two breakpoints only. <strong>Between 768px and 1200px the heading renders the desktop size — 48px on the default pair, where Figma documents 32px.</strong></dd>
-<dt>Why</dt><dd>Agreed scope is desktop and mobile. Recorded because it is plainly visible on a tablet: honouring it needs a third value per pair and an <code>lg:</code> step.</dd>
-</dl></div>
-<div class="card">
 <h4 id="the-light-button-gains-an-edge-the-fsd-does-not-mention">The Light button gains an edge the FSD does not mention</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
@@ -521,7 +511,7 @@ ul.also li { break-inside: avoid; }
 <h4 id="button-hover-matches-figma-except-on-the-filled-palettes">Button hover matches Figma except on the filled palettes</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
-<dt>Spec &amp; design</dt><dd>Figma <code>7078:62</code> draws hover and disabled. It draws no focus state.</dd>
+<dt>Spec &amp; design</dt><dd>Figma <code>7078:62</code> specifies hover and disabled. Focus is not covered there.</dd>
 <dt>What ships</dt><dd>Outline and link hovers are fixed tokens and land on Figma exactly. The filled default lands on <code>#012B5B</code> against Figma's <code>#012169</code> (dE 0.038 — both dark navy). Focus-visible is ours.</dd>
 <dt>Why</dt><dd>Figma's hover colours are not one formula — <code>#0458AD→#012169</code> is a 63% mix toward black but <code>#F2F2F2→#D9D9D6</code> is 92%, outline-light <em>lightens</em>, and both link hovers change hue outright. The derived hover is the deliberate cost of hover following a page-level override automatically.</dd>
 </dl></div>
@@ -541,7 +531,7 @@ ul.also li { break-inside: avoid; }
 <h2>expert-module</h2>
 <p class="chips"><span class="chip">Template 1</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">11</span></h3>
+<h3 class="group">Differences <span class="count">10</span></h3>
 <div class="card">
 <h4 id="the-quote-ships-in-lato-where-figma-specifies-fields">The quote ships in Lato where Figma specifies Fields</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -615,14 +605,6 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>Rather than invent a heading the design does not show. This satisfies the landmark requirement but <strong>not</strong> the heading-order one the Global SEO FSD asks for — the module contributes nothing to the page outline.</dd>
 </dl></div>
 <div class="card">
-<h4 id="the-layout-flips-at-1024-in-three-steps-rather-than-one">The layout flips at 1024, in three steps rather than one</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Both mobile frames carry a 768-and-below token and the desktop frames a 1200-and-above one, leaving the band between undrawn.</dd>
-<dt>What ships</dt><dd>Four bands. 0–767 stacked with 16:9 media · 768–1023 stacked, media capped 420px at 4:5 · 1024–1279 row, media 280, card 48/64 · 1280+ row, media 314, card 80/128. The quote is 24px below 1024 and 36px above.</dd>
-<dt>Why</dt><dd>Switching at 768 left <strong>158px</strong> for a 36px quote in the Portrait branch and 126px in the Circle branch — two words a line, a card nearly 2000px tall. The stacked band is not the phone layout stretched: a 9:16 asset at <code>w-full</code> at 1023px is a letterbox sliced from its middle. <strong>The <code>xl</code> step is a discontinuity, not a ramp</strong> — text width grows to 799px at 1279 then drops to 670px at 1280. At 1512 nothing moved.</dd>
-</dl></div>
-<div class="card">
 <h4 id="pressing-play-fires-itemclick-not-a-video-event">Pressing play fires ItemClick, not a video event</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
@@ -647,8 +629,8 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-video-size-cap-is-a-number-we-chose">The video size cap is a number we chose</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Awaiting a number from TVS</span></p>
 <p>“Max size: TBD” is still TBD. The schema description asks for under 10MB, which is a number we picked to have something actionable in the CMS, not one TVS gave us. Nothing enforces it.</p></div>
-<h3 class="group">Also applies here <span class="count">4</span></h3>
-<ul class="also"><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#per-module-structured-data-is-replaced-by-one-page-level-emitter">Per-module structured data is replaced by one page-level emitter</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">3</span></h3>
+<ul class="also"><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#per-module-structured-data-is-replaced-by-one-page-level-emitter">Per-module structured data is replaced by one page-level emitter</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="sticky-nav-bar">
 <p class="eyebrow">08 — sticky-nav-bar</p>
 <h2>sticky-nav-bar</h2>
@@ -691,7 +673,7 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-active-indicator-is-a-pseudo-element-and-hover-is-ours">The active indicator is a pseudo-element, and hover is ours</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
-<dt>Spec &amp; design</dt><dd>Figma draws the active indicator as a 4px bottom border on the link, <code>#41b6e6</code> — the lighter blue, not brand blue. It draws no hover and no focus state.</dd>
+<dt>Spec &amp; design</dt><dd>Figma draws the active indicator as a 4px bottom border on the link, <code>#41b6e6</code> — the lighter blue, not brand blue. Hover and focus are not specified for the links.</dd>
 <dt>What ships</dt><dd>Pixel-wise the same line, drawn as a pseudo-element. Hover draws it at half opacity; the active link stays at full. Focus-visible takes the navy ink.</dd>
 <dt>Why</dt><dd>A real <code>border-bottom</code> sits inside the box, so on a 52px link with centred text the type would jump 2px upwards on whichever link happened to be active. Half-opacity hover stops every link a shopper passes over looking like the one they are on. <code>#41b6e6</code> is too light to hold 3:1 against a white bar, which is why focus is navy.</dd>
 </dl></div>
@@ -719,7 +701,7 @@ ul.also li { break-inside: avoid; }
 <h2>product-carousel</h2>
 <p class="chips"><span class="chip">Template 1</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">5</span></h3>
+<h3 class="group">Differences <span class="count">4</span></h3>
 <div class="card">
 <h4 id="the-heading-defaults-to-lato-although-the-design-draws-fields">The heading defaults to Lato although the design draws Fields</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -745,14 +727,6 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>They are not the same control. Segments are a page count, which is correct because desktop advances a page at a time; the mobile thumb is sized by the visible fraction because mobile scrolls freely. Three segments is what four pages of the drawn sample happens to produce.</dd>
 </dl></div>
 <div class="card">
-<h4 id="four-cards-start-at-1280-not-at-768">Four cards start at 1280, not at 768</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>“Number of visible cards per view stays the same as per design at narrower breakpoints, but the size of card decreases in certain viewpoint.”</dd>
-<dt>What ships</dt><dd>Two cards hold to 1279 and four start at 1280. That gives a 507px card at its widest and 268px at 768.</dd>
-<dt>Why</dt><dd>Held literally at 768 the row leaves 122px per card, narrower than the add-to-cart button alone, and it rendered 3.03 cards with the button wrapped onto three lines. A four-up card is <code>(viewport − 265) / 4</code>: 1024 gives 190px and 1280 gives 250px, both under the 300px the drawn buy row needs. <strong>Product Grid moved to the identical breakpoint, so the two product modules agree.</strong></dd>
-</dl></div>
-<div class="card">
 <h4 id="the-info-glyph-is-a-real-control-unlike-the-live-site">The info glyph is a real control, unlike the live site</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
@@ -773,29 +747,21 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-review-count-is-plain-text-not-a-link">The review count is plain text, not a link</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>Figma names the review-count node “link”, but the product API exposes no reviews URL distinct from the PDP. It renders as plain text. Should it link to the PDP, or to an anchor within it?</p></div>
-<h3 class="group">Also applies here <span class="count">14</span></h3>
-<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-card-s-vertical-gap-holds-at-16-where-the-design-draws-24">The card's vertical gap holds at 16 where the design draws 24</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#hover-focus-disabled-loading-and-error-states-are-ours">Hover, focus, disabled, loading and error states are ours</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">13</span></h3>
+<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="benefits-highlights">
 <p class="eyebrow">10 — benefits-highlights</p>
 <h2>benefits-highlights</h2>
 <p class="chips"><span class="chip">Template 1</span><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">7</span></h3>
+<h3 class="group">Differences <span class="count">6</span></h3>
 <div class="card">
 <h4 id="the-tile-grid-is-2-columns-where-the-admin-requirement-says-3">The tile grid is 2 columns, where the Admin requirement says 3</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>“Tiles render as a 3-column grid on desktop… When there is 4 benefits, it will appear as 3 tiles in first row, and 1 tile in second row.”</dd>
-<dt>What ships</dt><dd>Two columns from 1280 up, one below. Four benefits render 2 + 2, not 3 + 1.</dd>
+<dt>What ships</dt><dd>Two columns on desktop, one on mobile. Four benefits render 2 + 2, not 3 + 1.</dd>
 <dt>Why</dt><dd>Built to the design rather than the prose. Both Figma <code>18227:403166</code> and the page's own attached desktop export draw six tiles two across, and the arithmetic agrees: the card's content track is 640px at 1512, so three tiles plus two 16px gaps would leave 202px each against a drawn 312. <strong>This is an open question with the client.</strong></dd>
-</dl></div>
-<div class="card">
-<h4 id="the-layout-flips-at-1024-and-the-tile-grid-at-1280">The layout flips at 1024, and the tile grid at 1280</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>“Below the tablet breakpoint, the image moves below the content card, full-width.” The section is drawn only at 1512 and 375.</dd>
-<dt>What ships</dt><dd>Stacked below 1024, two columns above, tiles two-up from 1280. <strong>The drawer still switches at 768.</strong></dd>
-<dt>Why</dt><dd>Halving the 1512 composition at 768 gives each column ~364px and the card's content track ~268px, which pushes a 20px tile label out past the <code>+</code> icon and runs the 48px heading to five lines. The drawer differs deliberately because the FSD gives the right-hand panel to “Desktop &amp; Tablet”.</dd>
 </dl></div>
 <div class="card">
 <h4 id="card-content-aligns-to-a-1416px-container-not-a-fixed-inset">Card content aligns to a 1416px container, not a fixed inset</h4>
@@ -842,14 +808,14 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-modal-eyebrow-is-fixed-chrome-on-our-reading">The modal eyebrow is fixed chrome, on our reading</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>Both modal frames carry the eyebrow “ADDITIONAL INFO” above the title. It is not in the Admin requirement's field list, so it is unclear whether it is fixed chrome or merchandiser copy. Built as fixed chrome for now.</p></div>
-<h3 class="group">Also applies here <span class="count">5</span></h3>
-<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">4</span></h3>
+<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li></ul></section>
 <section id="ugc-video-slider">
 <p class="eyebrow">11 — ugc-video-slider</p>
 <h2>ugc-video-slider</h2>
 <p class="chips"><span class="chip">Template 1</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">10</span></h3>
+<h3 class="group">Differences <span class="count">9</span></h3>
 <div class="card">
 <h4 id="the-background-is-a-colour-field-and-a-gradient-field-not-one-colour-field">The background is a colour field and a gradient field, not one colour field</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -864,7 +830,7 @@ ul.also li { break-inside: avoid; }
 <dl>
 <dt>Spec &amp; design</dt><dd>“Copy: &lt;20 character.”</dd>
 <dt>What ships</dt><dd>The shared 90-character limit every other heading in the library uses.</dd>
-<dt>Why</dt><dd>The heading drawn in both frames, “Real Results From Real Customers”, is 32 characters — the stated cap cannot hold the design's own copy and would reject it on save. If 20 is intended rather than a typo, the design needs new copy before the cap can be applied.</dd>
+<dt>Why</dt><dd>The heading drawn in both frames, “Real Results From Real Customers”, is 32 characters, so the cap and the drawn copy do not agree and enforcing 20 would reject the design's own heading on save. <strong>Open question:</strong> if 20 is the intended limit, the copy needs revisiting first.</dd>
 </dl></div>
 <div class="card">
 <h4 id="every-video-card-carries-a-thumbnail-alt-text-field">Every video card carries a thumbnail alt-text field</h4>
@@ -881,14 +847,6 @@ ul.also li { break-inside: avoid; }
 <dt>Spec &amp; design</dt><dd>The Text Quote Card row marks Background Color required.</dd>
 <dt>What ships</dt><dd>Optional, with an empty value falling back to the design's <code>#e1d555</code>.</dd>
 <dt>Why</dt><dd>Amplience colour fields cannot carry a default, so making it required would force a merchandiser to pick a colour by hand on every card and let them ship a card the design never sanctioned by picking first and looking later. The required-field outcome — a card that always has a colour — holds either way.</dd>
-</dl></div>
-<div class="card">
-<h4 id="the-card-count-is-held-per-breakpoint-and-the-arrows-start-at-1024">The card count is held per breakpoint, and the arrows start at 1024</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>“Number of visible cards per view stays the same as per design at narrower breakpoints, but the size of card decreases in certain viewpoint.”</dd>
-<dt>What ships</dt><dd>One card below 768, two from 768, three from 1024 and four from 1280 — giving 324, 256, 250 and the drawn 308 at 1512. <strong>The arrows and the rail's 56px inset start at 1024, not 768.</strong></dd>
-<dt>Why</dt><dd>Four-up at 768 leaves roughly 122px a card, narrower than the product name that has to sit on one line in the bar beneath. A 32px arrow in a 56px gutter costs 112px of a 768px viewport — 27% of the screen spent on a control below the 44px touch minimum on the one device class that does not need it. Removing it below 1024 takes the tablet card from 268 to 324. The row is a scroll container at every width, so a swipe works where the arrows do not render.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-mobile-row-clips-at-the-content-edge-instead-of-bleeding-to-the-viewport">The mobile row clips at the content edge instead of bleeding to the viewport</h4>
@@ -911,7 +869,7 @@ ul.also li { break-inside: avoid; }
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>The strip is drawn as a single non-wrapping line, and the name in the design — “Muscle Growth Peptide” — is 21 characters.</dd>
-<dt>What ships</dt><dd>One line, ellipsised. Real TVS short names are about twice that length, so <strong>the name ends in an ellipsis on most cards at every width</strong>, which the design never shows.</dd>
+<dt>What ships</dt><dd>One line, ellipsised. Real TVS short names are about twice that length, so <strong>the name ends in an ellipsis on most cards at every width</strong> — a case the design's sample copy does not demonstrate.</dd>
 <dt>Why</dt><dd>Left as drawn, decided 2026-08-10. The card's job is to identify the clip; the full name is one tap away in the viewer's product panel, where it has three clamped lines. Clamping to two lines would grow the strip from 64px to about 88px and retire the one-line width floor the whole card ladder is derived from.</dd>
 </dl></div>
 <div class="card">
@@ -920,7 +878,7 @@ ul.also li { break-inside: avoid; }
 <dl>
 <dt>Spec &amp; design</dt><dd>In the desktop frame the two review cards are 626.2 tall against the video cards' 622.2, sitting two pixels above and below them.</dd>
 <dt>What ships</dt><dd>Both card types take their height from the same media ratio, so the row is flush.</dd>
-<dt>Why</dt><dd>That is not a drawn decision — the video card's height is Hug and the review card's is Fixed, so the review frame simply was not re-fitted after its contents changed. Reproducing it would mean four cards in a row that do not share a baseline.</dd>
+<dt>Why</dt><dd>The four-pixel difference follows from the frame settings rather than from a drawn decision: the video card's height is Hug and the review card's is Fixed, so the two settle a little apart. Reproducing it would mean four cards in a row that do not share a baseline.</dd>
 </dl></div>
 <div class="card">
 <h4 id="a-card-whose-sku-does-not-resolve-hides-its-product-row">A card whose SKU does not resolve hides its product row</h4>
@@ -934,7 +892,7 @@ ul.also li { break-inside: avoid; }
 <div class="card finding">
 <h4 id="native-video-controls-and-the-drawn-chrome-cannot-both-exist">Native video controls and the drawn chrome cannot both exist</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation, or the missing play control</span></p>
-<p>“User can play/pause via browser-native controls” contradicts the chrome the design draws. Both video modals draw a custom bar — a scrub rail, a timecode and a mute glyph — and <strong>neither contains a play or pause button</strong>. We build the native control set, because it is what the User requirement asks for and the only option that is keyboard- and screen-reader-complete. The two chrome designs also disagree with each other: desktop puts the bar over the foot of the video at 32% black with a <code>#232323</code> elapsed segment, mobile at the top of the media on solid <code>#012169</code> with a <code>#41b6e6</code> one.</p></div>
+<p>“User can play/pause via browser-native controls” and the chrome the design draws cannot both be on screen. Both video modals draw a custom bar — a scrub rail, a timecode and a mute glyph — and <strong>neither contains a play or pause button</strong>. We build the native control set, because it is what the User requirement asks for and the only option that is keyboard- and screen-reader-complete. The two chrome designs also disagree with each other: desktop puts the bar over the foot of the video at 32% black with a <code>#232323</code> elapsed segment, mobile at the top of the media on solid <code>#012169</code> with a <code>#41b6e6</code> one.</p></div>
 <div class="card finding">
 <h4 id="the-mobile-modal-carries-a-third-chevron-with-no-stated-purpose">The mobile modal carries a third chevron with no stated purpose</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs design confirmation</span></p>
@@ -943,8 +901,8 @@ ul.also li { break-inside: avoid; }
 <h4 id="two-prices-are-specified-and-neither-modal-draws-them">Two prices are specified and neither modal draws them</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>“Price (compare at + sale price)” is specified for the modal's product panel, and both panels show a single grey price with no strikethrough companion. The modal's product title is also specified as “including variant info” while the design shows no variant.</p></div>
-<h3 class="group">Also applies here <span class="count">8</span></h3>
-<ul class="also"><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#hover-focus-disabled-loading-and-error-states-are-ours">Hover, focus, disabled, loading and error states are ours</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">7</span></h3>
+<ul class="also"><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li></ul></section>
 <section id="faq">
 <p class="eyebrow">12 — faq</p>
 <h2>faq</h2>
@@ -1011,7 +969,7 @@ ul.also li { break-inside: avoid; }
 <div class="card finding">
 <h4 id="a-six-tab-category-filter-sits-hidden-in-both-frames">A six-tab category filter sits hidden in both frames</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation that it is not expected in this release</span></p>
-<p>Both frames contain a hidden “tabs with slider” component — a six-tab FAQ category filter. The FSD does not mention category filtering, and the component reads as parked rather than in progress: its inner row (697px) overflows its own frame (676px) and its y position collides with the FAQ list. Treated as out of scope and not built.</p></div>
+<p>Both frames contain a hidden “tabs with slider” component — a six-tab FAQ category filter. The FSD does not mention category filtering, and the component is still being sized: its inner row (697px) is wider than its own frame (676px) and its y position sits over the FAQ list. Read as parked for a later phase and not built.</p></div>
 <h3 class="group">Also applies here <span class="count">4</span></h3>
 <ul class="also"><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li></ul></section>
 <section id="product-grid">
@@ -1019,7 +977,7 @@ ul.also li { break-inside: avoid; }
 <h2>product-grid</h2>
 <p class="chips"><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-grid/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">8</span></h3>
+<h3 class="group">Differences <span class="count">6</span></h3>
 <div class="card">
 <h4 id="the-heading-defaults-to-fields-which-the-design-draws">The heading defaults to Fields, which the design draws</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -1053,19 +1011,11 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>Markup order matching desktop would put the CTA ahead of the products for a screen-reader user on a phone. <strong>The cost is that a desktop keyboard user reaches the button after the eight cards rather than before them</strong> — it is a secondary CTA, and duplicating the link is worse for everyone.</dd>
 </dl></div>
 <div class="card">
-<h4 id="four-cards-start-at-1280-and-three-at-768">Four cards start at 1280 and three at 768</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>“Desktop: 4x per row, first 8 items. Tablet: 3x per row, first 6. Mobile: 2x per row, first 6.” No widths are named.</dd>
-<dt>What ships</dt><dd>Two below 768, three from 768, four from 1280.</dd>
-<dt>Why</dt><dd>Four-up was first placed at 1024, which made a card <strong>narrower</strong> just above that width than just below — 293px three-up at 1023 against 214px four-up at 1024 — so it reverted from the inline buy row to the stacked one, and a common laptop width drew a stacked card under a desktop-sized heading. Changed at the client's request on 2026-08-11: price and Add to Cart must sit inline wherever the design shows the desktop layout. <strong>The price is six products rather than eight between 1024 and 1279.</strong> Product Carousel moved to the identical breakpoint.</dd>
-</dl></div>
-<div class="card">
-<h4 id="cards-seven-and-eight-are-hidden-below-1280">Cards seven and eight are hidden below 1280</h4>
+<h4 id="two-of-eight-products-are-invisible-on-smaller-screens">Two of eight products are invisible on smaller screens</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>The spec allows up to 8 SKUs but displays only the first 6 on tablet and mobile.</dd>
-<dt>What ships</dt><dd>Exactly that — the seventh and eighth are hidden rather than dropped from the markup, so nothing re-requests when the viewport crosses the breakpoint. The gate is 1280, tracking the four-up breakpoint.</dd>
+<dt>What ships</dt><dd>Exactly that. The seventh and eighth are hidden rather than dropped from the markup, so nothing re-requests when the viewport changes.</dd>
 <dt>Why</dt><dd><strong>A merchandiser who fills all 8 loses two products on a phone with nothing on screen to say so</strong>, which makes the last two SKUs desktop-only merchandising. Built as specified, but worth confirming it is intended rather than the grid reflowing to a fourth mobile row.</dd>
 </dl></div>
 <div class="card">
@@ -1076,27 +1026,19 @@ ul.also li { break-inside: avoid; }
 <dt>What ships</dt><dd>Capped at 1416 — the desktop frame's content width — and centred.</dd>
 <dt>Why</dt><dd>Uncapped, the grid ran the full viewport: at 1920 each card was 438 against the design's 336, which the card does not use. Everything below its image is a fixed px size, so the extra width became a gap between each price and its own Add to Cart button, and the header's heading-to-button gap opened into a void.</dd>
 </dl></div>
-<div class="card">
-<h4 id="the-heading-takes-its-desktop-size-at-1024-not-at-768">The heading takes its desktop size at 1024, not at 768</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Not specified; the design draws 48px desktop and 30px mobile.</dd>
-<dt>What ships</dt><dd>The heading and description step at 1024, while every other section steps them at 768.</dd>
-<dt>Why</dt><dd>At 768 the content column is 672 and the header is already two columns, so the 48px serif wrapped and stranded one word on a second line with the button hanging beside a half-empty row. Other sections differ because their headers are a single centred column not competing with a button for width.</dd>
-</dl></div>
 <h3 class="group">Findings <span class="count">1</span></h3>
 <div class="card finding">
 <h4 id="both-frames-hide-a-substantial-second-design">Both frames hide a substantial second design</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation that these are out of scope for Phase 1</span></p>
-<p>Both frames carry hidden layers for a preheading, a labels row, a reviews badge, a second description line, a collection-name block, a six-item category tab row, per-row arrows and a slider pagination bar. None appears in the Admin requirement, so none is built. <strong>The category tabs in particular would change the content type substantially.</strong> The frame is also named “slider” at both breakpoints, a leftover from the carousel it was copied from; nothing in either frame scrolls.</p></div>
-<h3 class="group">Also applies here <span class="count">15</span></h3>
-<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-card-s-vertical-gap-holds-at-16-where-the-design-draws-24">The card's vertical gap holds at 16 where the design draws 24</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#hover-focus-disabled-loading-and-error-states-are-ours">Hover, focus, disabled, loading and error states are ours</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<p>Both frames carry hidden layers for a preheading, a labels row, a reviews badge, a second description line, a collection-name block, a six-item category tab row, per-row arrows and a slider pagination bar — the section component clearly supports more than this page uses. None appears in the Admin requirement, so none is built. <strong>The category tabs in particular would change the content type substantially.</strong> The frame is also named “slider” at both breakpoints, which reads as shared lineage with the carousel rather than an instruction; nothing in either frame scrolls.</p></div>
+<h3 class="group">Also applies here <span class="count">14</span></h3>
+<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="testimonials">
 <p class="eyebrow">14 — testimonials</p>
 <h2>testimonials</h2>
 <p class="chips"><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/testimonials/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">6</span></h3>
+<h3 class="group">Differences <span class="count">5</span></h3>
 <div class="card">
 <h4 id="the-slider-geometry-follows-product-carousel-not-this-section-s-own-frame">The slider geometry follows Product Carousel, not this section's own frame</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -1112,14 +1054,6 @@ ul.also li { break-inside: avoid; }
 <dt>Spec &amp; design</dt><dd>The FSD states both that a user “can swipe/arrow through cards” and that 3-4 cards show “no carousel, cards display statically”. Both cannot be true at three cards.</dd>
 <dt>What ships</dt><dd>The track is a scroll container at every count, and the controls appear only when the card count exceeds what fits. Three or four cards fill the row and render no arrows and no dots; five overflow and the controls appear.</dd>
 <dt>Why</dt><dd>One code path, and the FSD's two statements stop contradicting each other. The static desktop design is what three or four cards produce.</dd>
-</dl></div>
-<div class="card">
-<h4 id="four-cards-start-at-1280-and-there-is-a-two-up-band-at-768">Four cards start at 1280, and there is a two-up band at 768</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>The frames draw one card at 375 and four at 1512. The band between is undrawn.</dd>
-<dt>What ships</dt><dd>One card to 767, <strong>two</strong> from 768, and four from 1280 — giving 268-wide cards at 768, 250 at 1280 and the drawn 308 at 1512.</dd>
-<dt>Why</dt><dd>Four-up at 768 does not shrink the row, it starves it: 768 less 96 of section padding less 112 of arrow gutter leaves a 560 track, and four cards in 560 is 122 each. The star strip alone is 96 wide and the reviewer name sits beside it on the same row, so the card's own header cannot fit.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-arrow-gutter-is-reserved-even-when-no-arrow-renders">The arrow gutter is reserved even when no arrow renders</h4>
@@ -1143,7 +1077,7 @@ ul.also li { break-inside: avoid; }
 <dl>
 <dt>Spec &amp; design</dt><dd>Every card in both frames shows five filled stars, so the design does not demonstrate a partial rating. The Admin requirement names a per-card Rating with no scale or format.</dd>
 <dt>What ships</dt><dd>A whole number 1-5 per card, drawn accurately rather than rounded to five.</dd>
-<dt>Why</dt><dd><strong>QA will see partial star rows the design never shows.</strong> Whether halves are allowed and whether a numeric value appears anywhere is still open.</dd>
+<dt>Why</dt><dd><strong>QA will see partial star rows, which the sample cards do not demonstrate.</strong> Whether halves are allowed and whether a numeric value appears anywhere is still open.</dd>
 </dl></div>
 <h3 class="group">Findings <span class="count">2</span></h3>
 <div class="card finding">
@@ -1154,21 +1088,21 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-section-is-named-testimonials-in-the-fsd-and-highlighted-reviews-in-figma">The section is named Testimonials in the FSD and Highlighted Reviews in Figma</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>Built as <code>testimonials</code>, following the FSD, because the client reads that spec. The frames are named Highlighted Reviews. The merchandiser-facing name needs confirming. Separately, the admin field is named “Verified Buyer?” while both frames render the badge as “Verified Purchase” — two different strings, and it is unclear which a shopper sees or whether it is editable.</p></div>
-<h3 class="group">Also applies here <span class="count">6</span></h3>
-<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">5</span></h3>
+<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="bundle-module">
 <p class="eyebrow">15 — bundle-module</p>
 <h2>bundle-module</h2>
 <p class="chips"><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/bundle-module/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">12</span></h3>
+<h3 class="group">Differences <span class="count">10</span></h3>
 <div class="card">
 <h4 id="the-total-sums-the-price-shown-on-each-row-not-the-compare-at-price">The total sums the price shown on each row, not the compare-at price</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>Product Card says “Price (only final price price)”, so each row shows the price actually charged. Add to cart button says “Total price is dynamically calculated by adding SKU's compare at price”.</dd>
 <dt>What ships</dt><dd>The total adds up the prices on screen.</dd>
-<dt>Why</dt><dd>The design's own arithmetic contradicts the wording: three rows at $25.99 sit under a total of $77.97, which is the sum of the prices shown. Taken literally, whenever anything in the bundle is on sale the module prints three prices that visibly do not add up to the total directly beneath them — a pricing claim a shopper can check in their head and find wrong. <strong>If the client confirms the compare-at basis it is a one-line change.</strong></dd>
+<dt>Why</dt><dd>The design's own arithmetic points the other way: three rows at $25.99 sit under a total of $77.97, which is the sum of the prices shown. Taken literally, whenever anything in the bundle is on sale the module prints three prices that visibly do not add up to the total directly beneath them — a pricing claim a shopper can check in their head and find wrong. <strong>If the client confirms the compare-at basis it is a one-line change.</strong></dd>
 </dl></div>
 <div class="card">
 <h4 id="the-bundle-photograph-is-a-field-the-spec-does-not-list">The bundle photograph is a field the spec does not list</h4>
@@ -1183,7 +1117,7 @@ ul.also li { break-inside: avoid; }
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>The design draws the chip in sentence case. The shared <code>eyebrow</code> field is described as uppercasing itself, and every other section that uses it does.</dd>
-<dt>What ships</dt><dd>The uppercase treatment is simply absent here.</dd>
+<dt>What ships</dt><dd>The chip renders in sentence case, matching the frames — the uppercase treatment is not applied here.</dd>
 <dt>Why</dt><dd>The uppercasing was always markup rather than a property of the field, so nothing about the shared field changed. Its description in this section says which behaviour applies.</dd>
 </dl></div>
 <div class="card">
@@ -1195,28 +1129,12 @@ ul.also li { break-inside: avoid; }
 <dt>Why</dt><dd>The remaining few pixels of height are the price of one button across the whole component set. A per-section box would mean loose button fields, which the project forbids.</dd>
 </dl></div>
 <div class="card">
-<h4 id="the-drawn-sizes-arrive-at-768-the-two-columns-at-1280">The drawn sizes arrive at 768, the two columns at 1280</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Drawn at 1512 with a 593px text column beside a 759px photograph. No browser-size token on either frame.</dd>
-<dt>What ships</dt><dd>Two breakpoints, each governing one thing. Every drawn size steps in at 768; the layout becomes two columns at 1280. Between them the module is a single centred column capped at 600px — 568px of content, within 4% of the drawn 593px text column.</dd>
-<dt>Why</dt><dd>Fixed columns cannot be applied earlier: at 1024 the fractional split leaves the photograph 424px wide in a column roughly 636px tall, so a landscape hero would be cropped into a portrait slot. The single-column band reads as the desktop design stacked, not as a stretched phone layout. Column width runs 343, 568, 491, 593.</dd>
-</dl></div>
-<div class="card">
 <h4 id="the-photograph-takes-its-height-from-the-text-column">The photograph takes its height from the text column</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>The design's causality is the reverse — the desktop frame's column heights sum exactly to 654, so the text column is height-matched to the photograph.</dd>
-<dt>What ships</dt><dd>From 1280 the photograph spans both grid rows and stretches to whatever the text column comes to. It is <code>object-cover</code>, so it crops rather than distorts.</dd>
-<dt>Why</dt><dd><strong>Turning the promotion summary off removes about 105px from that column and the photograph crops that much harder.</strong> A height floor was considered and deliberately not added: every candidate value is arbitrary, and the drawn 654px would make the photograph taller than it is wide at 1280.</dd>
-</dl></div>
-<div class="card">
-<h4 id="between-1024-and-1279-the-module-keeps-a-single-column">Between 1024 and 1279 the module keeps a single column</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>Not drawn.</dd>
-<dt>What ships</dt><dd>At 1279 the module is a 568px column in a 1279px viewport, so roughly 355px of the page is empty on each side.</dd>
-<dt>Why</dt><dd>Recorded because it is visible rather than because it is wrong. The alternative was two columns from 1024, which fills the width but drops the text column to 379px against the drawn 593, clamps the product names harder, and stops the two columns ending level. Both renders were reviewed; the single column was chosen because every drawn size stays at the measure it was drawn for.</dd>
+<dt>What ships</dt><dd>On the two-column desktop layout the photograph spans both grid rows and stretches to whatever the text column comes to. It is <code>object-cover</code>, so it crops rather than distorts.</dd>
+<dt>Why</dt><dd><strong>Turning the promotion summary off removes about 105px from that column and the photograph crops that much harder.</strong> A height floor was considered and deliberately not added: every candidate value is arbitrary, and the drawn 654px would make the photograph taller than it is wide at the narrower desktop widths.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-product-thumbnail-is-part-of-the-row-s-link">The product thumbnail is part of the row's link</h4>
@@ -1224,14 +1142,14 @@ ul.also li { break-inside: avoid; }
 <dl>
 <dt>Spec &amp; design</dt><dd>The design draws no link on the thumbnail, leaving the product name's text line — 24px tall, rows 12px apart — as the only target in the row.</dd>
 <dt>What ships</dt><dd>The thumbnail is wrapped in an anchor to the same destination, hidden from the tab order and from screen readers, so the row still contributes exactly one link.</dd>
-<dt>Why</dt><dd>At 768 the likely device is a tablet in portrait, where a shopper taps the product image and gets nothing. This gives the row a 92px target in place of a 27px line of text.</dd>
+<dt>Why</dt><dd>On a touch screen a shopper taps the product image and gets nothing. This gives the row a 92px target in place of a 27px line of text.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-header-is-hoisted-above-the-photograph-on-mobile">The header is hoisted above the photograph on mobile</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
 <dt>Spec &amp; design</dt><dd>Desktop is the photograph beside a column holding the header, the products, the button and the summary. Mobile puts the header first, then the photograph, then everything else.</dd>
-<dt>What ships</dt><dd>A grid whose DOM order is header, photograph, content — the mobile order — with explicit placement putting the header back into the right-hand column at 1280.</dd>
+<dt>What ships</dt><dd>A grid whose DOM order is header, photograph, content — the mobile order — with explicit placement putting the header back into the right-hand column on desktop.</dd>
 <dt>Why</dt><dd>The two frames are not a reflow of one source order, and a flex container that only flips direction cannot produce both. <strong>No other Platter section reorders a child between breakpoints.</strong></dd>
 </dl></div>
 <div class="card">
@@ -1256,7 +1174,7 @@ ul.also li { break-inside: avoid; }
 <dl>
 <dt>Spec &amp; design</dt><dd>On the mobile button the struck was-price is drawn at 18px and the payable price at 16px; on desktop both are 16px.</dd>
 <dt>What ships</dt><dd>Both render at the shared button size on both breakpoints.</dd>
-<dt>Why</dt><dd>Drawing the price the customer does not pay larger than the one they do is unusual enough that we read it as a drafting slip. <strong>Open question:</strong> confirm, or tell us the mobile emphasis is deliberate.</dd>
+<dt>Why</dt><dd>The two frames treat the same pair differently, and emphasising the price the customer is not charged is the less usual of the two, so we followed the desktop treatment. <strong>Open question:</strong> confirm, or tell us the mobile emphasis is intended.</dd>
 </dl></div>
 <h3 class="group">Findings <span class="count">3</span></h3>
 <div class="card finding">
@@ -1271,14 +1189,14 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-info-glyph-in-the-label-chip-does-nothing">The info glyph in the label chip does nothing</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>The label chip carries a 16px info-circle after its text on both frames. Nothing in the spec mentions it and no tooltip, popover or target is drawn anywhere in the file. It renders as decoration, hidden from assistive technology. If it is meant to disclose the promotion's terms it needs both the copy and a disclosure pattern, neither of which exists.</p></div>
-<h3 class="group">Also applies here <span class="count">8</span></h3>
-<ul class="also"><li><a href="#hover-focus-disabled-loading-and-error-states-are-ours">Hover, focus, disabled, loading and error states are ours</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">7</span></h3>
+<ul class="also"><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li></ul></section>
 <section id="shop-by-goal">
 <p class="eyebrow">16 — shop-by-goal</p>
 <h2>shop-by-goal</h2>
 <p class="chips"><span class="chip">Template 2</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">5</span></h3>
+<h3 class="group">Differences <span class="count">4</span></h3>
 <div class="card">
 <h4 id="the-tile-count-is-a-2-8-range-not-4-or-6">The tile count is a 2–8 range, not “4 or 6”</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -1286,14 +1204,6 @@ ul.also li { break-inside: avoid; }
 <dt>Spec &amp; design</dt><dd>The Goal Tile row header reads “Required, 4 or 6”, while the Responsive cell in the same row gives the example “5 tiles render larger than 6 tiles at the same viewport” — which only makes sense if 5 is permitted. Figma provides 4-tile and 6-tile frames only.</dd>
 <dt>What ships</dt><dd>A 2–8 range.</dd>
 <dt>Why</dt><dd>The same cell states the tile size “is not fixed — it scales based on the number of tiles added”, which is a formula rather than an enumeration. <strong>Both ends of the range are legal and neither looks like the mock:</strong> two tiles are 680px wide with an 850px-tall photo each, a module about 1,000px deep holding two pictures. 4 to 6 is the range the design actually supports. The bounds are ours — neither is in the spec.</dd>
-</dl></div>
-<div class="card">
-<h4 id="the-tablet-tier-is-entirely-ours">The tablet tier is entirely ours</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>The FSD names tablet behaviour explicitly — “Display 3 tiles per row, center aligned when there are more than 1 row” — but <strong>Figma draws no tablet frame</strong>, so the band edges and every value inside them are ours.</dd>
-<dt>What ships</dt><dd>2 per row below 768, 3 per row 768–1023, one row of <em>n</em> from 1024. Only the column count moves at 1024; every other value moves at 768, so the tablet band gets the desktop card chrome — 32px side padding, 24 grid gap, 24px image radius, 20px label, 32px arrow.</dd>
-<dt>Why</dt><dd>At 768 a six-tile row would divide the content width into ~104px tiles. Splitting the two switches means only one value in the whole section — the 32px side padding at 768 — is invented rather than measured; at 768 the tiles are already ~219px across three columns, much nearer the desktop 328 than the mobile 163. “Center aligned when there are more than 1 row” is why the grid is <code>flex-wrap</code> rather than CSS grid: four tiles render 3 + 1 centred, five render 3 + 2.</dd>
 </dl></div>
 <div class="card">
 <h4 id="the-whole-tile-is-the-link-not-just-the-arrow">The whole tile is the link, not just the arrow</h4>
@@ -1315,13 +1225,13 @@ ul.also li { break-inside: avoid; }
 <h4 id="hover-and-focus-on-the-arrow-are-ours-and-the-first-tile-scrim-is-not-built">Hover and focus on the arrow are ours, and the first-tile scrim is not built</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
 <dl>
-<dt>Spec &amp; design</dt><dd>Figma places every arrow instance at <code>State=Default</code> and draws neither hover nor focus. Separately, <strong>the first tile of each of the four frames carries a full-bleed <code>rgba(0, 0, 0, 0.2)</code> scrim over its photo</strong>, matching the image's corner radius; tiles 2–n have none.</dd>
+<dt>Spec &amp; design</dt><dd>Every arrow instance is placed at <code>State=Default</code>, so hover and focus are not drawn for it here. Separately, <strong>the first tile of each of the four frames carries a full-bleed <code>rgba(0, 0, 0, 0.2)</code> scrim over its photo</strong>, matching the image's corner radius; tiles 2–n have none.</dd>
 <dt>What ships</dt><dd>Hover moves the circle to the existing brand blue, guarded so a tap does not leave it stuck lit. Focus is ours. The scrim is <strong>not built</strong>.</dd>
-<dt>Why</dt><dd>The scrim reads like either a hover or pressed state left switched on, or an artefact of that particular placeholder photo. <strong>Open question</strong> — if it is a hover state we need it as a variant rather than a static overlay.</dd>
+<dt>Why</dt><dd>The scrim appears on the first tile only, which fits either a hover or pressed treatment shown in place, or something belonging to that particular placeholder photo. <strong>Open question</strong> — if it is an interaction state we need it as a variant rather than a static overlay, and we would rather build it than guess at it.</dd>
 </dl></div>
 
-<h3 class="group">Also applies here <span class="count">7</span></h3>
-<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#the-768-1200-band-is-undrawn-so-every-section-picks-its-own-flip-point">The 768–1200 band is undrawn, so every section picks its own flip point</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#per-module-structured-data-is-replaced-by-one-page-level-emitter">Per-module structured data is replaced by one page-level emitter</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">6</span></h3>
+<ul class="also"><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#per-module-structured-data-is-replaced-by-one-page-level-emitter">Per-module structured data is replaced by one page-level emitter</a></li></ul></section>
 </main>
 </div>
 </body>
