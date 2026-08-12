@@ -143,17 +143,9 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   
 </header>
 
-<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
-<p>Captured by <code>pnpm shots</code> at 4 widths. Blank frames mean the captures have not been run in this checkout.</p>
-
-<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
-<img src="./desktop-1512.png" alt="global-seo rendered at 1512px" loading="lazy" /></figure>
-<figure><figcaption>mobile — 375px</figcaption>
-<img src="./mobile-375.png" alt="global-seo rendered at 375px" loading="lazy" /></figure>
-<figure><figcaption>tablet — 768px</figcaption>
-<img src="./tablet-768.png" alt="global-seo rendered at 768px" loading="lazy" /></figure>
-<figure><figcaption>wide — 1920px</figcaption>
-<img src="./wide-1920.png" alt="global-seo rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>Nothing to capture</h2>
+<p>This section renders no visible markup — it emits page-level metadata that only search engines read, so <code>pnpm shots</code> skips it rather than photographing an empty frame. What Amplience shows in its place is <a href="./card.html" target="_blank" rel="noopener">the card placard</a>. Check this one in the page source or a rich-result test, not by eye.</p>
+</section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
 <p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
