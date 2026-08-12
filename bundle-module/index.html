@@ -89,10 +89,13 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
 .compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
 
-.compare-stage { padding: 0; }
-.compare-stage.actual { overflow-x: auto; }
+/* Sidenav plus main's two gutters — what 1:1 has to escape to reach 1512px.
+   The +2px is the block's own border, which box-sizing would otherwise take
+   out of the frame's width and leave it scrolling by two pixels. */
+.compare.actual { width: min(calc(100vw - 348px), calc(var(--compare-width) + 2px)); max-width: none; }
+.compare.actual .compare-stage { overflow-x: auto; }
+.compare.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.compare-stage.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
 .compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
 .compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
@@ -103,6 +106,10 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
 .compare-tag.design { left: 10px; background: var(--brand-deep); }
 .compare-tag.build { right: 10px; background: var(--success-deep); }
+/* Must follow the base rule, not sit with the other 980px overrides above it:
+   same specificity, so source order decides. Below 980 the sidenav is gone and
+   main's gutters are 20px. */
+@media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
 .shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
@@ -140,12 +147,12 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 
 <section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
 <p>Wipe the handle across the design to find where the build drifts from it. The Figma frame and the capture are exported at the same width, so anything that moves under the handle is a real difference. Every width is below as a plain capture.</p>
-<div class="compare" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
+<div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
     <button type="button" data-fade>Fade</button><button type="button" data-actual>1:1</button>
     <span class="hint">drag to wipe · arrow keys to nudge</span></div>
   <div class="compare-stage" data-stage>
-    <div class="compare-frame" data-frame style="--p:50;--compare-width:1512px" role="slider" tabindex="0"
+    <div class="compare-frame" data-frame style="--p:50" role="slider" tabindex="0"
       aria-label="Figma design against the captured build" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
       <img data-design src="./figma-desktop.jpg" alt="Figma design, desktop" />
       <div class="compare-build"><img data-build src="./desktop-1512.png" alt="Captured build, desktop" /></div>
@@ -339,14 +346,16 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       build.src = source.build;
       design.alt = "Figma design, " + view;
       build.alt = "Captured build, " + view;
-      frame.style.setProperty("--compare-width", source.width + "px");
+      compare.style.setProperty("--compare-width", source.width + "px");
       viewButtons.forEach((button) => button.classList.toggle("on", button.dataset.view === view));
 
-      // A mobile frame already fits the column, so it is displayed at actual
-      // size either way and the toggle has nothing to do.
-      actualButton.disabled = source.width <= stage.clientWidth;
+      // The column, not the stage: 1:1 widens the block past its parent, so
+      // measuring the stage would ask whether the frame fits the space it was
+      // just given. The parent section keeps the column's true width.
+      // A mobile frame fits it either way, so the toggle has nothing to do.
+      actualButton.disabled = source.width <= compare.parentElement.clientWidth;
       if (actualButton.disabled) {
-        stage.classList.remove("actual");
+        compare.classList.remove("actual");
         actualButton.classList.remove("on");
       }
       fit();
@@ -398,7 +407,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       fadeButton.classList.toggle("on", frame.classList.toggle("fade"));
     });
     actualButton.addEventListener("click", () => {
-      if (!actualButton.disabled) actualButton.classList.toggle("on", stage.classList.toggle("actual"));
+      if (!actualButton.disabled) actualButton.classList.toggle("on", compare.classList.toggle("actual"));
     });
 
     show(sources.desktop ? "desktop" : "mobile");

@@ -89,10 +89,13 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
 .compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
 
-.compare-stage { padding: 0; }
-.compare-stage.actual { overflow-x: auto; }
+/* Sidenav plus main's two gutters — what 1:1 has to escape to reach 1512px.
+   The +2px is the block's own border, which box-sizing would otherwise take
+   out of the frame's width and leave it scrolling by two pixels. */
+.compare.actual { width: min(calc(100vw - 348px), calc(var(--compare-width) + 2px)); max-width: none; }
+.compare.actual .compare-stage { overflow-x: auto; }
+.compare.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.compare-stage.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
 .compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
 .compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
@@ -103,6 +106,10 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
 .compare-tag.design { left: 10px; background: var(--brand-deep); }
 .compare-tag.build { right: 10px; background: var(--success-deep); }
+/* Must follow the base rule, not sit with the other 980px overrides above it:
+   same specificity, so source order decides. Below 980 the sidenav is gone and
+   main's gutters are 20px. */
+@media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
 .shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }

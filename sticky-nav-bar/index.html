@@ -89,10 +89,13 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
 .compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
 
-.compare-stage { padding: 0; }
-.compare-stage.actual { overflow-x: auto; }
+/* Sidenav plus main's two gutters — what 1:1 has to escape to reach 1512px.
+   The +2px is the block's own border, which box-sizing would otherwise take
+   out of the frame's width and leave it scrolling by two pixels. */
+.compare.actual { width: min(calc(100vw - 348px), calc(var(--compare-width) + 2px)); max-width: none; }
+.compare.actual .compare-stage { overflow-x: auto; }
+.compare.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.compare-stage.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
 .compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
 .compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
@@ -103,6 +106,10 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
 .compare-tag.design { left: 10px; background: var(--brand-deep); }
 .compare-tag.build { right: 10px; background: var(--success-deep); }
+/* Must follow the base rule, not sit with the other 980px overrides above it:
+   same specificity, so source order decides. Below 980 the sidenav is gone and
+   main's gutters are 20px. */
+@media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
 .shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
@@ -140,12 +147,12 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 
 <section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
 <p>Wipe the handle across the design to find where the build drifts from it. The Figma frame and the capture are exported at the same width, so anything that moves under the handle is a real difference. Every width is below as a plain capture.</p>
-<div class="compare" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
+<div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
     <button type="button" data-fade>Fade</button><button type="button" data-actual>1:1</button>
     <span class="hint">drag to wipe · arrow keys to nudge</span></div>
   <div class="compare-stage" data-stage>
-    <div class="compare-frame" data-frame style="--p:50;--compare-width:1512px" role="slider" tabindex="0"
+    <div class="compare-frame" data-frame style="--p:50" role="slider" tabindex="0"
       aria-label="Figma design against the captured build" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
       <img data-design src="./figma-desktop.jpg" alt="Figma design, desktop" />
       <div class="compare-build"><img data-build src="./desktop-1512.png" alt="Captured build, desktop" /></div>
@@ -169,11 +176,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>array</td>
 <td class="req">required</td>
 <td></td>
-<td>Between two and four links, shown left to right in the order you list them here. Drag a row to reorder it. The order in this list is the order on the bar, and it should match the order the sections appear down the page or the underline will appear to jump backwards as a shopper scrolls.</td></tr><tr><td><code>disableGlobalStickyHeader</code><br /><strong>Disable global sticky header</strong></td>
-<td>boolean</td>
-<td class="req"></td>
-<td>default <code>false</code></td>
-<td>When checked, only this nav becomes sticky on scroll and the global site header does not. When unchecked, this nav is attached underneath the global site header.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>Between two and four links, shown left to right in the order you list them here. Drag a row to reorder it. The order in this list is the order on the bar, and it should match the order the sections appear down the page or the underline will appear to jump backwards as a shopper scrolls.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
 <td>string</td>
 <td class="req"></td>
 <td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
@@ -195,7 +198,6 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       &quot;url&quot;: &quot;#infinis&quot;
     }
   ],
-  &quot;disableGlobalStickyHeader&quot;: false,
   &quot;sectionId&quot;: &quot;brand-nav&quot;
 }</pre></section>
 <section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>The Confluence page embeds screenshots rather than linking frames. <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18227-402761" target="_blank" rel="noopener"><code>18227:402761</code></a> is the section holding both breakpoints; the two frames inside it are the authority for measurements.</p>
@@ -205,21 +207,16 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <section id="user-requirement"><p class="eyebrow">06 — User requirement</p><h2>User requirement</h2><ol><li>User can click any anchor link to auto-scroll to the corresponding section.</li><li>User can access the nav at any scroll depth — it becomes sticky after the user scrolls past it.</li><li>User can see which section is currently active.</li></ol></section>
 <section id="admin-requirement"><p class="eyebrow">07 — Admin requirement</p><h2>Admin requirement</h2><div class="scroll"><table><thead><tr><th>Content type</th><th>Functional requirement</th><th>Asset / copy requirement</th><th>Responsive &amp; content behavior</th></tr></thead><tbody><tr><td><strong>Anchor Link</strong> (Required, x2-4)</td><td>Admin can add/remove anchor links. Each link includes: Name; Anchor target section (Use the mapping section ID).</td><td></td><td>On narrower breakpoints, when users can't see all links, it scrolls horizontally.</td></tr><tr><td><strong>Active-State Indicator</strong></td><td>Component highlights the anchor link matching the section currently in view.</td><td>–</td><td>–</td></tr><tr><td><strong>Global Sticky Header Override</strong> (Optional)</td><td>Admin can override the global sticky header via a &quot;Disable global sticky header&quot; checkbox setting. When checked, only the Sticky Anchor Navigation becomes sticky on scroll – the global site header does not. When unchecked, the Sticky Anchor Navigation will be attached underneath the global site header.</td><td>–</td><td></td></tr></tbody></table></div></section>
 <section id="other-requirements"><p class="eyebrow">08 — Other requirements</p><h2>Other requirements</h2><ol><li>Follows <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/889683969">FSD: Global SEO Rule</a>.</li><li><strong>Analytics:</strong> component supports automated impression tracking (viewport entry) and click tracking via the standard <code>raiseEvent</code> handler.</li></ol></section>
-<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><div class="card"><h3 id="felix-tellmann-unanswered-2026-08-06">Felix Tellmann — unanswered 2026-08-06</h3><p><span class="badge open">unanswered 2026-08-06</span></p><blockquote><p>How does a Platter component disable the global sticky header? The header is TVS's own Angular chrome, outside anything we render, and nothing in the TVS-Common surface or the ten downloaded TVS templates exposes a hook for it. The FSD's own Related content links to <em>FSD: Sticky Transparent Header Update</em> (Brittany Showdra), which suggests TVS is changing that header separately — so the hook may be planned rather than existing. We need either the class or attribute to set, or confirmation that a scoped CSS override from inside the landing page is the sanctioned approach.</p></blockquote>
-<p>Partly self-answered on 2026-08-06, but left open because the remaining half is the half only TVS can settle. The element is <code>div.header-root__stack</code> on qa1, pinned by TVS's own scroll handler adding <code>.header-root__stack--pinned</code>. What is still open: whether overriding that from inside the landing page is sanctioned or whether TVS would rather expose a flag we set.</p>
-<p>The band height is no longer part of this question. As of 2026-08-10 the section measures whatever TVS has parked at the top rather than assuming a number, so the mobile height, a promo strip above the header, and a future redesign all resolve themselves — see <em>The parking offset is measured, not assumed</em>. Only the unchecked-to-checked override still needs TVS's word.</p></div></section>
+<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><div class="card"><h3 id="felix-tellmann-resolved-2026-08-11">Felix Tellmann — resolved 2026-08-11</h3><p><span class="badge closed">resolved 2026-08-11</span></p><blockquote><p>How does a Platter component disable the global sticky header? The header is TVS's own Angular chrome, outside anything we render, and nothing in the TVS-Common surface or the ten downloaded TVS templates exposes a hook for it. We need either the class or attribute to set, or confirmation that a scoped CSS override from inside the landing page is the sanctioned approach.</p></blockquote>
+<p>Resolved by descoping rather than by an answer: the setting is removed, so no sanctioned mechanism is needed. See the <em>Disable global sticky header — descoped</em> deviation.</p>
+<p>The band height was never part of this question. The section measures whatever TVS has parked at the top rather than assuming a number, so the mobile height, a promo strip above the header and a future redesign all resolve themselves.</p></div></section>
 <section id="deviations"><p class="eyebrow">10 — Deviations</p><h2>Deviations</h2><p>Recorded so the gaps are visible rather than forgotten.</p>
 <div class="card"><h3 id="anchor-target-is-a-link-field-not-a-section-id-picker">Anchor target is a link field, not a section-ID picker</h3><p><span class="badge built">Built</span> <code>ctaLabel</code> + <code>ctaUrl</code> per row</p><p>The spec's second sub-field is &quot;Anchor target section (Use the mapping section ID)&quot;. We ship a general link field instead, so a row is <code>ctaLabel</code> + <code>ctaUrl</code> and an on-page target is written as <code>#&lt;section id&gt;</code>. This is a superset of the spec — every value the spec describes is still expressible — and it buys two things. <strong>The field names match every other CTA in the library</strong>, so a merchandiser filling a nav row is filling the same two boxes they fill in the hero and the expert module rather than learning a third vocabulary. And a nav that needs one off-page destination among its on-page ones does not need a schema change to get it.</p>
 <p>The cost is that a merchandiser can enter a link the active-state indicator cannot track. That is stated in the field's own description: only <code>#</code> links are eligible for the underline, and anything else still navigates but never highlights.</p></div>
 <div class="card"><h3 id="anchor-link-count-is-enforced-at-2-4">Anchor-link count is enforced at 2-4</h3><p><span class="badge built">Built</span> <code>minItems: 2</code>, <code>maxItems: 4</code></p><p>Straight from the spec's &quot;Required, x2-4&quot;. Worth naming because it is enforced by the CMS rather than by the template: the form refuses to save one link or five, so the markup never has to handle those cases.</p></div>
-<div class="card"><h3 id="disable-global-sticky-header-shipped-without-a-verified-mechanism">Disable global sticky header — shipped without a verified mechanism</h3><p><span class="badge corrected">Corrected</span>  2026-08-06 — the header was found, and the offset with it</p><p>The original entry read:</p>
-<blockquote><p><strong>Status:</strong> Built — best-effort CSS override, unverified on a real landing page  The field exists and carries the spec's wording, and the checked state is implemented as a scoped CSS override targeting TVS's header from inside the landing page. <strong>This has not been verified against a real LP</strong>, because the header is Angular chrome we do not render and no documented hook for it exists — see the Open comment above. If Chirag confirms a different mechanism, the field stays and only its implementation changes; if he confirms there is none, the field ships inert and this status becomes <em>Not built</em>.</p></blockquote>
-<p>That was written off the production <code>www</code> homepage, where nothing on the page computes to <code>position: sticky</code> or <code>fixed</code>. <strong>It was the wrong page.</strong> On <code>qa1.vitaminshoppe.com</code> the redesigned header does pin, and the reason it looked absent is worth recording because it will mislead the next person too: the <code>--pinned</code> modifier is added by TVS's own scroll handler, so a <em>programmatic</em> <code>scrollTo</code> from an automation context moves the page without ever firing their listener, and the header stays static no matter how far you scroll. It only appears under a real wheel gesture.</p>
-<p>Measured on <code>qa1.vitaminshoppe.com/c/vitamins-supplements</code>, the pinned element is <code>div.header-root__stack.header-root__stack--pinned</code>, carrying <code>position: fixed</code>, <code>top: 0</code>, <code>z-index: 1033</code> and <code>height: 80px</code>.</p>
-<p>Three things follow. The offset was set to <strong>80px</strong>, not 0 — since superseded by the run-time measurement in <em>The parking offset is measured, not assumed</em> below, where 80px survives only as the pre-Alpine fallback. The override targets <code>.header-root__stack</code>, with the older production <code>header.victory-header</code> kept alongside it so the rule survives that rollout in either direction. And the bar's own <code>z-index</code> is <strong>1030</strong> — under their pinned header rather than over it, so if the offset is ever wrong for a breakpoint the bar slides under their header instead of covering it.</p>
-<p>Verified against a stand-in that behaves like their header: with the toggle off it stays <code>fixed</code>, with it on our rule computes it to <code>static</code>. The stand-in is pinned by an <em>inline</em> style, so that also demonstrates the <code>!important</code> winning the contest it exists for. Both halves of the setting are driven by the single data attribute — the offset drops 80px to 0 and the header unpins together, so they cannot disagree.</p>
-<p>One thing is still open: no QA landing page carries this section yet, so the rule has not been watched unpinning TVS's real header rather than a stand-in. The second gap recorded here — that the mobile height of the band was unconfirmed — was closed on 2026-08-10 by measuring the header instead of assuming its height, which needs neither a media query nor a second field.</p>
-<p>The unchecked state needs nothing from TVS and is the one that must be right: our nav sticks below whatever height the global header occupies.</p></div>
+<div class="card"><h3 id="disable-global-sticky-header-descoped">Disable global sticky header — descoped</h3><p><span class="badge missing">Not built</span></p><p>The Admin requirement's third row asks for a checkbox that unpins TVS's global site header, leaving only this nav sticky. <strong>Descoped on the client's instruction 2026-08-11.</strong> The field is removed from the schema and the CSS that unpinned their header is removed with it, so nothing this section ships reaches outside its own markup.</p>
+<p>It was built and it worked against a stand-in, but it was never watched against TVS's real header on a landing page, and whether a Platter component may reach out and restyle their Angular chrome at all was still an open question with them. Removing it closes that question rather than shipping something nobody had sanctioned.</p>
+<p><strong>What remains is the unchecked behaviour, which is the one that matters:</strong> the nav parks below whatever TVS has at the top of the viewport, measured at run time — see <em>The parking offset is measured, not assumed</em>. That needs nothing from TVS and is unaffected by this removal.</p></div>
 <div class="card"><h3 id="sticky-is-position-fixed-not-position-sticky">Sticky is <code>position: fixed</code>, not <code>position: sticky</code></h3><p><span class="badge built">Built</span> a placeholder holds the vacated height</p><p>A sticky element only sticks within its own containing block, and Amplience wraps every content item in a <code>&lt;tvs-cms-component&gt;</code> whose height is exactly this section's height. <code>position: sticky</code> would therefore unstick on the same frame it started sticking. The bar is switched to <code>position: fixed</code> instead, and an outer element holds its height open so the page below does not jump up by the bar's height at the moment it detaches. Verified in Chrome at 1280×760 and 375×700: the bar detaches at the right scroll position and the content below it does not shift.</p>
 <p>How far below the top of the viewport it parks is one variable, <code>--plx-sticky-nav--offset</code>, read by both the CSS and the scroll maths so they cannot disagree. It is <strong>measured from TVS's header at run time</strong> rather than fixed at a number — see <em>The parking offset is measured, not assumed</em> below. The 80px in the stylesheet is only the fallback for the frames before Alpine runs.</p></div>
 <div class="card"><h3 id="the-parking-offset-is-measured-not-assumed">The parking offset is measured, not assumed</h3><p><span class="badge built">Built</span> replaces the hard-coded 80px, 2026-08-10</p><p>The first implementation hard-coded 80px, measured once on qa1. That is wrong in four ordinary situations, none of which announce themselves: TVS's header does not pin until their own scroll handler fires, so before that there is nothing to clear and the bar hovered 80px below a header that had scrolled away; the mobile band height was never confirmed and is not obliged to match desktop; a promo or alert strip above the header changes the total; and the older production <code>header.victory-header</code> does not pin at all, where the correct offset is 0.</p>
@@ -284,14 +281,16 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       build.src = source.build;
       design.alt = "Figma design, " + view;
       build.alt = "Captured build, " + view;
-      frame.style.setProperty("--compare-width", source.width + "px");
+      compare.style.setProperty("--compare-width", source.width + "px");
       viewButtons.forEach((button) => button.classList.toggle("on", button.dataset.view === view));
 
-      // A mobile frame already fits the column, so it is displayed at actual
-      // size either way and the toggle has nothing to do.
-      actualButton.disabled = source.width <= stage.clientWidth;
+      // The column, not the stage: 1:1 widens the block past its parent, so
+      // measuring the stage would ask whether the frame fits the space it was
+      // just given. The parent section keeps the column's true width.
+      // A mobile frame fits it either way, so the toggle has nothing to do.
+      actualButton.disabled = source.width <= compare.parentElement.clientWidth;
       if (actualButton.disabled) {
-        stage.classList.remove("actual");
+        compare.classList.remove("actual");
         actualButton.classList.remove("on");
       }
       fit();
@@ -343,7 +342,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
       fadeButton.classList.toggle("on", frame.classList.toggle("fade"));
     });
     actualButton.addEventListener("click", () => {
-      if (!actualButton.disabled) actualButton.classList.toggle("on", stage.classList.toggle("actual"));
+      if (!actualButton.disabled) actualButton.classList.toggle("on", compare.classList.toggle("actual"));
     });
 
     show(sources.desktop ? "desktop" : "mobile");

@@ -89,10 +89,13 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
 .compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
 
-.compare-stage { padding: 0; }
-.compare-stage.actual { overflow-x: auto; }
+/* Sidenav plus main's two gutters — what 1:1 has to escape to reach 1512px.
+   The +2px is the block's own border, which box-sizing would otherwise take
+   out of the frame's width and leave it scrolling by two pixels. */
+.compare.actual { width: min(calc(100vw - 348px), calc(var(--compare-width) + 2px)); max-width: none; }
+.compare.actual .compare-stage { overflow-x: auto; }
+.compare.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.compare-stage.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
 .compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
 .compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
 .compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
@@ -103,6 +106,10 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
 .compare-tag.design { left: 10px; background: var(--brand-deep); }
 .compare-tag.build { right: 10px; background: var(--success-deep); }
+/* Must follow the base rule, not sit with the other 980px overrides above it:
+   same specificity, so source order decides. Below 980 the sidenav is gone and
+   main's gutters are 20px. */
+@media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
 .shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
@@ -164,7 +171,7 @@ ul.also li { break-inside: avoid; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">QA reference</p>
   <h1>Where the build differs from the spec, and why</h1>
-  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 77 differences across 12 sections, plus 23 findings worth knowing before you test.</p>
+  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 78 differences across 12 sections, plus 22 findings worth knowing before you test.</p>
   <p class="lede">Everything listed here is a decision. If you find something that differs from the spec and is <strong>not</strong> on this page, that is worth raising.</p>
 </header>
 
@@ -636,7 +643,15 @@ ul.also li { break-inside: avoid; }
 <h2>sticky-nav-bar</h2>
 <p class="chips"><span class="chip">Template 1</span></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/" target="_blank" rel="noopener">reference page and design comparison</a></p>
-<h3 class="group">Differences <span class="count">6</span></h3>
+<h3 class="group">Differences <span class="count">7</span></h3>
+<div class="card">
+<h4 id="the-disable-global-sticky-header-checkbox-is-not-built">The “disable global sticky header” checkbox is not built</h4>
+<p class="line"><span class="tag gap">Not built</span></p>
+<dl>
+<dt>Spec &amp; design</dt><dd>The Admin requirement's third row asks for a checkbox that unpins TVS's global site header, so that only this nav is sticky on scroll.</dd>
+<dt>What ships</dt><dd>Not built. There is no such field in the CMS.</dd>
+<dt>Why</dt><dd>Descoped on the client's instruction 2026-08-11. <strong>The unchecked behaviour is unaffected and is the one that matters</strong> — the nav parks below whatever TVS has at the top of the viewport, measured at run time. Nothing this section ships reaches outside its own markup.</dd>
+</dl></div>
 <div class="card">
 <h4 id="an-anchor-row-is-a-general-link-field-not-a-section-id-picker">An anchor row is a general link field, not a section-ID picker</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -685,11 +700,7 @@ ul.also li { break-inside: avoid; }
 <dt>What ships</dt><dd>A static <code>aria-label=&quot;Section navigation&quot;</code>.</dd>
 <dt>Why</dt><dd>Rather than add a field a merchandiser would have to think about for no visible result. The cost is that two sticky navs on one page would share a name; the component is specified as the page's single anchor nav.</dd>
 </dl></div>
-<h3 class="group">Findings <span class="count">2</span></h3>
-<div class="card finding">
-<h4 id="disable-global-sticky-header-has-never-run-against-tvs-s-real-header">“Disable global sticky header” has never run against TVS's real header</h4>
-<p class="line"><span class="tag finding">Finding</span><span class="status">Blocked — needs TVS to confirm the override is sanctioned</span></p>
-<p>The checked state is a scoped CSS override targeting TVS's header from inside the landing page. The element was found and measured — <code>div.header-root__stack.header-root__stack--pinned</code> on qa1, <code>position: fixed</code>, <code>top: 0</code>, <code>z-index: 1033</code>, <code>height: 80px</code> — and our bar deliberately sits at <code>z-index: 1030</code>, under their header, so a wrong offset slides the bar beneath rather than over it. It has been verified against a stand-in that behaves like their header, but <strong>no QA landing page carries this section yet</strong>, so the rule has never been watched unpinning the real one. The unchecked state, which is the one that must be right, needs nothing from TVS.</p></div>
+<h3 class="group">Findings <span class="count">1</span></h3>
 <div class="card finding">
 <h4 id="native-smooth-scrolling-does-not-work-on-a-tvs-page">Native smooth scrolling does not work on a TVS page</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Worked around</span></p>
