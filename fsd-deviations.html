@@ -176,6 +176,7 @@ ul.also li { break-inside: avoid; }
   <h1>Where the build differs from the spec, and why</h1>
   <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 79 differences across 12 sections, plus 22 findings worth knowing before you test.</p>
   <p class="lede">Everything listed here is a decision. If you find something that differs from the spec and is <strong>not</strong> on this page, that is worth raising.</p>
+  <p class="lede">Analytics is covered on its own page: <a href="./ga-tracking.html">what the modules send to GA4</a>, generated from the shipped markup rather than from the specs.</p>
 </header>
 
 <section id="read">
@@ -192,7 +193,7 @@ ul.also li { break-inside: avoid; }
 <h4 id="tablet-widths-are-best-effort-and-are-not-part-of-this-review">Tablet widths are best-effort, and are not part of this review</h4>
 <p>Figma tokenises its desktop frames at 1200 and above and its mobile frames at 768 and below, so <strong>the band between them is not drawn in any design we were given</strong>. Every value a section uses in that band — where it changes column count, how many cards sit in a row, when the drawn type sizes step in — was chosen to fit the screen sensibly rather than measured from a frame. Those choices are not listed per section and are not defects. <strong>The drawn widths, 1512 and 375, are the ones to review</strong>; the captures on each section's reference page are taken at both.</p>
 </div>
-<p class="excluded">Two kinds of note are deliberately left out. Of the 153 deviation notes recorded across the twelve specs, 13 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 11 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 153 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
+<p class="excluded">Two kinds of note are deliberately left out. Of the 154 deviation notes recorded across the twelve specs, 13 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 11 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 154 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
 </section>
 
 <section id="review">
@@ -315,6 +316,64 @@ ul.also li { break-inside: avoid; }
 <td><a href="#shop-by-goal">shop-by-goal</a></td>
 <td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/" target="_blank" rel="noopener">reference page</a></td>
 <td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/shop-by-goal/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr></tbody></table></div>
+<h3 class="group">Template 1 <span class="count">9 slots</span></h3>
+<p class="links"><a href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener">https://qa1.vitaminshoppe.com/lp/platter-template-1-uat</a></p>
+<div class="scroll"><table>
+<thead><tr><th>#</th><th>Section</th><th>Detail</th><th>Captures</th></tr></thead>
+<tbody><tr>
+<td>1</td>
+<td><a href="#slim-hero-banner-a">slim-hero-banner-a</a> <code>uat</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#benefits-highlights">benefits-highlights</a> <code>uat1</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#sticky-nav-bar">sticky-nav-bar</a> <code>uat</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#product-carousel">product-carousel</a> <code>uat1</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#benefits-highlights">benefits-highlights</a> <code>uat2</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#product-carousel">product-carousel</a> <code>uat2</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="#ugc-video-slider">ugc-video-slider</a> <code>uat</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="#product-carousel">product-carousel</a> <code>uat3</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="#faq">faq</a> <code>uat</code></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/" target="_blank" rel="noopener">reference page</a></td>
+<td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/desktop-1512.png" target="_blank" rel="noopener">1512px</a> &middot; <a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/mobile-375.png" target="_blank" rel="noopener">375px</a></td>
 </tr></tbody></table></div>
 </section>
 
@@ -442,6 +501,14 @@ ul.also li { break-inside: avoid; }
 <dl><dt>Spec &amp; design</dt><dd>Add to Cart “triggers add to cart action and open a success message 'added to cart' (current live site behavior)”.</dd>
 <dt>What ships</dt><dd>The documented promise API, <code>cart.addToCart</code>, with confirmation shown on the button itself.</dd>
 <dt>Why</dt><dd>Whether TVS's global mini-cart also opens on that path, or only on the legacy <code>raiseEvent</code> path, has not been confirmed. If the mini-cart is expected, this is the item to test first.</dd></dl></div>
+<div class="card">
+<h4 id="the-added-state-stays-for-the-life-of-the-page">The Added state stays for the life of the page</h4>
+<p class="line"><span class="tag drift">Differs</span></p>
+<dl>
+<dt>Spec &amp; design</dt><dd>The spec describes the add and its success message, and says nothing about how long the button itself stays changed.</dd>
+<dt>What ships</dt><dd>The button reads “Added” from the moment TVS-Common confirms the line until the page is left. The error state is terminal too, staying on “Try again”. The button remains enabled throughout, so a shopper wanting a second unit is never trapped.</dd>
+<dt>Why</dt><dd>On the live PLP the tile keeps reading “Added” indefinitely while its neighbours still offer “Add to Cart”, and matching that matters more here than on the storefront: the modal that carries the storefront's confirmation is not mounted on the landing page, so this button is the only trace an add leaves. The cost is that a repeat add produces no new confirmation beyond the label passing through “Adding…” and the live region re-announcing. The live site covers that case with the modal counting “2 items added to cart”, and we inherit it if TVS mounts the overlay on the LP route — see <strong>Whether TVS's mini-cart opens on add is unconfirmed</strong> above.</dd>
+</dl></div>
 </section>
 
 <section id="global-seo">
@@ -481,7 +548,7 @@ ul.also li { break-inside: avoid; }
 <section id="slim-hero-banner-a">
 <p class="eyebrow">06 — slim-hero-banner-a</p>
 <h2>slim-hero-banner-a</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/slim-hero-banner-a/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./slim-hero-banner-a/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./slim-hero-banner-a/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.3929},&quot;mobile&quot;:{&quot;design&quot;:&quot;./slim-hero-banner-a/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./slim-hero-banner-a/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.512}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -679,7 +746,7 @@ ul.also li { break-inside: avoid; }
 <section id="sticky-nav-bar">
 <p class="eyebrow">08 — sticky-nav-bar</p>
 <h2>sticky-nav-bar</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/sticky-nav-bar/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./sticky-nav-bar/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./sticky-nav-bar/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.0344},&quot;mobile&quot;:{&quot;design&quot;:&quot;./sticky-nav-bar/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./sticky-nav-bar/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:0.1387}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -762,7 +829,7 @@ ul.also li { break-inside: avoid; }
 <section id="product-carousel">
 <p class="eyebrow">09 — product-carousel</p>
 <h2>product-carousel</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/product-carousel/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./product-carousel/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./product-carousel/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5615},&quot;mobile&quot;:{&quot;design&quot;:&quot;./product-carousel/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./product-carousel/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.6253}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -824,12 +891,12 @@ ul.also li { break-inside: avoid; }
 <h4 id="the-review-count-is-plain-text-not-a-link">The review count is plain text, not a link</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation</span></p>
 <p>Figma names the review-count node “link”, but the product API exposes no reviews URL distinct from the PDP. It renders as plain text. Should it link to the PDP, or to an anchor within it?</p></div>
-<h3 class="group">Also applies here <span class="count">13</span></h3>
-<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">14</span></h3>
+<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#the-added-state-stays-for-the-life-of-the-page">The Added state stays for the life of the page</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="benefits-highlights">
 <p class="eyebrow">10 — benefits-highlights</p>
 <h2>benefits-highlights</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./benefits-highlights/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./benefits-highlights/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5714},&quot;mobile&quot;:{&quot;design&quot;:&quot;./benefits-highlights/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./benefits-highlights/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:2.8987}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -904,7 +971,7 @@ ul.also li { break-inside: avoid; }
 <section id="ugc-video-slider">
 <p class="eyebrow">11 — ugc-video-slider</p>
 <h2>ugc-video-slider</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./ugc-video-slider/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./ugc-video-slider/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5698},&quot;mobile&quot;:{&quot;design&quot;:&quot;./ugc-video-slider/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./ugc-video-slider/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.8133}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1011,7 +1078,7 @@ ul.also li { break-inside: avoid; }
 <section id="faq">
 <p class="eyebrow">12 — faq</p>
 <h2>faq</h2>
-<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a></p>
+<p class="chips"><span class="chips-label">Renders on</span><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-dev">Template 1</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-2-dev">Template 2</a><a class="chip" href="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat" target="_blank" rel="noopener" title="https://qa1.vitaminshoppe.com/lp/platter-template-1-uat">Template 1</a></p>
 <p class="links"><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/faq/" target="_blank" rel="noopener">reference page, fields and sample content</a></p>
 <div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./faq/figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./faq/desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5159},&quot;mobile&quot;:{&quot;design&quot;:&quot;./faq/figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./faq/mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:1.6907}}">
   <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
@@ -1164,8 +1231,8 @@ ul.also li { break-inside: avoid; }
 <h4 id="both-frames-hide-a-substantial-second-design">Both frames hide a substantial second design</h4>
 <p class="line"><span class="tag finding">Finding</span><span class="status">Needs client confirmation that these are out of scope for Phase 1</span></p>
 <p>Both frames carry hidden layers for a preheading, a labels row, a reviews badge, a second description line, a collection-name block, a six-item category tab row, per-row arrows and a slider pagination bar — the section component clearly supports more than this page uses. None appears in the Admin requirement, so none is built. <strong>The category tabs in particular would change the content type substantially.</strong> The frame is also named “slider” at both breakpoints, which reads as shared lineage with the carousel rather than an instruction; nothing in either frame scrolls.</p></div>
-<h3 class="group">Also applies here <span class="count">14</span></h3>
-<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
+<h3 class="group">Also applies here <span class="count">15</span></h3>
+<ul class="also"><li><a href="#products-resolve-through-getproductdetailsbulk-not-getproductlist">Products resolve through getProductDetailsBulk, not getProductList</a></li><li><a href="#the-struck-compare-at-price-renders-only-on-a-genuine-sale">The struck compare-at price renders only on a genuine sale</a></li><li><a href="#the-offer-line-is-hidden-and-its-detail-moved-into-the-badge-glyph">The offer line is hidden and its detail moved into the badge glyph</a></li><li><a href="#the-product-name-hugs-its-content-instead-of-reserving-three-lines">The product name hugs its content instead of reserving three lines</a></li><li><a href="#the-whole-card-is-one-link-and-the-brand-line-is-no-longer-one">The whole card is one link, and the brand line is no longer one</a></li><li><a href="#a-dead-sku-is-dropped-and-a-module-with-none-removes-itself">A dead SKU is dropped, and a module with none removes itself</a></li><li><a href="#which-rating-field-renders-is-unconfirmed">Which rating field renders is unconfirmed</a></li><li><a href="#whether-tvs-s-mini-cart-opens-on-add-is-unconfirmed">Whether TVS's mini-cart opens on add is unconfirmed</a></li><li><a href="#the-added-state-stays-for-the-life-of-the-page">The Added state stays for the life of the page</a></li><li><a href="#interaction-and-async-states-are-mostly-ours-to-fill-in">Interaction and async states are mostly ours to fill in</a></li><li><a href="#heading-level-size-and-typeface-are-merchandiser-fields">Heading level, size and typeface are merchandiser fields</a></li><li><a href="#every-section-offers-an-optional-section-id">Every section offers an optional Section ID</a></li><li><a href="#headings-drawn-in-fields-render-in-a-fallback-serif">Headings drawn in Fields render in a fallback serif</a></li><li><a href="#impression-tracking-is-not-built">Impression tracking is not built</a></li><li><a href="#the-click-tracking-payload-is-unverified-against-a-real-landing-page">The click-tracking payload is unverified against a real landing page</a></li></ul></section>
 <section id="testimonials">
 <p class="eyebrow">14 — testimonials</p>
 <h2>testimonials</h2>
