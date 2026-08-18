@@ -191,7 +191,7 @@ table.matrix td.hit .none { color: var(--rule-strong); font-weight: 400; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">Module reference</p>
   <h1>What each Platter module holds</h1>
-  <p class="lede">12 modules, 170 merchandiser settings between them, and 9 GA4 events pushed from 22 places. Every field, event, value and file path below is read out of the schemas and the markup that ship, so this is an inventory of what is there rather than a summary of what was planned.</p>
+  <p class="lede">12 modules, 173 merchandiser settings between them, and 9 GA4 events pushed from 22 places. Every field, event, value and file path below is read out of the schemas and the markup that ship, so this is an inventory of what is there rather than a summary of what was planned.</p>
   <p class="lede">Each module names the file it lives in, lists the settings a merchandiser fills in, and prints every analytics payload it sends. Use it to fill in a content item, to build a GTM trigger, or to find the exact line in the exact file behind either.</p>
 </header>
 
@@ -373,7 +373,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <h2>global-seo</h2>
 <div class="scroll"><table class="file"><tbody>
 <tr><th>Written in</th><td><code>sections/global-seo/global-seo.html</code></td></tr>
-<tr><th>Contains</th><td>12 merchandiser settings &middot; no dataLayer event</td></tr>
+<tr><th>Contains</th><td>15 merchandiser settings &middot; no dataLayer event</td></tr>
 
 <tr><th>Reference</th><td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/global-seo/" target="_blank" rel="noopener">sample content and captures</a></td></tr>
 </tbody></table></div>
@@ -424,7 +424,16 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tr><td><code>ogImage</code><br /><strong>Share image</strong></td>
 <td>string</td>
 <td>max 500</td>
-<td>Full URL of the preview image, at least 1200×630 for a large card. jpg, jpeg or png.</td></tr></tbody></table></div>
+<td>Full URL of the preview image, at least 1200×630 for a large card. jpg, jpeg or png.</td></tr>
+<tr class="container"><td><code>embeds[]</code></td><td colspan="3">Page embeds &middot; min 1, max 5 items &mdash; Third-party snippets that should run on this page — a feedback widget, an analytics tag, a partner pixel. Paste each snippet exactly as its vendor gives it to you, <code>&lt;script&gt;</code> tags and all, and give it a name so the list stays readable. Drag a row to reorder it. Snippets run in the order listed. Only <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;link&gt;</code> and <code>&lt;meta&gt;</code> are kept — anything else in a snippet is ignored. Leave the list empty on a normal page: everything here runs on every visit, so an unnecessary snippet is a slower page for every shopper.</td></tr>
+<tr><td><code>embeds[].label</code><br /><strong>Name</strong></td>
+<td>string<br /><span class="req">required</span></td>
+<td>max 40</td>
+<td>What this snippet is, for whoever reads the list next, e.g. &quot;Marker.io feedback widget&quot;. It also tags the snippet in the page so a developer can find it. Two embeds sharing a name means only the first one runs.</td></tr>
+<tr><td><code>embeds[].snippet</code><br /><strong>Snippet</strong></td>
+<td>string</td>
+<td>max 5000</td>
+<td>The vendor's code, pasted whole and unedited. Do not retype it or reformat it — a single changed character usually stops it working. This field runs code on the live site, so only paste a snippet you were given by a source you trust.</td></tr></tbody></table></div>
 <h3 class="group">Analytics <span class="count">none</span></h3>
 <p class="lede">Nothing in this file pushes to the dataLayer. It renders no visible markup, so there is no interaction to report and no impression to observe.</p>
 </section>

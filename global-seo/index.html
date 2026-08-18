@@ -189,7 +189,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>string</td>
 <td class="req"></td>
 <td>max 500</td>
-<td>Full URL of the preview image, at least 1200×630 for a large card. jpg, jpeg or png.</td></tr></tbody></table></div></section>
+<td>Full URL of the preview image, at least 1200×630 for a large card. jpg, jpeg or png.</td></tr><tr><td><code>embeds</code><br /><strong>Page embeds</strong></td>
+<td>array</td>
+<td class="req"></td>
+<td></td>
+<td>Third-party snippets that should run on this page — a feedback widget, an analytics tag, a partner pixel. Paste each snippet exactly as its vendor gives it to you, <code>&lt;script&gt;</code> tags and all, and give it a name so the list stays readable. Drag a row to reorder it. Snippets run in the order listed. Only <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;link&gt;</code> and <code>&lt;meta&gt;</code> are kept — anything else in a snippet is ignored. Leave the list empty on a normal page: everything here runs on every visit, so an unnecessary snippet is a slower page for every shopper.</td></tr></tbody></table></div></section>
 <section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
 <p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
 <pre>{
@@ -212,7 +216,13 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   ],
   &quot;ogTitle&quot;: &quot;German Creatine | The Vitamin Shoppe&quot;,
   &quot;ogDescription&quot;: &quot;Pure Creapure creatine monohydrate, plus everything else your training stack needs.&quot;,
-  &quot;ogImage&quot;: &quot;../assets/hero-a-desktop-2160.jpg&quot;
+  &quot;ogImage&quot;: &quot;../assets/hero-a-desktop-2160.jpg&quot;,
+  &quot;embeds&quot;: [
+    {
+      &quot;label&quot;: &quot;Preview smoke test&quot;,
+      &quot;snippet&quot;: &quot;&lt;meta name=\&quot;plx-embed-smoke\&quot; content=\&quot;ok\&quot; /&gt;&lt;script&gt;console.info('global-seo: embed snippet ran');&lt;/script&gt;&lt;div&gt;ignored&lt;/div&gt;&quot;
+    }
+  ]
 }</pre></section>
 <section id="user-requirement"><p class="eyebrow">05 — User requirement</p><h2>User requirement</h2><p>No shopper-visible behavior. The module exists for search engines, AI crawlers and link previews.</p></section>
 <section id="admin-requirement"><p class="eyebrow">06 — Admin requirement</p><h2>Admin requirement</h2><ul><li>All pages must include dedicated, editable fields for SEO Title and Meta Description tags.</li><li>Every landing page requires primary, page-level structured data (Schema markup) to define the page content.</li><li>Modular structured data (hybrid approach): high-value modules (Product, Review, FAQ, Video) must emit their own structured data; implement a clear hierarchy so it integrates with the primary page schema without conflicts; provide a switch per module to enable or disable its output.</li></ul></section>
