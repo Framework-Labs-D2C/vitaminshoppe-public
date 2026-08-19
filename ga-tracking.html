@@ -191,7 +191,7 @@ table.matrix td.hit .none { color: var(--rule-strong); font-weight: 400; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">Module reference</p>
   <h1>What each Platter module holds</h1>
-  <p class="lede">12 modules, 173 merchandiser settings between them, and 9 GA4 events pushed from 22 places. Every field, event, value and file path below is read out of the schemas and the markup that ship, so this is an inventory of what is there rather than a summary of what was planned.</p>
+  <p class="lede">12 modules, 173 merchandiser settings between them, and 14 GA4 events pushed from 27 places. Every field, event, value and file path below is read out of the schemas and the markup that ship, so this is an inventory of what is there rather than a summary of what was planned.</p>
   <p class="lede">Each module names the file it lives in, lists the settings a merchandiser fills in, and prints every analytics payload it sends. Use it to fill in a content item, to build a GTM trigger, or to find the exact line in the exact file behind either.</p>
 </header>
 
@@ -213,19 +213,19 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <h2>Every module against every event</h2>
 <p class="lede">A tick is a push in that module's shipped markup. Follow a column heading for the event's parameters, or a row for the exact payload that module sends and the file it lives in.</p>
 <div class="scroll wide"><table class="matrix">
-<thead><tr><th class="row">Section</th><th><a href="#event-promotion-click">promotion-click</a></th><th><a href="#event-video-play">video_play</a></th><th><a href="#event-component-click">component_click</a></th><th><a href="#event-navigation-click">navigation_click</a></th><th><a href="#event-view-item-list">view_item_list</a></th><th><a href="#event-add-to-cart">add_to_cart</a></th><th><a href="#event-select-item">select_item</a></th><th><a href="#event-accordion-interaction">accordion_interaction</a></th><th><a href="#event-shop-all">shop_all</a></th></tr></thead>
-<tbody><tr><th class="row"><a href="#global-seo">global-seo</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#slim-hero-banner-a">slim-hero-banner-a</a></th><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#expert-module">expert-module</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#sticky-nav-bar">sticky-nav-bar</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#product-carousel">product-carousel</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#benefits-highlights">benefits-highlights</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#ugc-video-slider">ugc-video-slider</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#faq">faq</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#product-grid">product-grid</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td></tr>
-<tr><th class="row"><a href="#testimonials">testimonials</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#bundle-module">bundle-module</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
-<tr><th class="row"><a href="#shop-by-goal">shop-by-goal</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr></tbody></table></div>
+<thead><tr><th class="row">Section</th><th><a href="#event-promotion-click">promotion-click</a></th><th><a href="#event-video-play">video_play</a></th><th><a href="#event-video-pause">video_pause</a></th><th><a href="#event-cta-click">cta_click</a></th><th><a href="#event-navigation-click">navigation_click</a></th><th><a href="#event-view-item-list">view_item_list</a></th><th><a href="#event-add-to-cart">add_to_cart</a></th><th><a href="#event-select-item">select_item</a></th><th><a href="#event-modal-open">modal_open</a></th><th><a href="#event-modal-close">modal_close</a></th><th><a href="#event-video-navigation">video_navigation</a></th><th><a href="#event-accordion-interaction">accordion_interaction</a></th><th><a href="#event-shop-all">shop_all</a></th><th><a href="#event-modal-clicks">modal_clicks</a></th></tr></thead>
+<tbody><tr><th class="row"><a href="#global-seo">global-seo</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#slim-hero-banner-a">slim-hero-banner-a</a></th><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#expert-module">expert-module</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#sticky-nav-bar">sticky-nav-bar</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#product-carousel">product-carousel</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#benefits-highlights">benefits-highlights</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#ugc-video-slider">ugc-video-slider</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#faq">faq</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#product-grid">product-grid</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#testimonials">testimonials</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#bundle-module">bundle-module</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit">&#10003;</td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td></tr>
+<tr><th class="row"><a href="#shop-by-goal">shop-by-goal</a></th><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit"><span class="none">&middot;</span></td><td class="hit">&#10003;</td></tr></tbody></table></div>
 </section>
 
 <section id="events">
@@ -248,24 +248,37 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <div class="card">
 <h3 id="event-video-play"><code>video_play</code></h3>
 <p class="line"><span class="badge n">2 sections</span><a class="chip" href="#expert-module">expert-module</a><a class="chip" href="#ugc-video-slider">ugc-video-slider</a></p>
-<dl><dt>Fires when</dt><dd>A shopper starts the module's video.</dd></dl>
+<dl><dt>Fires when</dt><dd>A video starts playing: the first play, a resume after a pause, and the automatic start when the UGC viewer opens on or moves to a clip.</dd></dl>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>this.plainText(this.moduleTitle)</code> <span class="from">ugc-video-slider</span></td></tr>
-<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'expert_module'</code> <span class="from">expert-module</span><br /><code>'ugc_video_slider'</code> <span class="from">ugc-video-slider</span></td></tr>
-<tr><td><code>video_name</code></td><td>The video's own name. The Expert Module uses the expert's name; the UGC slider uses the clip's alt text, which describes the video rather than the control.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>this.items[index] &amp;&amp; this.items[index].imageAlt ? this.items[index].imageAlt : this.cardLabel(this.items[index])</code> <span class="from">ugc-video-slider</span></td></tr>
-<tr><td><code>video_url</code></td><td>The video source URL. Empty string when the content item has no video.</td><td><code>this.$data.video || ''</code> <span class="from">expert-module</span><br /><code>this.items[index] &amp;&amp; this.items[index].video ? this.items[index].video : ''</code> <span class="from">ugc-video-slider</span></td></tr></tbody></table></div>
+<tbody><tr><td><code>video_title</code></td><td>The video's own name. The Expert Module uses the expert's name; the UGC slider uses the clip's alt text, which describes the video rather than the control.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>card &amp;&amp; card.imageAlt ? card.imageAlt : this.cardLabel(card)</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_duration</code></td><td>The clip's length in whole seconds. Zero until the browser has loaded the metadata, so the first play of a clip can report zero.</td><td><code>this.$refs.videoPlayer &amp;&amp; Number.isFinite(this.$refs.videoPlayer.duration) ? Math.round(this.$refs.videoPlayer.duration) : 0</code> <span class="from">expert-module</span><br /><code>event.target &amp;&amp; Number.isFinite(event.target.duration) ? Math.round(event.target.duration) : 0</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_current_time</code></td><td>The playhead position in whole seconds at the moment of the event.</td><td><code>this.$refs.videoPlayer ? Math.round(this.$refs.videoPlayer.currentTime) : 0</code> <span class="from">expert-module</span><br /><code>event.target ? Math.round(event.target.currentTime) : 0</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>'expert module'</code> <span class="from">expert-module</span><br /><code>'UGC module'</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_url</code></td><td>The video source URL. Empty string when the content item has no video.</td><td><code>this.$data.video || ''</code> <span class="from">expert-module</span><br /><code>card &amp;&amp; card.video ? card.video : ''</code> <span class="from">ugc-video-slider</span></td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 id="event-component-click"><code>component_click</code></h3>
-<p class="line"><span class="badge n">5 sections</span><a class="chip" href="#expert-module">expert-module</a><a class="chip" href="#benefits-highlights">benefits-highlights</a><a class="chip" href="#ugc-video-slider">ugc-video-slider</a><a class="chip" href="#testimonials">testimonials</a><a class="chip" href="#shop-by-goal">shop-by-goal</a></p>
+<h3 id="event-video-pause"><code>video_pause</code></h3>
+<p class="line"><span class="badge n">2 sections</span><a class="chip" href="#expert-module">expert-module</a><a class="chip" href="#ugc-video-slider">ugc-video-slider</a></p>
+<dl><dt>Fires when</dt><dd>A shopper pauses the video. The pause the browser fires when a clip ends, or when the viewer closes or moves on, does not fire it.</dd></dl>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
+<tbody><tr><td><code>video_title</code></td><td>The video's own name. The Expert Module uses the expert's name; the UGC slider uses the clip's alt text, which describes the video rather than the control.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>card &amp;&amp; card.imageAlt ? card.imageAlt : this.cardLabel(card)</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_duration</code></td><td>The clip's length in whole seconds. Zero until the browser has loaded the metadata, so the first play of a clip can report zero.</td><td><code>this.$refs.videoPlayer &amp;&amp; Number.isFinite(this.$refs.videoPlayer.duration) ? Math.round(this.$refs.videoPlayer.duration) : 0</code> <span class="from">expert-module</span><br /><code>event.target &amp;&amp; Number.isFinite(event.target.duration) ? Math.round(event.target.duration) : 0</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_current_time</code></td><td>The playhead position in whole seconds at the moment of the event.</td><td><code>this.$refs.videoPlayer ? Math.round(this.$refs.videoPlayer.currentTime) : 0</code> <span class="from">expert-module</span><br /><code>event.target ? Math.round(event.target.currentTime) : 0</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>'expert module'</code> <span class="from">expert-module</span><br /><code>'UGC module'</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>video_url</code></td><td>The video source URL. Empty string when the content item has no video.</td><td><code>this.$data.video || ''</code> <span class="from">expert-module</span><br /><code>card &amp;&amp; card.video ? card.video : ''</code> <span class="from">ugc-video-slider</span></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 id="event-cta-click"><code>cta_click</code></h3>
+<p class="line"><span class="badge n">3 sections</span><a class="chip" href="#expert-module">expert-module</a><a class="chip" href="#benefits-highlights">benefits-highlights</a><a class="chip" href="#testimonials">testimonials</a></p>
 <dl><dt>Fires when</dt><dd>A shopper clicks the module's call to action, where that click is not a product selection.</dd></dl>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>this.plainText(this.heading)</code> <span class="from">benefits-highlights, testimonials, shop-by-goal</span><br /><code>this.plainText(this.moduleTitle)</code> <span class="from">ugc-video-slider</span></td></tr>
-<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'expert_module'</code> <span class="from">expert-module</span><br /><code>'benefits_highlights'</code> <span class="from">benefits-highlights</span><br /><code>'ugc_video_slider'</code> <span class="from">ugc-video-slider</span><br /><code>'testimonials'</code> <span class="from">testimonials</span><br /><code>'shop_by_goal'</code> <span class="from">shop-by-goal</span></td></tr>
-<tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>$data.ctaLabel</code> <span class="from">expert-module, benefits-highlights, testimonials</span><br /><code>'Open review'</code> <span class="from">ugc-video-slider</span><br /><code>goal.label</code> <span class="from">shop-by-goal</span></td></tr>
-<tr><td><code>link_url</code></td><td>Its destination. Empty string when the click opens something in place rather than navigating.</td><td><code>$data.ctaUrl || ''</code> <span class="from">expert-module, benefits-highlights, testimonials</span><br /><code>''</code> <span class="from">ugc-video-slider</span><br /><code>goal.url || ''</code> <span class="from">shop-by-goal</span></td></tr></tbody></table></div>
+<tbody><tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.expertName)</code> <span class="from">expert-module</span><br /><code>this.plainText(this.heading)</code> <span class="from">benefits-highlights, testimonials</span></td></tr>
+<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'expert_module'</code> <span class="from">expert-module</span><br /><code>'benefits_highlights'</code> <span class="from">benefits-highlights</span><br /><code>'testimonials'</code> <span class="from">testimonials</span></td></tr>
+<tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>$data.ctaLabel</code></td></tr>
+<tr><td><code>link_url</code></td><td>Its destination. Empty string when the click opens something in place rather than navigating.</td><td><code>$data.ctaUrl || ''</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3 id="event-navigation-click"><code>navigation_click</code></h3>
@@ -282,6 +295,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
 <tbody><tr class="container"><td><code>ecommerce</code></td><td colspan="2">GA4's standard ecommerce container. Everything the Analytics ecommerce reports read sits inside it rather than beside it.</td></tr>
+<tr><td><code>ecommerce.currency</code></td><td>Always <code>USD</code>. The storefront is single-currency, and TVS-Common returns no currency of its own.</td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.item_list_id</code></td><td>The list identifier, built from the module's heading. See the list identity table for how each module spells it.</td><td><code>this.list().id</code></td></tr>
 <tr><td><code>ecommerce.item_list_name</code></td><td>The module's heading as a shopper reads it, with the merchandiser's formatting marks removed.</td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td>The GA4 item array. Every entry has the shape in the item table below.</td><td><code>this.items.filter(Boolean).map((product) =&gt; product.gaItem).filter(Boolean)</code></td></tr></tbody></table></div>
@@ -295,6 +309,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tbody><tr class="container"><td><code>ecommerce</code></td><td colspan="2">GA4's standard ecommerce container. Everything the Analytics ecommerce reports read sits inside it rather than beside it.</td></tr>
 <tr><td><code>ecommerce.currency</code></td><td>Always <code>USD</code>. The storefront is single-currency, and TVS-Common returns no currency of its own.</td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.value</code></td><td>The monetary value of the add: unit price times quantity, summed across every line when a bundle adds several at once.</td><td><code>product.gaItem.price * product.gaItem.quantity</code> <span class="from">product-carousel, ugc-video-slider, product-grid</span><br /><code>this.items.filter(Boolean).map((item) =&gt; item.gaItem).filter(Boolean).reduce((total, item) =&gt; total + item.price * item.quantity, 0)</code> <span class="from">bundle-module</span></td></tr>
+<tr><td><code>ecommerce.item_list_name</code></td><td>The module's heading as a shopper reads it, with the merchandiser's formatting marks removed.</td><td><code>product.gaItem.item_list_name</code> <span class="from">product-carousel, product-grid</span><br /><code>this.list().name</code> <span class="from">ugc-video-slider, bundle-module</span></td></tr>
 <tr><td><code>ecommerce.items</code></td><td>The GA4 item array. Every entry has the shape in the item table below.</td><td><code>[product.gaItem]</code> <span class="from">product-carousel, ugc-video-slider, product-grid</span><br /><code>this.items.filter(Boolean).map((item) =&gt; item.gaItem).filter(Boolean)</code> <span class="from">bundle-module</span></td></tr></tbody></table></div>
 </div>
 <div class="card">
@@ -309,13 +324,44 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tr><td><code>ecommerce.items</code></td><td>The GA4 item array. Every entry has the shape in the item table below.</td><td><code>[product.gaItem]</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
+<h3 id="event-modal-open"><code>modal_open</code></h3>
+<p class="line"><span class="badge n">2 sections</span><a class="chip" href="#benefits-highlights">benefits-highlights</a><a class="chip" href="#ugc-video-slider">ugc-video-slider</a></p>
+<dl><dt>Fires when</dt><dd>A shopper opens a module's overlay: a benefit tile's drawer, or a card in the UGC slider's viewer.</dd></dl>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>'benefits highlight'</code> <span class="from">benefits-highlights</span><br /><code>'UGC module'</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>this.plainText(name)</code> <span class="from">benefits-highlights</span><br /><code>this.cardLinkText(this.items[index])</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.moduleTitle)</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'ugc_video_slider'</code> <span class="from">ugc-video-slider</span></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 id="event-modal-close"><code>modal_close</code></h3>
+<p class="line"><span class="badge n">2 sections</span><a class="chip" href="#benefits-highlights">benefits-highlights</a><a class="chip" href="#ugc-video-slider">ugc-video-slider</a></p>
+<dl><dt>Fires when</dt><dd>The overlay is closed, by its close button, the backdrop or the Escape key.</dd></dl>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>'benefits highlight'</code> <span class="from">benefits-highlights</span><br /><code>'UGC module'</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>this.plainText(name)</code> <span class="from">benefits-highlights</span><br /><code>this.cardLinkText(this.activeCard())</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.moduleTitle)</code> <span class="from">ugc-video-slider</span></td></tr>
+<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'ugc_video_slider'</code> <span class="from">ugc-video-slider</span></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 id="event-video-navigation"><code>video_navigation</code></h3>
+<p class="line"><span class="badge n">1 section</span><a class="chip" href="#ugc-video-slider">ugc-video-slider</a></p>
+<dl><dt>Fires when</dt><dd>The UGC viewer's next or previous control is used, by button or arrow key.</dd></dl>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>direction</code></td><td><code>next</code> or <code>previous</code>.</td><td><code>direction &gt; 0 ? 'next' : 'previous'</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
 <h3 id="event-accordion-interaction"><code>accordion_interaction</code></h3>
-<p class="line"><span class="badge n">2 sections</span><a class="chip" href="#benefits-highlights">benefits-highlights</a><a class="chip" href="#faq">faq</a></p>
+<p class="line"><span class="badge n">1 section</span><a class="chip" href="#faq">faq</a></p>
 <dl><dt>Fires when</dt><dd>A disclosure inside the module is opened or closed. <code>accordion_action</code> says which.</dd></dl>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
 <tbody><tr><td><code>accordion_name</code></td><td>The label of the disclosure that was opened or closed, formatting marks removed.</td><td><code>node.textContent</code></td></tr>
-<tr><td><code>accordion_action</code></td><td><code>open</code> or <code>close</code>.</td><td><code>'open' or 'close'</code> <span class="from">benefits-highlights</span><br /><code>$event.currentTarget.open ? 'open' : 'close'</code> <span class="from">faq</span></td></tr>
+<tr><td><code>accordion_action</code></td><td><code>open</code> or <code>close</code>.</td><td><code>$event.currentTarget.open ? 'open' : 'close'</code></td></tr>
 <tr><td><code>page_location</code></td><td>The full page URL at the moment of the interaction.</td><td><code>location.href</code></td></tr>
 <tr><td><code>page_path</code></td><td>Its path only.</td><td><code>location.pathname</code></td></tr>
 <tr><td><code>page_title</code></td><td>The document title.</td><td><code>document.title</code></td></tr></tbody></table></div>
@@ -330,6 +376,18 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'product_grid'</code></td></tr>
 <tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>$data.ctaLabel</code></td></tr>
 <tr><td><code>link_url</code></td><td>Its destination. Empty string when the click opens something in place rather than navigating.</td><td><code>$data.ctaUrl</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 id="event-modal-clicks"><code>modal_clicks</code></h3>
+<p class="line"><span class="badge n">1 section</span><a class="chip" href="#shop-by-goal">shop-by-goal</a></p>
+<dl><dt>Fires when</dt><dd>A Shop By Goal card is clicked. <code>modal_name</code> carries the card's label.</dd></dl>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>What it carries</th><th>Value in the markup</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td>A fixed string naming the overlay, from the implementation guide. The Shop By Goal cards send the clicked card's label instead.</td><td><code>this.plainText(goal.label)</code></td></tr>
+<tr><td><code>component_name</code></td><td>The module's heading, formatting marks removed. It is what identifies the module instance in a report, so two modules on one page are told apart by their headings.</td><td><code>this.plainText(this.heading)</code></td></tr>
+<tr><td><code>component_type</code></td><td>A fixed string naming the component. Never merchandiser-editable, so it is safe to group and filter on.</td><td><code>'shop_by_goal'</code></td></tr>
+<tr><td><code>link_text</code></td><td>The visible label of the thing clicked.</td><td><code>goal.label</code></td></tr>
+<tr><td><code>link_url</code></td><td>Its destination. Empty string when the click opens something in place rather than navigating.</td><td><code>goal.url || ''</code></td></tr></tbody></table></div>
 </div>
 </section>
 
@@ -532,7 +590,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <h2>expert-module</h2>
 <div class="scroll"><table class="file"><tbody>
 <tr><th>Written in</th><td><code>sections/expert-module/expert-module.html</code></td></tr>
-<tr><th>Contains</th><td>15 merchandiser settings &middot; 2 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>Expert Module</code></td></tr>
+<tr><th>Contains</th><td>15 merchandiser settings &middot; 3 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>Expert Module</code></td></tr>
 
 <tr><th>Reference</th><td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/expert-module/" target="_blank" rel="noopener">sample content and captures</a></td></tr>
 </tbody></table></div>
@@ -599,19 +657,31 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <td>string</td>
 <td>max 50</td>
 <td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #meet-jordan. Page-level CSS can also target this one module rather than every expert module. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div>
-<h3 class="group">Analytics <span class="count">2 dataLayer events</span></h3>
+<h3 class="group">Analytics <span class="count">3 dataLayer events</span></h3>
 <div class="card">
 <h3><code>video_play</code> <span class="count">pushed from trackVideoPlay()</span></h3>
-<p>A shopper starts the module's video.</p>
+<p>A video starts playing: the first play, a resume after a pause, and the automatic start when the UGC viewer opens on or moves to a clip.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td><code>this.plainText(this.expertName)</code></td></tr>
-<tr><td><code>component_type</code></td><td><code>'expert_module'</code></td></tr>
-<tr><td><code>video_name</code></td><td><code>this.plainText(this.expertName)</code></td></tr>
+<tbody><tr><td><code>video_title</code></td><td><code>this.plainText(this.expertName)</code></td></tr>
+<tr><td><code>video_duration</code></td><td><code>this.$refs.videoPlayer &amp;&amp; Number.isFinite(this.$refs.videoPlayer.duration) ? Math.round(this.$refs.videoPlayer.duration) : 0</code></td></tr>
+<tr><td><code>video_current_time</code></td><td><code>this.$refs.videoPlayer ? Math.round(this.$refs.videoPlayer.currentTime) : 0</code></td></tr>
+<tr><td><code>modal_name</code></td><td><code>'expert module'</code></td></tr>
 <tr><td><code>video_url</code></td><td><code>this.$data.video || ''</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3><code>component_click</code> <span class="count">pushed from trackComponentClick(text, url)</span></h3>
+<h3><code>video_pause</code> <span class="count">pushed from trackVideoPause()</span></h3>
+<p>A shopper pauses the video. The pause the browser fires when a clip ends, or when the viewer closes or moves on, does not fire it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody><tr><td><code>video_title</code></td><td><code>this.plainText(this.expertName)</code></td></tr>
+<tr><td><code>video_duration</code></td><td><code>this.$refs.videoPlayer &amp;&amp; Number.isFinite(this.$refs.videoPlayer.duration) ? Math.round(this.$refs.videoPlayer.duration) : 0</code></td></tr>
+<tr><td><code>video_current_time</code></td><td><code>this.$refs.videoPlayer ? Math.round(this.$refs.videoPlayer.currentTime) : 0</code></td></tr>
+<tr><td><code>modal_name</code></td><td><code>'expert module'</code></td></tr>
+<tr><td><code>video_url</code></td><td><code>this.$data.video || ''</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3><code>cta_click</code> <span class="count">pushed from trackCtaClick(text, url)</span></h3>
 <p>A shopper clicks the module's call to action, where that click is not a product selection.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
@@ -719,6 +789,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
+<tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.item_list_id</code></td><td><code>this.list().id</code></td></tr>
 <tr><td><code>ecommerce.item_list_name</code></td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>this.items.filter(Boolean).map((product) =&gt; product.gaItem).filter(Boolean)</code></td></tr></tbody></table></div>
@@ -731,6 +802,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
 <tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.value</code></td><td><code>product.gaItem.price * product.gaItem.quantity</code></td></tr>
+<tr><td><code>ecommerce.item_list_name</code></td><td><code>product.gaItem.item_list_name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>[product.gaItem]</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
@@ -749,7 +821,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <h2>benefits-highlights</h2>
 <div class="scroll"><table class="file"><tbody>
 <tr><th>Written in</th><td><code>sections/benefits-highlights/benefits-highlights.html</code></td></tr>
-<tr><th>Contains</th><td>17 merchandiser settings &middot; 2 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>Benefits Highlight</code></td></tr>
+<tr><th>Contains</th><td>17 merchandiser settings &middot; 3 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>Benefits Highlight</code></td></tr>
 
 <tr><th>Reference</th><td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/benefits-highlights/" target="_blank" rel="noopener">sample content and captures</a></td></tr>
 </tbody></table></div>
@@ -821,20 +893,25 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <td>string</td>
 <td>max 50</td>
 <td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #peptide-benefits. Page-level CSS can also target this one module rather than every benefits highlight. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div>
-<h3 class="group">Analytics <span class="count">2 dataLayer events</span></h3>
+<h3 class="group">Analytics <span class="count">3 dataLayer events</span></h3>
 <div class="card">
-<h3><code>accordion_interaction</code> <span class="count">pushed from trackDrawer(name, action)</span></h3>
-<p>A disclosure inside the module is opened or closed. <code>accordion_action</code> says which.</p>
+<h3><code>modal_open</code> <span class="count">pushed from trackDrawer(name, action)</span></h3>
+<p>A shopper opens a module's overlay: a benefit tile's drawer, or a card in the UGC slider's viewer.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-<tbody><tr><td><code>accordion_name</code></td><td><code>node.textContent</code></td></tr>
-<tr><td><code>accordion_action</code></td><td><code>'open' or 'close'</code></td></tr>
-<tr><td><code>page_location</code></td><td><code>location.href</code></td></tr>
-<tr><td><code>page_path</code></td><td><code>location.pathname</code></td></tr>
-<tr><td><code>page_title</code></td><td><code>document.title</code></td></tr></tbody></table></div>
+<tbody><tr><td><code>modal_name</code></td><td><code>'benefits highlight'</code></td></tr>
+<tr><td><code>link_text</code></td><td><code>this.plainText(name)</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3><code>component_click</code> <span class="count">pushed from trackComponentClick(text, url)</span></h3>
+<h3><code>modal_close</code> <span class="count">pushed from trackDrawer(name, action)</span></h3>
+<p>The overlay is closed, by its close button, the backdrop or the Escape key.</p>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td><code>'benefits highlight'</code></td></tr>
+<tr><td><code>link_text</code></td><td><code>this.plainText(name)</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3><code>cta_click</code> <span class="count">pushed from trackCtaClick(text, url)</span></h3>
 <p>A shopper clicks the module's call to action, where that click is not a product selection.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
@@ -849,7 +926,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <h2>ugc-video-slider</h2>
 <div class="scroll"><table class="file"><tbody>
 <tr><th>Written in</th><td><code>sections/ugc-video-slider/ugc-video-slider.html</code></td></tr>
-<tr><th>Contains</th><td>19 merchandiser settings &middot; 3 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>UGC Video Slider</code></td></tr>
+<tr><th>Contains</th><td>19 merchandiser settings &middot; 6 dataLayer events &middot; the TVS <code>ItemClick</code> call as <code>UGC Video Slider</code></td></tr>
 <tr><th>List identity</th><td><code>item_list_id</code> = <code>handlize(moduleTitle) + '_ugc'</code><br /><code>item_list_name</code> = <code>plainText(moduleTitle)</code></td></tr>
 <tr><th>Reference</th><td><a href="https://framework-labs-d2c.github.io/vitaminshoppe-public/ugc-video-slider/" target="_blank" rel="noopener">sample content and captures</a></td></tr>
 </tbody></table></div>
@@ -929,26 +1006,56 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <td>string</td>
 <td>max 50</td>
 <td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #real-results. Page-level CSS can also target this one module rather than every UGC slider. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div>
-<h3 class="group">Analytics <span class="count">3 dataLayer events</span></h3>
+<h3 class="group">Analytics <span class="count">6 dataLayer events</span></h3>
 <div class="card">
-<h3><code>component_click</code> <span class="count">pushed from openViewer(index)</span></h3>
-<p>A shopper clicks the module's call to action, where that click is not a product selection.</p>
+<h3><code>modal_open</code> <span class="count">pushed from openViewer(index)</span></h3>
+<p>A shopper opens a module's overlay: a benefit tile's drawer, or a card in the UGC slider's viewer.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td><code>this.plainText(this.moduleTitle)</code></td></tr>
+<tbody><tr><td><code>modal_name</code></td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>component_name</code></td><td><code>this.plainText(this.moduleTitle)</code></td></tr>
 <tr><td><code>component_type</code></td><td><code>'ugc_video_slider'</code></td></tr>
-<tr><td><code>link_text</code></td><td><code>'Open review'</code></td></tr>
-<tr><td><code>link_url</code></td><td><code>''</code></td></tr></tbody></table></div>
+<tr><td><code>link_text</code></td><td><code>this.cardLinkText(this.items[index])</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3><code>video_play</code> <span class="count">pushed from openViewer(index)</span></h3>
-<p>A shopper starts the module's video.</p>
+<h3><code>modal_close</code> <span class="count">pushed from closeViewer()</span></h3>
+<p>The overlay is closed, by its close button, the backdrop or the Escape key.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td><code>this.plainText(this.moduleTitle)</code></td></tr>
+<tbody><tr><td><code>modal_name</code></td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>component_name</code></td><td><code>this.plainText(this.moduleTitle)</code></td></tr>
 <tr><td><code>component_type</code></td><td><code>'ugc_video_slider'</code></td></tr>
-<tr><td><code>video_name</code></td><td><code>this.items[index] &amp;&amp; this.items[index].imageAlt ? this.items[index].imageAlt : this.cardLabel(this.items[index])</code></td></tr>
-<tr><td><code>video_url</code></td><td><code>this.items[index] &amp;&amp; this.items[index].video ? this.items[index].video : ''</code></td></tr></tbody></table></div>
+<tr><td><code>link_text</code></td><td><code>this.cardLinkText(this.activeCard())</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3><code>video_navigation</code> <span class="count">pushed from shift(direction)</span></h3>
+<p>The UGC viewer's next or previous control is used, by button or arrow key.</p>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody><tr><td><code>modal_name</code></td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>direction</code></td><td><code>direction &gt; 0 ? 'next' : 'previous'</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3><code>video_play</code> <span class="count">pushed from trackVideoPlay(event, card)</span></h3>
+<p>A video starts playing: the first play, a resume after a pause, and the automatic start when the UGC viewer opens on or moves to a clip.</p>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody><tr><td><code>video_title</code></td><td><code>card &amp;&amp; card.imageAlt ? card.imageAlt : this.cardLabel(card)</code></td></tr>
+<tr><td><code>video_duration</code></td><td><code>event.target &amp;&amp; Number.isFinite(event.target.duration) ? Math.round(event.target.duration) : 0</code></td></tr>
+<tr><td><code>video_current_time</code></td><td><code>event.target ? Math.round(event.target.currentTime) : 0</code></td></tr>
+<tr><td><code>modal_name</code></td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>video_url</code></td><td><code>card &amp;&amp; card.video ? card.video : ''</code></td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3><code>video_pause</code> <span class="count">pushed from trackVideoPause(event, card)</span></h3>
+<p>A shopper pauses the video. The pause the browser fires when a clip ends, or when the viewer closes or moves on, does not fire it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody><tr><td><code>video_title</code></td><td><code>card &amp;&amp; card.imageAlt ? card.imageAlt : this.cardLabel(card)</code></td></tr>
+<tr><td><code>video_duration</code></td><td><code>event.target &amp;&amp; Number.isFinite(event.target.duration) ? Math.round(event.target.duration) : 0</code></td></tr>
+<tr><td><code>video_current_time</code></td><td><code>event.target ? Math.round(event.target.currentTime) : 0</code></td></tr>
+<tr><td><code>modal_name</code></td><td><code>'UGC module'</code></td></tr>
+<tr><td><code>video_url</code></td><td><code>card &amp;&amp; card.video ? card.video : ''</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3><code>add_to_cart</code> <span class="count">pushed from addToCart(product)</span></h3>
@@ -958,6 +1065,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
 <tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.value</code></td><td><code>product.gaItem.price * product.gaItem.quantity</code></td></tr>
+<tr><td><code>ecommerce.item_list_name</code></td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>[product.gaItem]</code></td></tr></tbody></table></div>
 </div>
 </section>
@@ -1111,6 +1219,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
+<tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.item_list_id</code></td><td><code>this.list().id</code></td></tr>
 <tr><td><code>ecommerce.item_list_name</code></td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>this.items.filter(Boolean).map((product) =&gt; product.gaItem).filter(Boolean)</code></td></tr></tbody></table></div>
@@ -1123,6 +1232,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
 <tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.value</code></td><td><code>product.gaItem.price * product.gaItem.quantity</code></td></tr>
+<tr><td><code>ecommerce.item_list_name</code></td><td><code>product.gaItem.item_list_name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>[product.gaItem]</code></td></tr></tbody></table></div>
 </div>
 <div class="card">
@@ -1233,7 +1343,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #customer-reviews. Page-level CSS can also target this one module rather than every testimonials module. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div>
 <h3 class="group">Analytics <span class="count">1 dataLayer event</span></h3>
 <div class="card">
-<h3><code>component_click</code> <span class="count">pushed from trackComponentClick(text, url)</span></h3>
+<h3><code>cta_click</code> <span class="count">pushed from trackCtaClick(text, url)</span></h3>
 <p>A shopper clicks the module's call to action, where that click is not a product selection.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
@@ -1330,6 +1440,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
+<tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.item_list_id</code></td><td><code>this.list().id</code></td></tr>
 <tr><td><code>ecommerce.item_list_name</code></td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>this.items.filter(Boolean).map((product) =&gt; product.gaItem).filter(Boolean)</code></td></tr></tbody></table></div>
@@ -1352,6 +1463,7 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <tbody><tr class="container"><td colspan="2"><code>ecommerce</code></td></tr>
 <tr><td><code>ecommerce.currency</code></td><td><code>'USD'</code></td></tr>
 <tr><td><code>ecommerce.value</code></td><td><code>this.items.filter(Boolean).map((item) =&gt; item.gaItem).filter(Boolean).reduce((total, item) =&gt; total + item.price * item.quantity, 0)</code></td></tr>
+<tr><td><code>ecommerce.item_list_name</code></td><td><code>this.list().name</code></td></tr>
 <tr><td><code>ecommerce.items</code></td><td><code>this.items.filter(Boolean).map((item) =&gt; item.gaItem).filter(Boolean)</code></td></tr></tbody></table></div>
 </div>
 </section>
@@ -1410,11 +1522,12 @@ window.dataLayer.push({ event: 'select_item', ecommerce: { … } });</pre>
 <td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #shop-by-goal. Page-level CSS can also target this one module rather than every Shop By Goal. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div>
 <h3 class="group">Analytics <span class="count">1 dataLayer event</span></h3>
 <div class="card">
-<h3><code>component_click</code> <span class="count">pushed from trackComponentClick(text, url)</span></h3>
-<p>A shopper clicks the module's call to action, where that click is not a product selection.</p>
+<h3><code>modal_clicks</code> <span class="count">pushed from trackGoalClick(text, url)</span></h3>
+<p>A Shop By Goal card is clicked. <code>modal_name</code> carries the card's label.</p>
 <div class="scroll"><table>
 <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-<tbody><tr><td><code>component_name</code></td><td><code>this.plainText(this.heading)</code></td></tr>
+<tbody><tr><td><code>modal_name</code></td><td><code>this.plainText(goal.label)</code></td></tr>
+<tr><td><code>component_name</code></td><td><code>this.plainText(this.heading)</code></td></tr>
 <tr><td><code>component_type</code></td><td><code>'shop_by_goal'</code></td></tr>
 <tr><td><code>link_text</code></td><td><code>goal.label</code></td></tr>
 <tr><td><code>link_url</code></td><td><code>goal.url || ''</code></td></tr></tbody></table></div>
