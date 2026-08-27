@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Video Banner — Platter × TVS</title>
+<meta name="description" content="Reference page for the Video Banner section: spec, screenshots, fields and sample content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --page: #f1f1f1;
+  --page-deep: #e7e7e7;
+  --surface: #ffffff;
+  --surface-sub: #f7f7f7;
+  --ink: #303030;
+  --ink-soft: #616161;
+  --ink-faint: #8a8a8a;
+  --rule: #e3e3e3;
+  --rule-strong: #d1d1d1;
+  --brand: #0458AD;
+  --brand-deep: #012169;
+  --brand-tint: #e8f1fa;
+  --brand-line: #c3ddf3;
+  --success: #1A9E48;
+  --success-deep: #0E7A36;
+  --success-tint: #eafbf1;
+  --critical: #EE2737;
+  --critical-tint: #fdeaec;
+  --display: "Lato", sans-serif;
+  --body: "Lato", sans-serif;
+  --mono: "Geist Mono", Consolas, ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--page); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.shell { display: flex; min-height: 100vh; }
+.sidenav { width: 244px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 0 28px 26px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; background: linear-gradient(180deg, var(--page) 0%, var(--page-deep) 100%); }
+.sidenav .brand { font-family: var(--display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.sidenav .brand em { font-style: italic; color: var(--brand); }
+.sidenav .brand-sub { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 4px 0 24px; }
+.sidenav a { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-decoration: none; padding: 7px 14px 7px 10px; border-radius: 6px 0 0 6px; border-right: 2px solid transparent; }
+.sidenav a .n { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); width: 16px; flex-shrink: 0; }
+.sidenav a:hover { color: var(--ink); background: rgba(4,88,173,0.08); }
+.sidenav .foot { margin-top: auto; padding-top: 24px; padding-right: 20px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); line-height: 1.8; }
+
+main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
+section { padding-top: 68px; }
+@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin: 34px 0 10px; }
+p { color: var(--ink-soft); max-width: 74ch; }
+p + p { margin-top: 12px; }
+p strong { color: var(--ink); font-weight: 700; }
+ul, ol { color: var(--ink-soft); max-width: 74ch; padding-left: 22px; margin-top: 10px; }
+li + li { margin-top: 6px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-sub); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
+a { color: var(--brand); }
+blockquote { border-left: 3px solid var(--brand-line); background: var(--surface); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+.lede { font-size: 17px; line-height: 1.62; color: var(--ink-soft); max-width: 68ch; margin-top: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 18px 20px; margin-top: 14px; }
+.card h3 { margin-top: 0; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; font-weight: 600; }
+.badge.built { background: var(--success-tint); color: var(--success-deep); }
+.badge.missing { background: var(--critical-tint); color: var(--critical); }
+.badge.corrected { background: var(--brand-tint); color: var(--brand-deep); }
+.badge.open { background: var(--critical-tint); color: var(--critical); }
+.badge.closed { background: var(--success-tint); color: var(--success-deep); }
+
+.scroll { overflow-x: auto; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; background: var(--surface); }
+th, td { border: 1px solid var(--rule); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: var(--surface-sub); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 600; }
+td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+
+.compare { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin-top: 16px; }
+.compare-bar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 10px 12px; border-bottom: 1px solid var(--rule); background: var(--surface-sub); }
+.compare-bar button { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink-soft); cursor: pointer; }
+.compare-bar button:hover:not(:disabled) { background: var(--page); }
+.compare-bar button.on { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.compare-bar button:disabled { opacity: 0.38; cursor: not-allowed; }
+.compare-bar .rule { width: 1px; height: 20px; background: var(--rule-strong); margin: 0 4px; }
+.compare-bar .hint { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-left: auto; }
+
+/* Sidenav plus main's two gutters — what 1:1 has to escape to reach 1512px.
+   The +2px is the block's own border, which box-sizing would otherwise take
+   out of the frame's width and leave it scrolling by two pixels. */
+.compare.actual { width: min(calc(100vw - 348px), calc(var(--compare-width) + 2px)); max-width: none; }
+.compare.actual .compare-stage { overflow-x: auto; }
+.compare.actual .compare-frame { width: var(--compare-width); max-width: none; margin: 0; }
+.compare-frame { position: relative; width: 100%; max-width: var(--compare-width); margin: 0 auto; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.compare-frame:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
+.compare-frame img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
+.compare-build { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--p) * 1%)); }
+.compare-frame.fade .compare-build { clip-path: none; opacity: calc((100 - var(--p)) / 100); }
+.compare-line { position: absolute; top: 0; bottom: 0; left: calc(var(--p) * 1%); width: 2px; margin-left: -1px; background: var(--ink); pointer-events: none; }
+.compare-grip { position: absolute; top: 50%; left: calc(var(--p) * 1%); transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 13px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); pointer-events: none; }
+.compare-frame.fade .compare-line, .compare-frame.fade .compare-grip { display: none; }
+.compare-tag { position: absolute; top: 10px; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; pointer-events: none; }
+.compare-tag.design { left: 10px; background: var(--brand-deep); }
+.compare-tag.build { right: 10px; background: var(--success-deep); }
+/* Must follow the base rule, not sit with the other 980px overrides above it:
+   same specificity, so source order decides. Below 980 the sidenav is gone and
+   main's gutters are 20px. */
+@media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
+.shots figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.shots figcaption { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.shots img { display: block; width: 100%; height: auto; }
+
+.pending { color: var(--critical); font-family: var(--mono); font-size: 12px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="brand">Platter <em>×</em> TVS</div>
+  <div class="brand-sub">video-banner</div>
+  <a href="#screenshots"><span class="n">01</span>Screenshots</a>
+  <a href="#fields"><span class="n">02</span>Fields</a>
+  <a href="#sample"><span class="n">03</span>Sample content</a>
+  <a href="#design-reference"><span class="n">04</span>Design reference</a>
+  <a href="#user-requirement"><span class="n">05</span>User requirement</a>
+  <a href="#admin-requirement"><span class="n">06</span>Admin requirement</a>
+  <a href="#other-requirements"><span class="n">07</span>Other requirements</a>
+  <a href="#open-comments"><span class="n">08</span>Open comments</a>
+  <a href="#deviations"><span class="n">09</span>Deviations</a>
+  <div class="foot">generated by pnpm build<br />spec transcribed 2026-08-26</div>
+</nav>
+<main>
+<header class="hero" style="padding-top:60px">
+  <p class="eyebrow">Platter component</p>
+  <h1>Video Banner</h1>
+  <p class="lede">Transcribed from Confluence, authored by Sarah Lee, page in the &quot;FSD - Template 2&quot; folder. It is the client's spec, reproduced verbatim in substance. The source table carries five columns — Content Type, Functional Requirement, Character Count, Asset/Copy Requirement, Responsive &amp; Content Behavior — and is reproduced with all five; a <code>-</code> is the page's own empty-cell marker and is kept as written, while a cell the page leaves genuinely blank is blank here too.</p>
+  <p class="lede">Spec: <a href="https://getplatter.atlassian.net/wiki/spaces/TVS/pages/940539989/FSD+Video+Banner" target="_blank" rel="noopener">https://getplatter.atlassian.net/wiki/spaces/TVS/pages/940539989/FSD+Video+Banner</a></p>
+  <p class="lede">Figma: <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback" target="_blank" rel="noopener">The Vitamin Shoppe External Consolidated Feedback</a></p>
+</header>
+
+<section id="screenshots"><p class="eyebrow">02 — Screenshots</p><h2>How it renders</h2>
+<p>Wipe the handle across the design to find where the build drifts from it. The Figma frame and the capture are exported at the same width, so anything that moves under the handle is a real difference. Every width is below as a plain capture.</p>
+<div class="compare" style="--compare-width:1512px" data-compare="{&quot;desktop&quot;:{&quot;design&quot;:&quot;./figma-desktop.jpg&quot;,&quot;build&quot;:&quot;./desktop-1512.png&quot;,&quot;width&quot;:1512,&quot;ratio&quot;:0.5628},&quot;mobile&quot;:{&quot;design&quot;:&quot;./figma-mobile.jpg&quot;,&quot;build&quot;:&quot;./mobile-375.png&quot;,&quot;width&quot;:375,&quot;ratio&quot;:0.5627}}">
+  <div class="compare-bar"><button type="button" data-view="desktop" class="on">Desktop</button><button type="button" data-view="mobile">Mobile</button><span class="rule"></span>
+    <button type="button" data-fade>Fade</button><button type="button" data-actual>1:1</button>
+    <span class="hint">drag to wipe · arrow keys to nudge</span></div>
+  <div class="compare-stage" data-stage>
+    <div class="compare-frame" data-frame style="--p:50;aspect-ratio:1/0.5628" role="slider" tabindex="0"
+      aria-label="Figma design against the captured build" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <img data-design loading="lazy" src="./figma-desktop.jpg" alt="Figma design, desktop" />
+      <div class="compare-build"><img data-build loading="lazy" src="./desktop-1512.png" alt="Captured build, desktop" /></div>
+      <div class="compare-line"></div><div class="compare-grip">&#8646;</div>
+      <span class="compare-tag design">Figma</span><span class="compare-tag build">Build</span>
+    </div>
+  </div>
+</div>
+<div class="shots"><figure><figcaption>desktop — 1512px</figcaption>
+<img src="./desktop-1512.png" alt="video-banner rendered at 1512px" loading="lazy" /></figure>
+<figure><figcaption>mobile — 375px</figcaption>
+<img src="./mobile-375.png" alt="video-banner rendered at 375px" loading="lazy" /></figure>
+<figure><figcaption>tablet — 768px</figcaption>
+<img src="./tablet-768.png" alt="video-banner rendered at 768px" loading="lazy" /></figure>
+<figure><figcaption>wide — 1920px</figcaption>
+<img src="./wide-1920.png" alt="video-banner rendered at 1920px" loading="lazy" /></figure></div></section>
+<section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
+<p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
+<div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
+<tbody><tr><td><code>heading</code><br /><strong>Heading</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>max 70<br />min 1</td>
+<td>The headline over the thumbnail, e.g. &quot;BodyTech Elite: Respect Is Earned&quot;. Wrap words in <code>_underscores_</code> for italic and <code>**double asterisks**</code> for bold. Write <code>~12~</code> for subscript; a registered mark (®) is raised automatically, and a plain asterisk is never formatting. It is centred in white on the darkened thumbnail and disappears once the video starts. Keep it to one line on desktop, around 35 characters — a second line pushes the play button down over the picture.</td></tr><tr><td><code>headingLevel</code><br /><strong>Heading level</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>h1</code> · <code>h2</code> · <code>h3</code><br />default <code>&quot;h2&quot;</code></td>
+<td>Choose h1 only if this module is the first thing on the page and no other h1 exists. Otherwise leave it as h2 — two h1s on one page hurts SEO. Choose h3 when the module sits underneath a section that already has an h2, so the page's heading order stays unbroken. This changes nothing you can see: the size is set separately below.</td></tr><tr><td><code>headingSize</code><br /><strong>Heading size (desktop / mobile)</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>64px / 38px</code> · <code>56px / 34px</code> · <code>48px / 30px</code> · <code>36px / 24px</code> · <code>28px / 20px</code> · <code>20px / 16px</code><br />default <code>&quot;48px / 30px&quot;</code></td>
+<td>A fixed pair from the TVS type scale — the first size applies from tablet up, the second on phones. 48px / 30px is the design. The video box does not grow with the text, so a larger pair on a long headline runs into the play button; 20px / 16px reads as a caption rather than a title.</td></tr><tr><td><code>headingFont</code><br /><strong>Heading font</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td><code>Lato</code> · <code>corisanderegular</code> · <code>Fields</code><br />default <code>&quot;Fields&quot;</code></td>
+<td>Fields is the serif the design uses and is the default. It is not yet installed on vitaminshoppe.com, so until it is, the heading falls back to Georgia — still a serif, but not the exact drawn face. Pick Lato if you would rather the heading match the rest of the site exactly than approximate the design.</td></tr><tr><td><code>video</code><br /><strong>Video</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>max 500<br />min 1</td>
+<td>Full URL of an .mp4, played in place when the play button is pressed. Landscape 16:9 footage only — the box is 16:9 at every width and a portrait clip is letterboxed with black bars. Three things about the file itself, because getting them wrong is invisible until a shopper presses play and nothing happens: it must be H.264 (a phone or an editor exporting AV1 or HEVC will not play for many iPhone users), it should be saved for web streaming so it starts before it has finished downloading, and it should be kept small — a 30-second clip at 1920x1080 should sit under about 15MB. The clip is not fetched until play is pressed.</td></tr><tr><td><code>image</code><br /><strong>Thumbnail</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>min 1</td>
+<td>Full URL of the still a shopper sees before pressing play, and the frame that shows while the video loads. Crop it to 16:9 before upload — the design is 1512 × 850 — as it fills the box and is trimmed at other shapes. Pick a frame that represents the clip rather than its literal first frame, which is often a blur. It is darkened by about a third so the white headline reads on it. jpg, jpeg or png.</td></tr><tr><td><code>imageAlt</code><br /><strong>Thumbnail alt text</strong></td>
+<td>string</td>
+<td class="req">required</td>
+<td>min 1</td>
+<td>Describe what the thumbnail shows, e.g. &quot;An athlete chalking their hands over a bowl in a dim gym&quot;. Required for accessibility — it is what a screen reader announces in place of the picture, and it also names the video in analytics. Do not write &quot;video of&quot;: the play button already says that.</td></tr><tr><td><code>priority</code><br /><strong>Prioritise image loading</strong></td>
+<td>boolean</td>
+<td class="req"></td>
+<td>default <code>false</code></td>
+<td>Switch on when this module is the first thing on the page, so the thumbnail loads immediately instead of lazily.</td></tr><tr><td><code>sectionId</code><br /><strong>Section ID</strong></td>
+<td>string</td>
+<td class="req"></td>
+<td>max 50<br /><code>^[a-z][a-z0-9-]*$</code></td>
+<td>A name for this specific module, used for two things. A link anywhere on the site can jump straight to it by ending the URL with # and this name, e.g. #brand-video. Page-level CSS can also target this one module rather than every video banner. Use lowercase letters, numbers and hyphens, start with a letter, and make it unique on the page — two modules sharing an ID will break the jump link. Leave empty if you need neither.</td></tr></tbody></table></div></section>
+<section id="sample"><p class="eyebrow">04 — Sample content</p><h2>A filled-in example</h2>
+<p>From <code>_content.json</code>. This is what the screenshots above are rendering.</p>
+<pre>{
+  &quot;heading&quot;: &quot;BodyTech Elite: Respect Is Earned&quot;,
+  &quot;headingLevel&quot;: &quot;h2&quot;,
+  &quot;headingSize&quot;: &quot;48px / 30px&quot;,
+  &quot;headingFont&quot;: &quot;Fields&quot;,
+  &quot;video&quot;: &quot;https://cdn.shopify.com/videos/c/o/v/ec8b2d17dd4349c1854087a29e52101a.mp4&quot;,
+  &quot;image&quot;: &quot;../assets/video-banner-poster-16x9-3002.jpg&quot;,
+  &quot;imageAlt&quot;: &quot;An athlete in a BodyTech Elite shirt chalking their hands over a steel bowl in a dim gym&quot;,
+  &quot;priority&quot;: false,
+  &quot;sectionId&quot;: &quot;brand-video&quot;
+}</pre></section>
+<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><div class="scroll"><table><thead><tr><th>View</th><th>Frame</th><th>Size</th></tr></thead><tbody><tr><td>Desktop</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18538-11707" target="_blank" rel="noopener"><code>18538:11707</code></a></td><td>1512 × 850.5, 16:9</td></tr><tr><td>Mobile</td><td>Figma <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18538-11708" target="_blank" rel="noopener"><code>18538:11708</code></a></td><td>375 × 211, 16:9</td></tr></tbody></table></div>
+<p><code>_figma-desktop.jpg</code> and <code>_figma-mobile.jpg</code> are the two frames exported at 2×. Measurements extracted 2026-08-26; a value the file does not carry is written &quot;not specified&quot;.</p>
+<p><strong>Composition.</strong> One 16:9 box, both views: the poster fills it (image fill, cover) under a solid black scrim at 32% opacity — not a gradient, not bound to a token. An overlay stack sits absolutely over the poster, centred both ways, holding the heading and the play control in a vertical stack; every other layer in the file (<code>reviews badge</code>, <code>labels</code>, <code>preheading</code>, <code>subheading</code>, <code>description</code>, a second text <code>button</code>) is hidden and is not part of the design. The frame background is <code>sections/background-main</code> <code>#FFFFFF</code>, never visible. No breakpoint or mode token is set on either frame.</p>
+<div class="scroll"><table><thead><tr><th>Element</th><th>Desktop (1512 × 850.5)</th><th>Mobile (375 × 211)</th></tr></thead><tbody><tr><td>Overlay padding</td><td>48 sides (<code>Container Margin Spacing 2</code>), 32 top/bottom (<code>spacing-large</code>)</td><td>24 sides, 24 top/bottom</td></tr><tr><td>Section Header</td><td>Fill width, max 1440 (<code>Page Width</code>), Hug height, items centred, gap 32</td><td>Fill 327, gap 16</td></tr><tr><td>Heading</td><td><code>BodyTech Elite: Respect Is Earned</code> — <code>richtext-md/H1/bold fields</code>: <strong>Fields</strong> 48 / 700 / 1.2, tracking 0, <code>#FFFFFF</code>, centred, one line (58 tall)</td><td>Fields 30 / 700 / 1.2, centred, two lines (72 tall)</td></tr><tr><td>Heading → play gap</td><td>32</td><td>16</td></tr><tr><td>Play control</td><td><code>icon button</code> variant <code>Size=54px, Mode=Dark</code>, described <code>icon-button-secondary</code>: Hug 78 × 78 (38 glyph + 20 padding), radius 100, fill <code>colors/neutrals/white</code> <code>#FFFFFF</code> at 100%, no border, no shadow</td><td>48 × 48 (24 glyph + 12 padding), same fill</td></tr><tr><td>Play glyph</td><td>38 × 38 filled path, <code>colors/brand colors/blue</code> <code>#0458AD</code>, a right-pointing triangle with rounded corners, left-weighted in its box</td><td>24 × 24, same path</td></tr><tr><td>Vertical rhythm</td><td>heading + gap + disc = 168, centred: 341.25 above and below</td><td>heading 72 + 16 + 48 = 136, centred</td></tr></tbody></table></div>
+<p><strong>Tokens bound in the file:</strong> <code>colors/brand colors/white</code> (heading), <code>colors/neutrals/white</code> (disc), <code>colors/brand colors/blue</code> (glyph), <code>typography/family/primary</code> = Fields, <code>richtext-md/h1</code> = 48 / 30, <code>spacing-xs</code> 6 / 4, <code>s</code> 16 / 8, <code>m</code> 24 / 16, <code>large</code> 32 / 24, <code>Container Margin Spacing 2</code> 48 / 24, <code>Page Width</code> 1440.</p>
+<p><strong>Desktop ↔ mobile diff worth deciding, not measuring:</strong> only sizes change — the heading pair (48 / 30, the shared <code>headingSize</code> default), the header gap (32 / 16) and the disc (78 / 48 with a 38 / 24 glyph). The composition, scrim, colours and hidden layers are identical. Nothing in either frame shows the playing state, the heading after play, hover, or focus.</p></section>
+<section id="user-requirement"><p class="eyebrow">06 — User requirement</p><h2>User requirement</h2><ol><li>User can click the play button to start inline playback with native video controls (play/pause/volume/scrub).</li><li>Video plays inline in the same frame on both desktop and mobile — no lightbox/modal, consistent with the existing product-page video pattern already live on the site.</li></ol></section>
+<section id="admin-requirement"><p class="eyebrow">07 — Admin requirement</p><h2>Admin requirement</h2><div class="scroll"><table><thead><tr><th>Content Type</th><th>Functional Requirement</th><th>Character Count</th><th>Asset/Copy Requirement</th><th>Responsive &amp; Content Behavior</th></tr></thead><tbody><tr><td><strong>Heading</strong> (Required)</td><td>Admin edits a CMS-controlled heading shown above the video before playback starts.</td><td>30-70</td><td>-</td><td>-</td></tr><tr><td><strong>Video Asset</strong> (Required)</td><td>Admin uploads one video per module instance.</td><td></td><td>16:9 aspect ratio, enforced on both breakpoints</td><td>Same ratio and inline-play behavior on desktop and mobile.</td></tr><tr><td><strong>Thumbnail</strong> (Required)</td><td>Admin uploads a thumbnail image shown before play is triggered.</td><td></td><td>-</td><td>-</td></tr><tr><td><strong>Playback Controls</strong></td><td>Native player controls (play/pause/volume/scrub); reuses the existing site video component rather than a new player build.</td><td></td><td>-</td><td>-</td></tr><tr><td><strong>Module Cap</strong></td><td>One video per module instance.</td><td></td><td>-</td><td>-</td></tr></tbody></table></div></section>
+<section id="other-requirements"><p class="eyebrow">08 — Other requirements</p><h2>Other requirements</h2><ol><li><strong>Analytics:</strong> Component supports automated impression tracking (viewport entry) and video-view/play tracking via the standard <code>raiseEvent</code> handler.</li></ol></section>
+<section id="open-comments"><p class="eyebrow">09 — Open comments</p><h2>Open comments</h2><p>The source page carries no comments. Everything below is an ambiguity in the page's own text, recorded as a question rather than resolved.</p>
+<div class="card"><h3 id="sarah-lee-unanswered-2026-08-26">Sarah Lee — unanswered 2026-08-26</h3><p><span class="badge open">unanswered 2026-08-26</span></p><p>The <strong>Heading</strong> row says the heading is &quot;shown above the video before playback starts&quot;. In both frames the heading is overlaid <em>on</em> the poster, centred, with the play button beneath it, rather than sitting above the video frame. Which placement is intended — above the frame, or overlaid on the poster? And &quot;before playback starts&quot; reads as though the heading hides once playback begins; please confirm whether it does, or whether it stays in place over the playing video.</p></div>
+<div class="card"><h3 id="sarah-lee-unanswered-2026-08-26">Sarah Lee — unanswered 2026-08-26</h3><p><span class="badge open">unanswered 2026-08-26</span></p><p>The <strong>Playback Controls</strong> row says the module &quot;reuses the existing site video component rather than a new player build&quot;, and User requirement 2 points to &quot;the existing product-page video pattern already live on the site&quot;. No TVS video component is exposed to us through TVS-Common — <code>docs/tvs-api-reference.md</code> lists no video API — so we cannot reach whatever plays video on the product page. Which component is meant, how would we invoke it, and is a native <code>&lt;video&gt;</code> element with the browser's own controls (play/pause/volume/scrub) acceptable in its place?</p></div>
+<div class="card"><h3 id="sarah-lee-unanswered-2026-08-26">Sarah Lee — unanswered 2026-08-26</h3><p><span class="badge open">unanswered 2026-08-26</span></p><p>The <strong>Video Asset</strong> row says &quot;Admin uploads one video per module instance&quot;, and the <strong>Thumbnail</strong> row says &quot;Admin uploads a thumbnail image&quot;. The Amplience content types in this project take URLs, not uploads. Is the video a URL to a hosted mp4, a DAM asset, or a YouTube/Vimeo embed? The answer decides whether native inline playback with native controls is even possible — an embedded player carries its own controls and its own frame.</p></div>
+<div class="card"><h3 id="sarah-lee-unanswered-2026-08-26">Sarah Lee — unanswered 2026-08-26</h3><p><span class="badge open">unanswered 2026-08-26</span></p><p>The <strong>Thumbnail</strong> row asks for an image but names no alt text field. Every image in this project carries one, and the thumbnail is the only thing on screen before play is triggered. Is the alt text a field the admin fills, or should it be derived from the heading?</p></div></section>
+<section id="deviations"><p class="eyebrow">10 — Deviations</p><h2>Deviations</h2><p>Recorded as each was found while building, so the gaps are visible rather than forgotten.</p>
+<div class="card"><h3 id="native-video-not-a-tvs-player">Native <code>&lt;video&gt;</code>, not a TVS player</h3><p><span class="badge built">Built</span> <code>&lt;video controls playsinline preload=&quot;none&quot;&gt;</code></p><p>No TVS video component is reachable from a Platter section (Open comment 2), so the player is the browser's own, exactly as the UGC Video Slider already ships it: native controls, inline, no pop-up. The clip is not fetched until play is pressed. Mobile Safari honours <code>playsinline</code>, so the frame does not go full-screen by itself.</p></div>
+<div class="card"><h3 id="the-heading-and-play-button-hide-on-play-and-return-when-the-clip-ends">The heading and play button hide on play and return when the clip ends</h3><p><span class="badge built">Built</span></p><p>The FSD says the heading is &quot;shown … before playback starts&quot; (Open comment 1). Pressing play removes the darkened thumbnail, the heading and the disc together, so the native controls have the whole frame; when the clip ends they come back. A pause mid-clip leaves the player showing — the shopper paused it and expects to resume, not to see the poster again.</p></div>
+<div class="card"><h3 id="video-is-a-url-field">Video is a URL field</h3><p><span class="badge built">Built</span> <code>video</code>, a full mp4 URL</p><p>The FSD says &quot;Admin uploads&quot;; Amplience content types here take URLs (Open comment 3). The field shares its name and its file guidance with the UGC slider's card video — H.264, saved for web streaming, kept small — retuned for landscape 16:9. An embed URL (YouTube, Vimeo) does not play here; that reading of the row is the client's to confirm.</p></div>
+<div class="card"><h3 id="thumbnail-alt-text-added">Thumbnail alt text added</h3><p><span class="badge built">Built</span> <code>imageAlt</code>, required</p><p>The FSD's Thumbnail row names no alt text (Open comment 4). Every image in the project carries one, and here it is also the accessible name of the play button (&quot;Play video: …&quot;) and the <code>video_title</code> in analytics.</p></div>
+<div class="card"><h3 id="one-control-whole-frame-hit-area">One control, whole-frame hit area</h3><p><span class="badge built">Built</span></p><p>The FSD says &quot;click the play button&quot;; the thumbnail is clickable too, which is what a shopper expects of a poster. Rather than a second invisible button over the frame, the disc's <code>::after</code> covers the box — one tab stop, one accessible name, the same shape the product card uses for its one link.</p></div>
+<div class="card"><h3 id="a-solid-white-play-disc">A solid white play disc</h3><p><span class="badge built">Built</span> <code>icon-button--solid</code> in <code>components/icon-button.css</code></p><p>The component library's <code>icon-button-secondary</code> — a white disc, no hairline, the glyph in brand blue — had no counterpart in the repo; the existing <code>icon-button</code> is the Expert Module's glass-on-black. Added as a modifier with the same TVS escalation, so the two share one box and one size token. The size is 48px on phones and 78px from <code>md</code>, set on the section root in <code>base.css</code>, where the icon button's own comment says a per-section size belongs.</p></div>
+<div class="card"><h3 id="analytics-play">Analytics — play</h3><p><span class="badge built">Built</span> <code>ItemClick</code> via <code>raiseEvent</code>, plus a GA4 <code>video_play</code> push</p><p>The disc fires <code>raiseEvent('ItemClick', { ctaLabel: 'Play video', … }, 'Video Banner')</code> and the <code>&lt;video&gt;</code> element's own <code>play</code> event pushes <code>video_play</code> in the Merkle guide's shape, as the UGC slider does, without <code>modal_name</code> because nothing opens.</p></div>
+<div class="card"><h3 id="analytics-impression-viewport-entry">Analytics — impression (viewport entry)</h3><p><span class="badge missing">Not built</span></p><p>Same position as every section: no impression event name exists in any TVS template, so building one means inventing an event their handler ignores. Needs the name and payload from TVS.</p></div>
+<div class="card"><h3 id="heading-renders-in-georgia-until-fields-is-hosted">Heading renders in Georgia until Fields is hosted</h3><p><span class="badge missing">Not built</span> waiting on the client</p><p>Fields is the drawn face and the default; it is not hosted on vitaminshoppe.com (<code>base.css</code> § heading font records the check), so the stack falls to Georgia. Measured 2026-08-26 against the frames: the line box, the leading, the gap to the disc and the vertical centring all match, but the glyphs run about 10% wider (843 vs 767px desktop ink). Everything else on the frame — disc, glyph, scrim, poster alignment — measured identical. It corrects itself the day the font is hosted; nothing in the markup is waiting on it.</p></div>
+<div class="card"><h3 id="desktop-type-ramp-steps-in-at-1024px-not-768px">Desktop type ramp steps in at 1024px, not 768px</h3><p><span class="badge built">Built</span> heading, gap, disc and glyph flip together at <code>lg</code></p><p>Figma draws 1512 and 375 only. At 768 the box is 432px tall, and the desktop ramp — 48px heading, 32px gap, 78px disc — wraps the design's own 33-character title to two lines with a one-word orphan and fills half the frame. Between 768 and 1023 the section keeps the mobile ramp (30px, 16px, 48px), which holds a 40-character title on one line; the desktop ramp starts at 1024, where a 576px box carries it. The disc token in <code>base.css</code> moves with the markup. Raised by the in-between review 2026-08-26.</p></div>
+<div class="card"><h3 id="full-bleed-16-9-at-1920-is-a-1080px-tall-box">Full-bleed 16:9 at 1920 is a 1080px-tall box</h3><p><span class="badge missing">Not built</span> left for a design call</p><p>The frame is full-bleed and 16:9 is enforced, so at 1920 the box is 1080px tall: taller than a 1080p viewport once browser chrome is counted, a full screen of dimmed poster with one line of text in it. The type and disc still read at that size; the frame is the question. The review's fix is <code>mx-auto max-w-[1440px]</code> on the box — 1440 × 810 at 1920, the <code>Page Width</code> token the file itself carries, and the width every sibling section's content already stops at — which changes nothing at or below 1440. Not applied because the Figma frame is full-bleed at its only drawn width; it needs a yes.</p></div>
+<div class="card"><h3 id="heading-contrast-depends-on-the-thumbnail">Heading contrast depends on the thumbnail</h3><p><span class="badge built">Built</span> 32% scrim as drawn</p><p>The scrim is the design's flat 32% black and reads as intended at every width. Where white type crosses the brightest band of a thumbnail — here the chalk burst — the contrast margin is thin. That is a property of the picture a merchandiser chooses, and the thumbnail description says so.</p></div></section>
+</main>
+</div>
+<script>(() => {
+  const clamp = (value) => Math.max(0, Math.min(100, value));
+
+  document.querySelectorAll("[data-compare]").forEach((compare) => {
+    const sources = JSON.parse(compare.dataset.compare);
+    const stage = compare.querySelector("[data-stage]");
+    const frame = compare.querySelector("[data-frame]");
+    const design = compare.querySelector("[data-design]");
+    const build = compare.querySelector("[data-build]");
+    const viewButtons = compare.querySelectorAll("[data-view]");
+    const fadeButton = compare.querySelector("[data-fade]");
+    const actualButton = compare.querySelector("[data-actual]");
+
+    /**
+     * The frame is rendered with the taller of the two ratios already measured
+     * at build time. This re-derives it from what actually loaded, so a capture
+     * that has been recaptured since still gets the room it needs rather than
+     * being clipped exactly where the drift is.
+     */
+    const fit = () => {
+      if (!design.naturalWidth || !build.naturalWidth) return;
+      const ratio = Math.max(design.naturalHeight / design.naturalWidth, build.naturalHeight / build.naturalWidth);
+      frame.style.aspectRatio = "1/" + ratio.toFixed(4);
+    };
+    design.addEventListener("load", fit);
+    build.addEventListener("load", fit);
+    fit();
+
+    const show = (view) => {
+      const source = sources[view];
+      if (!source) return;
+      frame.style.aspectRatio = "1/" + source.ratio;
+      design.src = source.design;
+      build.src = source.build;
+      design.alt = "Figma design, " + view;
+      build.alt = "Captured build, " + view;
+      compare.style.setProperty("--compare-width", source.width + "px");
+      viewButtons.forEach((button) => button.classList.toggle("on", button.dataset.view === view));
+
+      // The column, not the stage: 1:1 widens the block past its parent, so
+      // measuring the stage would ask whether the frame fits the space it was
+      // just given. The parent section keeps the column's true width.
+      // A mobile frame fits it either way, so the toggle has nothing to do.
+      actualButton.disabled = source.width <= compare.parentElement.clientWidth;
+      if (actualButton.disabled) {
+        compare.classList.remove("actual");
+        actualButton.classList.remove("on");
+      }
+      fit();
+    };
+
+    let position = 50;
+    const move = (value) => {
+      position = clamp(value);
+      frame.style.setProperty("--p", position);
+      frame.setAttribute("aria-valuenow", Math.round(position));
+    };
+    const moveTo = (clientX) => {
+      const box = frame.getBoundingClientRect();
+      move(((clientX - box.left) / box.width) * 100);
+    };
+
+    let dragging = false;
+    frame.addEventListener("pointerdown", (event) => {
+      dragging = true;
+      frame.setPointerCapture(event.pointerId);
+      moveTo(event.clientX);
+      event.preventDefault();
+    });
+    frame.addEventListener("pointermove", (event) => {
+      if (dragging) moveTo(event.clientX);
+    });
+    frame.addEventListener("pointerup", () => {
+      dragging = false;
+    });
+    frame.addEventListener("pointercancel", () => {
+      dragging = false;
+    });
+
+    const STEPS = { ArrowLeft: -2, ArrowRight: 2, PageDown: -10, PageUp: 10 };
+    frame.addEventListener("keydown", (event) => {
+      if (event.key === "Home") move(0);
+      else if (event.key === "End") move(100);
+      else if (STEPS[event.key] !== undefined) move(position + STEPS[event.key]);
+      else return;
+      event.preventDefault();
+    });
+
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!button.disabled) show(button.dataset.view);
+      });
+    });
+    fadeButton.addEventListener("click", () => {
+      fadeButton.classList.toggle("on", frame.classList.toggle("fade"));
+    });
+    actualButton.addEventListener("click", () => {
+      if (!actualButton.disabled) actualButton.classList.toggle("on", compare.classList.toggle("actual"));
+    });
+
+    show(sources.desktop ? "desktop" : "mobile");
+    move(50);
+  });
+})();</script>
+</body>
+</html>
