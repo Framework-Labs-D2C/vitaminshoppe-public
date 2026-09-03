@@ -200,7 +200,11 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <td>boolean</td>
 <td class="req"></td>
 <td>default <code>true</code></td>
-<td>Shows the star rating and review count on every card in this module. Switch off for a range where reviews are thin or missing — a card with no rating leaves a gap the others do not have, so it reads better with ratings off for the whole module than on for some of it.</td></tr><tr><td><code>cardOverrides</code><br /><strong>Card overrides</strong></td>
+<td>Shows the star rating and review count on every card in this module. Switch off for a range where reviews are thin or missing — a card with no rating leaves a gap the others do not have, so it reads better with ratings off for the whole module than on for some of it.</td></tr><tr><td><code>showBadgeAndInfoIcon</code><br /><strong>Show badge and info icon</strong></td>
+<td>boolean</td>
+<td class="req"></td>
+<td>default <code>false</code></td>
+<td>Shows the badge and the info glyph beside it on every card in this module. Off by default: a badge comes from the product's own burst message, so a range where only some products carry one leaves the rest of the cards looking short. Switch it on when the whole range has a badge, or when you have written one per card in the overrides below.</td></tr><tr><td><code>cardOverrides</code><br /><strong>Card overrides</strong></td>
 <td>array</td>
 <td class="req"></td>
 <td></td>
