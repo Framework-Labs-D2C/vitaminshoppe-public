@@ -216,7 +216,7 @@ ul.also li { break-inside: avoid; }
 <header class="hero" style="padding-top:60px">
   <p class="eyebrow">QA reference</p>
   <h1>Where the build differs from the spec, and why</h1>
-  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 108 differences across 18 sections, plus 40 findings worth knowing before you test.</p>
+  <p class="lede">A comparison of two things only: the <strong>input</strong> — the Confluence FSD and the Figma frames — against the <strong>output</strong>, what actually ships. 107 differences across 18 sections, plus 40 findings worth knowing before you test.</p>
   <p class="lede">Everything listed here is a decision. If you find something that differs from the spec and is <strong>not</strong> on this page, that is worth raising.</p>
   <p class="lede">Analytics is covered on its own page: <a href="./ga-tracking.html">what the modules send to GA4</a>, generated from the shipped markup rather than from the specs.</p>
 </header>
@@ -235,7 +235,7 @@ ul.also li { break-inside: avoid; }
 <h4 id="tablet-widths-are-best-effort-and-are-not-part-of-this-review">Tablet widths are best-effort, and are not part of this review</h4>
 <p>Figma tokenises its desktop frames at 1200 and above and its mobile frames at 768 and below, so <strong>the band between them is not drawn in any design we were given</strong>. Every value a section uses in that band — where it changes column count, how many cards sit in a row, when the drawn type sizes step in — was chosen to fit the screen sensibly rather than measured from a frame. Those choices are not listed per section and are not defects. <strong>The drawn widths, 1512 and 375, are the ones to review</strong>; the captures on each section's reference page are taken at both.</p>
 </div>
-<p class="excluded">Two kinds of note are deliberately left out. Of the 208 deviation notes recorded across the twelve specs, 14 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 18 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 208 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
+<p class="excluded">Two kinds of note are deliberately left out. Of the 207 deviation notes recorded across the twelve specs, 14 describe how the build got somewhere rather than where it ended up — a value corrected against Figma, a helper extracted, a first attempt replaced — and 18 record behaviour in the tablet band, which the note above covers once instead of section by section. Both remain in each section's <code>_fsd.md</code>. A build-time check asserts that every one of the 207 is either published above or explicitly classified, so nothing reaches this page by accident and nothing falls off it either.</p>
 </section>
 
 <section id="review">
@@ -2019,7 +2019,7 @@ ul.also li { break-inside: avoid; }
     </div>
   </div>
 </div>
-<h3 class="group">Differences <span class="count">5</span></h3>
+<h3 class="group">Differences <span class="count">4</span></h3>
 <div class="card">
 <h4 id="the-heading-accepts-a-shorter-headline-than-the-stated-range">The heading accepts a shorter headline than the stated range</h4>
 <p class="line"><span class="tag drift">Differs</span></p>
@@ -2051,14 +2051,6 @@ ul.also li { break-inside: avoid; }
 <dt>Spec &amp; design</dt><dd>The design draws the cross in <code>#012169</code> in every cell that has one.</dd>
 <dt>What ships</dt><dd>The check is the drawn light blue everywhere. The cross is white in our own column and the drawn navy in every other.</dd>
 <dt>Why</dt><dd>No frame draws a cross in our own column — every drawn row has us winning — so the navy the design gives it has never been placed on the navy fill, where it would be invisible. The same holds once a merchandiser recolours the column, which the spec explicitly allows.</dd>
-</dl></div>
-<div class="card">
-<h4 id="on-phones-the-attribute-column-s-header-cell-is-filled">On phones the attribute column's header cell is filled</h4>
-<p class="line"><span class="tag drift">Differs</span></p>
-<dl>
-<dt>Spec &amp; design</dt><dd>The top-left cell is drawn empty at both widths.</dd>
-<dt>What ships</dt><dd>On phones it takes the white of its own column and the band's top-left corner moves up to it. Desktop is unchanged.</dd>
-<dt>Why</dt><dd>That column is pinned on phones while the competitors scroll under it, per the FSD's own User requirement. A pinned cell with no fill lets the scrolling content show through, and what passes that corner is the competitor headings — so the empty notch is only empty while nothing moves under it.</dd>
 </dl></div>
 <h3 class="group">Findings <span class="count">4</span></h3>
 <div class="card finding">

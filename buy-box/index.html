@@ -227,7 +227,13 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <figure><figcaption>tablet — 768px</figcaption>
 <img src="./tablet-768.png" alt="buy-box rendered at 768px" loading="lazy" /></figure>
 <figure><figcaption>wide — 1920px</figcaption>
-<img src="./wide-1920.png" alt="buy-box rendered at 1920px" loading="lazy" /></figure></div></section>
+<img src="./wide-1920.png" alt="buy-box rendered at 1920px" loading="lazy" /></figure></div>
+<h3>States</h3>
+<p>Reached by setting the component's own state rather than by driving the gesture, so these show what the state looks like and not that the trigger still fires.</p>
+<div class="shots"><figure><figcaption>Sticky CTA bar, scrolled state — 1512px</figcaption>
+<img src="./sticky-bar-1512.png" alt="buy-box: Sticky CTA bar, scrolled state at 1512px" loading="lazy" /></figure>
+<figure><figcaption>Sticky CTA bar, scrolled state — 375px</figcaption>
+<img src="./sticky-bar-375.png" alt="buy-box: Sticky CTA bar, scrolled state at 375px" loading="lazy" /></figure></div></section>
 <section id="fields"><p class="eyebrow">03 — Fields</p><h2>What a merchandiser fills in</h2>
 <p>Generated from <code>_schema.ts</code>, in the order Amplience shows them.</p>
 <div class="scroll"><table><thead><tr><th>Field</th><th>Type</th><th></th><th>Constraints</th><th>Description</th></tr></thead>
@@ -309,7 +315,7 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
   &quot;priority&quot;: true,
   &quot;sectionId&quot;: &quot;buy-box&quot;
 }</pre></section>
-<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>Four frames, all in the file named in the frontmatter. The buy box pair is the one the committed <code>_figma-*.jpg</code> exports come from; the sticky bar pair is cited here and has no export of its own, because the bar only exists in a scrolled state that a section screenshot never reaches.</p>
+<section id="design-reference"><p class="eyebrow">05 — Design reference</p><h2>Design reference</h2><p>Four frames, all in the file named in the frontmatter. The buy box pair is the one the committed <code>_figma-*.jpg</code> exports come from; the wipe compare takes one pair per section, so the sticky bar pair has no <code>_figma-*.jpg</code> beside it and is measured against rather than wiped over. The bar itself is captured: the <code>stateCaptures</code> entry in <code>platter.config.js</code> photographs it at 1512 and 375, which the standard pass cannot do because it shoots the section element unscrolled and a fixed-position bar sits outside that element.</p>
 <div class="scroll"><table><thead><tr><th>Part</th><th>Desktop</th><th>Mobile</th></tr></thead><tbody><tr><td>Main buy box</td><td><a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=19142-1554" target="_blank" rel="noopener"><code>19142:1554</code></a> at 1512 by 1024</td><td><a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=19142-1744" target="_blank" rel="noopener"><code>19142:1744</code></a> at 375 by 1358</td></tr><tr><td>Sticky CTA bar</td><td><a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18538-11380" target="_blank" rel="noopener"><code>18538:11380</code></a> at 1512 by 88</td><td><a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18538-11399" target="_blank" rel="noopener"><code>18538:11399</code></a> at 375 by 111</td></tr></tbody></table></div>
 <p>The mobile buy box is parented to the page rather than to the <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18538-1132" target="_blank" rel="noopener"><code>18538:1132</code></a> &quot;Buy Box&quot; section, and only sits inside that section's bounds on canvas — which is why it is invisible to a metadata read of the section. A near-identical 375 by 1358 &quot;buybox&quot; at <a href="https://www.figma.com/design/t9mARSHD1DlFyxMAxwBBPL/The-Vitamin-Shoppe-External-Consolidated-Feedback?node-id=18309-69381" target="_blank" rel="noopener"><code>18309:69381</code></a> belongs to the older Template 2 and is not the frame measured here.</p>
 <h3 id="main-buy-box-frame-and-columns">Main buy box — frame and columns</h3>
