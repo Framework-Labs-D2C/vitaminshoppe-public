@@ -53,7 +53,39 @@ body { font-family: var(--body); background: var(--page); color: var(--ink); fon
 
 main { flex: 1; min-width: 0; max-width: 1080px; padding: 0 52px 120px; }
 section { padding-top: 68px; }
-@media (max-width: 980px) { .sidenav { display: none; } main { padding: 0 20px 80px; } }
+
+/* The drawer. Above 980 the burger and the scrim are simply absent and the
+   sidenav is the sticky column it has always been; below it the same nav slides
+   in over the page. Two states on <body> rather than :target or a checkbox,
+   because a link inside the drawer has to close it and CSS alone cannot. */
+.burger { display: none; position: fixed; top: 12px; left: 12px; z-index: 45; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 1px solid var(--rule-strong); border-radius: 8px; background: var(--surface); box-shadow: 0 1px 4px rgba(0,0,0,0.12); cursor: pointer; transition: left 220ms ease; }
+.burger:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.burger span { position: relative; display: block; width: 16px; height: 2px; border-radius: 2px; background: var(--ink); }
+.burger span::before, .burger span::after { content: ""; position: absolute; left: 0; width: 16px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 220ms ease, top 220ms ease; }
+.burger span::before { top: -5px; }
+.burger span::after { top: 5px; }
+body.nav-open .burger span { background: transparent; }
+body.nav-open .burger span::before { top: 0; transform: rotate(45deg); }
+body.nav-open .burger span::after { top: 0; transform: rotate(-45deg); }
+.scrim { display: none; position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 220ms ease; }
+
+@media (max-width: 980px) {
+  main { padding: 0 20px 80px; }
+  .burger, .scrim { display: block; }
+  .burger { display: flex; }
+  /* 100dvh, not the inherited 100vh: on iOS the toolbar covers the last ~60px,
+     which is where the switcher's tail and the gallery link sit. */
+  .sidenav { position: fixed; top: 0; left: 0; z-index: 40; width: 280px; max-width: 86vw; height: 100dvh; padding-right: 12px; transform: translateX(-100%); transition: transform 220ms ease; box-shadow: 0 0 40px rgba(0,0,0,0.25); }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .sidenav { transform: none; }
+  body.nav-open .scrim { opacity: 1; pointer-events: auto; }
+  /* Clear of the drawer's own edge, so the close affordance is never under it. */
+  body.nav-open .burger { left: min(292px, calc(86vw + 12px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidenav, .scrim, .burger, .burger span::before, .burger span::after { transition: none; }
+}
 
 h1 { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.028em; }
 h2 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -0.022em; line-height: 1.15; }
@@ -111,8 +143,8 @@ td.req { color: var(--critical); font-family: var(--mono); font-size: 12px; }
 .compare-tag.design { left: 10px; background: var(--brand-deep); }
 .compare-tag.build { right: 10px; background: var(--success-deep); }
 /* Must follow the base rule, not sit with the other 980px overrides above it:
-   same specificity, so source order decides. Below 980 the sidenav is gone and
-   main's gutters are 20px. */
+   same specificity, so source order decides. Below 980 the sidenav is out of
+   the flow and main's gutters are 20px. */
 @media (max-width: 980px) { .compare.actual { width: min(calc(100vw - 40px), calc(var(--compare-width) + 2px)); } }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 16px; }
@@ -125,8 +157,10 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 </style>
 </head>
 <body>
+<button class="burger" type="button" aria-controls="sidenav" aria-expanded="false" aria-label="Sections menu"><span></span></button>
+<div class="scrim"></div>
 <div class="shell">
-<nav class="sidenav">
+<nav class="sidenav" id="sidenav">
   <div class="brand">Platter <em>×</em> TVS</div>
   <div class="brand-sub">bundle-module</div>
   <a href="#screenshots"><span class="n">01</span>Screenshots</a>
@@ -335,6 +369,37 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 <div class="card"><h3 id="impression-tracking-is-not-implemented">Impression tracking is not implemented</h3><p><span class="badge missing">Not built</span></p><p>See the open comment. Click tracking ships, using the shared <code>raiseEvent('ItemClick', …)</code> payload with <code>moduleTitle</code>. Impression tracking has no agreed event name or payload for any Platter module yet, so it is deliberately left out rather than invented here.</p></div></section>
 </main>
 </div>
+<script>
+(function () {
+  var burger = document.querySelector(".burger");
+  var sidenav = document.querySelector(".sidenav");
+  var scrim = document.querySelector(".scrim");
+  if (!burger || !sidenav || !scrim) return;
+
+  var setOpen = function (open) {
+    document.body.classList.toggle("nav-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+  };
+
+  burger.addEventListener("click", function () {
+    setOpen(!document.body.classList.contains("nav-open"));
+  });
+  scrim.addEventListener("click", function () { setOpen(false); });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setOpen(false);
+  });
+  // An in-page anchor scrolls behind the drawer and a sibling link leaves the
+  // page entirely; neither wants the drawer left standing.
+  sidenav.addEventListener("click", function (event) {
+    if (event.target.closest("a")) setOpen(false);
+  });
+  // The drawer is a mobile state, so a resize past the breakpoint must clear it
+  // rather than leave <body> locked at overflow: hidden on a desktop layout.
+  addEventListener("resize", function () {
+    if (innerWidth > 980) setOpen(false);
+  });
+})();
+</script>
 <script>(() => {
   const clamp = (value) => Math.max(0, Math.min(100, value));
 
